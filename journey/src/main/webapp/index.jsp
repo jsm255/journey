@@ -15,6 +15,7 @@
             <ul>
                 <a href="" class="login"><li>Login</li></a>
                 <a href="" class="join"><li>Join</li></a>
+                <a></a>
             </ul>
         </nav>
         <div>
