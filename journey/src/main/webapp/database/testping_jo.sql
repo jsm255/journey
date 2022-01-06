@@ -8,7 +8,7 @@ create table country(
 	-- 번호, 국가 이름, 평점(리뷰에서 매긴 평균), 
 	code integer primary key auto_increment,
 	countryName varchar(30) not null,
-	score decimal(4, 2)	default 0					-- 고정 소수점 decimal(4(전체 숫자 수), 2(소수점 아래에 있는 숫자 수))
+	score varchar(10) default "0"	-- 소수점 값 --> varchar로 값을 받음 --> 표시할 땐 Double.parseDouble(String)으로 바꿔받음
 );
 
 create table board(

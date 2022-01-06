@@ -2,7 +2,7 @@ package models;
 
 import java.sql.Timestamp;
 
-public class BoardDTO {
+public class ReviewDTO {
 	private int code;
 	private int countryCode;
 	private String userName;
@@ -12,7 +12,7 @@ public class BoardDTO {
 	private String pw;
 	
 	// 회원이 쓴 걸 가져올 때
-	public BoardDTO(int code, int countryCode, String userName, String content, int score, Timestamp date) {
+	public ReviewDTO(int code, int countryCode, String userName, String content, int score, Timestamp date) {
 		this.code = code;
 		this.countryCode = countryCode;
 		this.userName = userName;
@@ -22,7 +22,7 @@ public class BoardDTO {
 	}
 	
 	// 게스트가 쓴 걸 가져올 때
-	public BoardDTO(int code, int countryCode, String content, int score, Timestamp date, String pw) {
+	public ReviewDTO(int code, int countryCode, String content, int score, Timestamp date, String pw) {
 		this.code = code;
 		this.countryCode = countryCode;
 		this.userName = "Guest";
