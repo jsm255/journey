@@ -77,7 +77,7 @@ String flag = country.getFlag();
                 <td><%=country.getScore() %> 점</td>
             </tr>
             <tr>
-                <td>비워둔 자리</td>
+                <td>비워둔 자리 ㄴ</td>
             </tr>
         	</table>
         </div>
