@@ -1,0 +1,73 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    }
+.wrap {
+    width: 100%;
+    background: white;
+    
+}
+
+/* 메인 타이틀 */
+.header {
+    background: white; 
+    height: 15vh; 
+    text-align: center; 
+    padding: 0.1px 0px 0px 0px;
+}
+#title{
+    text-align: center;
+    margin-left: 140px;
+}
+/* 상단 로그인/ 회원가입 */
+.top-menu{
+    display: inline;
+}
+.top-menu li{
+    display: inline-block;
+}
+
+.top-menu .join{
+    float:right;
+    margin-right: 20px;
+}
+
+.top-menu .join:hover p{
+    color:darkgray;
+}
+
+a {
+    text-decoration: none; 
+    color: black
+}
+
+/* Nav 바  */
+nav a:hover {
+    color: gray; 
+    border-color: darkgray;
+}
+nav {
+    height: 10vh; 
+    background: lightgray; 
+    text-align: center;
+    color: black; 
+    padding-top: 0.1px;
+}
+nav li {
+    display: inline; 
+    margin: 8%;
+}
+nav a {
+    text-decoration: none; 
+    color: black;
+    border-style: hidden hidden solid hidden; 
+    border-color: transparent;
+    font-weight: bold
+    }
+nav a:hover {
+    color: gray; 
+    border-color: darkgray;
+}
+
+
+
