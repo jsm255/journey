@@ -53,7 +53,7 @@
     </style>
 
 <%
-String countryName = "미국";
+String countryName = "영국";
 // countryName = request.getParameter("country");
 
 CountryDAO cDao = CountryDAO.getInstance();
@@ -96,10 +96,11 @@ String flag = country.getFlag();
                 <td><%=country.getScore() %> 점</td>
             </tr>
             <tr>
-                <td>비워둔 자리 ㄴ</td>
+                <td><!-- 맛집, 여행, 비행기 표 연동 --></td>
             </tr>
         	</table>
         </div>
+        <!-- 리뷰 쓰기 시스템을 넣을 것임 -->
         <div id="writeReview">
         	<form>
         		<table>
@@ -109,7 +110,7 @@ String flag = country.getFlag();
         		</table>
         	</form>
         </div>
-        <div id="review">	<!-- 10개까지 표시 + 작성 창 => 11줄 -->
+        <div id="review">	<!-- 10개까지 표시 + 작성 창 => 11줄 / 답글 -->
         	<table>
         	<%
         		ReviewDAO rDao = ReviewDAO.getInstance();
@@ -136,6 +137,7 @@ String flag = country.getFlag();
             			<td>평가 점수 : <%=temp.getScore() %> 점</td>
             			<tr><td colspan="3">유저 리뷰 : <%=temp.getContent()%></td></tr>
             			<tr><td>리뷰 날짜 : <%=temp.getDate() %></td></tr>
+            			<tr></tr>
             			<%
             		}
         			%>
