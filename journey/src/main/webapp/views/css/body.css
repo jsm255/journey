@@ -17,6 +17,7 @@ body{
     "main"
     "footer"
     ;
+     background-color: rgb(212,211,217);
 }
 /* header */
 header{
@@ -53,7 +54,7 @@ a {
 /* nav 바 */
 nav{
     grid-area: nav;
-    background-color: rgba(18, 104, 158, 0.246);
+    background-color: rgb(212,211,217);
     text-align: center;
     color: black; 
     padding-top: 0.1px;
@@ -83,29 +84,33 @@ footer{
     background-color: black;
     color: white;
     text-align: center;
+    height: 5vh;
+    background-image: url(../img/footer.jpg);
+    background-size: 100% 100%;
 }
 
 /* 이 밑에만 변경사항 위에는 고정 */
 /* 메인  */
 main{
     grid-area: main;
-    background-image: url(../img/main_bg2.jpg.crdownload);
+    background-image: url(../img/main.jpg);
     background-size: cover;
     text-align: center;
-}
-.mainTitle{
-    margin-top: 10%;
+    height:65vh;
     
 }
+
 .country{
     width: 30vw;
     height: 5vh;
     text-align: center;
     font-size: 2em;
     margin-top: 5%;
+    border-radius: 5px;
 }
 input[type="button"]{
     width: 5vw;
     height: 5vh;
     vertical-align: bottom;
+    border-radius: 5px;
 }
