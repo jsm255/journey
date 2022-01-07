@@ -11,10 +11,10 @@ create table country(
 	score varchar(10) default "0"	-- 소수점 값 --> varchar로 값을 받음 --> 표시할 땐 Double.parseDouble(String)으로 바꿔받음
 );
 
-create table board(
+create table review(
 	code integer primary key auto_increment,
-	countryCode integer not null,
-	userName varchar(30) not null default "Guest",
+	countryName varchar(30) not null,
+	userName varchar(30) not null default "guest",
 	content varchar(5000),
 	score integer default 0,
 	`date` datetime not null default current_timestamp,
@@ -22,7 +22,7 @@ create table board(
 );
 
 drop table country;
-drop table board;
+drop table review;
 
 insert country(countryName) value("미국");
 insert country(countryName) value("영국");
@@ -35,18 +35,34 @@ insert country(countryName) value("이탈리아");
 insert country(countryName) value("그리스");
 insert country(countryName) value("인도");
 
-insert board(countryCode, userName, content, score) values(1, "으악", "으아악", 6);
-insert board(countryCode, content, score, pw) values(2, "으악!", 8, "1234");
-insert board(countryCode, content, score, pw) values(1,"정말 멋있었다", 9, "1234");
-insert board(countryCode, content, score, pw) values(2,"정말 멋있었다", 8, "1234");
-insert board(countryCode, content, score, pw) values(3,"정말 멋있었다", 7, "1234");
-insert board(countryCode, content, score, pw) values(4,"정말 멋있었다", 8, "1234");
-insert board(countryCode, userName, content, score) values(5, "A회원", "정말 멋있었다", 9);
-insert board(countryCode, content, score, pw) values(5,"정말 멋있었다", 4, "1234");
-insert board(countryCode, content, score, pw) values(7,"정말 멋있었다", 3, "1234");
-insert board(countryCode, content, score, pw) values(8,"정말 멋있었다", 6, "1234");
-insert board(countryCode, content, score, pw) values(9,"정말 멋있었다", 7, "1234");
-insert board(countryCode, content, score, pw) values(10,"정말 멋있었다", 10, "1234");
+update country set flag="images/usflag.png" where countryName="미국";
+
+insert review(countryName, userName, content, score) values("미국", "으악", "으아악", 6);
+insert review(countryName, content, score, pw) values("영국", "으악!", 8, "1234");
+insert review(countryName, content, score, pw) values("미국","정말 멋있었다", 9, "1234");
+insert review(countryName, content, score, pw) values("영국","정말 멋있었다", 8, "1234");
+insert review(countryName, content, score, pw) values("일본","정말 멋있었다", 7, "1234");
+insert review(countryName, content, score, pw) values("태국","정말 멋있었다", 8, "1234");
+insert review(countryName, userName, content, score) values("중국", "A회원", "정말 멋있었다", 9);
+insert review(countryName, content, score, pw) values("중국","정말 멋있었다", 4, "1234");
+insert review(countryName, content, score, pw) values("독일","정말 멋있었다", 3, "1234");
+insert review(countryName, content, score, pw) values("이탈리아","정말 멋있었다", 6, "1234");
+insert review(countryName, content, score, pw) values("그리스","정말 멋있었다", 7, "1234");
+insert review(countryName, content, score, pw) values("인도","정말 멋있었다", 10, "1234");
+
+insert review(countryName, userName, content, score) values("미국", "으악3", "으아악으아악", 6);
+insert review(countryName, userName, content, score) values("미국", "으악4", "으아악333", 9);
+insert review(countryName, userName, content, score) values("미국", "으악5", "으아악44444", 8);
+insert review(countryName, userName, content, score) values("미국", "으악6", "으아악55555", 7);
+insert review(countryName, userName, content, score) values("미국", "으악8", "으아악666", 6);
+insert review(countryName, userName, content, score) values("미국", "으악7", "으아악777", 5);
+insert review(countryName, userName, content, score) values("미국", "으악9", "으아악888", 10);
+insert review(countryName, userName, content, score) values("미국", "으악0", "으아악999", 9);
+insert review(countryName, userName, content, score) values("미국", "으악-", "으아악111123", 2);
+insert review(countryName, userName, content, score) values("미국", "으악=", "으아악32131", 6);
+insert review(countryName, userName, content, score) values("미국", "으악11", "으아악32323", 7);
+insert review(countryName, userName, content, score) values("미국", "으악12", "으아악43434", 7);
+
 
 select * from country;
-select * from board;
+select * from review;
