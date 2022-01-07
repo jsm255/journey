@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/body.css" type="text/css">
+<link rel="stylesheet" href="views/css/body.css" type="text/css">
 <title>Insert title here</title>
 </head>
 <body>
- <header>
+   <header>
         <div class="top">
             <ul class="top-menu">
                 <li class="join"><a href="">
@@ -28,30 +28,30 @@
             <li><a href="">마이페이지</a></li>
         </ul>
     </nav>
-    <main>
-        <form action="" method="">
-            <table border="solid" class="choice">
-               
-                <tr>
-                    국가 선택
-                    <td>
-                    <input type="checkbox" >미국
-                    <input type="checkbox" >영국
-                    <input type="checkbox" >일본<br>
-                    <input type="checkbox" >태국
-                    <input type="checkbox" >중국
-                    <input type="checkbox" >필리핀<br>
-                    <input type="checkbox" >독일
-                    <input type="checkbox" >이탈리아
-                    <input type="checkbox" >그리스
-                    <input type="checkbox" >인도
-                </td>
-                </tr>
-            </table>
+    <div class="image">
+     <main>
+        <h1 class="mainTitle">어디로 떠나실건가요?</h1>
+        <form action="get" method="">
+        <select size="1" class="country" name="country">
+            
+            <option value="country">미국</option>
+            <option value="country">영국</option>
+            <option value="country">일본</option>
+            <option value="country">태국</option>
+            <option value="country">중국</option>
+            <option value="country">필리핀</option>
+            <option value="country">독일</option>
+            <option value="country">이탈리아</option>
+            <option value="country">그리스</option>
+            <option value="country">인도</option>
+        </select>
+        <input type="button" onclick="" value="검색">
         </form>
     </main>
     <footer>
         <p> Copyright © TravelCommunity. All Rights Reserved.</p>
     </footer>
+</div>
+ 
 </body>
 </html>

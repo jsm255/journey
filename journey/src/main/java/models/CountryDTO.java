@@ -7,16 +7,16 @@ public class CountryDTO {
 	private String countryName;
 	private String score;
 	
-	public CountryDTO(String countryName, String flag, String score) {
-		this.countryName = countryName;
+	public CountryDTO(String flag, String countryName, String score) {
 		this.flag = flag;
+		this.countryName = countryName;
 		this.score = score;
 	}
 	
-	public CountryDTO(int code, String countryName, String flag, String score) {
+	public CountryDTO(int code, String flag, String countryName, String score) {
 		this.code = code;
-		this.countryName = countryName;
 		this.flag = flag;
+		this.countryName = countryName;
 		this.score = score;
 	}
 

@@ -1,0 +1,111 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: grid;
+
+    width: 100vw;
+    height: 100vh;
+
+    grid-template-columns: 100%;
+    grid-template-rows: 15% 15% 60% 10%;
+    grid-template-areas: 
+    "header"
+    "nav"
+    "main"
+    "footer"
+    ;
+}
+/* header */
+header{
+    grid-area: header;
+    background-color: white;
+
+}
+#title{
+    text-align: center;
+    margin-left: 140px;
+}
+/* 상단 로그인 회원가입 */
+.top-menu{
+    display: inline;
+}
+.top-menu li{
+    display: inline-block;
+}
+
+.top-menu .join{
+    float:right;
+    margin-right: 20px;
+}
+
+.top-menu .join:hover p{
+    color:darkgray;
+}
+
+a {
+    text-decoration: none; 
+    color: black
+}
+
+/* nav 바 */
+nav{
+    grid-area: nav;
+    background-color: rgba(18, 104, 158, 0.246);
+    text-align: center;
+    color: black; 
+    padding-top: 0.1px;
+}
+nav a:hover {
+    color: gray; 
+    border-color: darkgray;
+}
+nav li {
+    display: inline; 
+    margin: 8%;
+}
+nav a {
+    text-decoration: none; 
+    color: black;
+    border-style: hidden hidden solid hidden; 
+    border-color: transparent;
+    font-weight: bold
+    }
+nav a:hover {
+    color: gray; 
+    border-color: darkgray;
+}
+
+footer{
+    grid-area: footer;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+/* 이 밑에만 변경사항 위에는 고정 */
+/* 메인  */
+main{
+    grid-area: main;
+    background-image: url(../img/main_bg2.jpg.crdownload);
+    background-size: cover;
+    text-align: center;
+}
+.mainTitle{
+    margin-top: 10%;
+    
+}
+.country{
+    width: 30vw;
+    height: 5vh;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 5%;
+}
+input[type="button"]{
+    width: 5vw;
+    height: 5vh;
+    vertical-align: bottom;
+}
