@@ -54,7 +54,7 @@ CountryDAO cDao = CountryDAO.getInstance();
 CountryDTO country = cDao.getCountry(countryName);
 String flag = country.getFlag();
 %>
-<title><%=country.getCountryName() %> 정보</title>
+<title>정보</title>
 </head>
 <body>
 	<header>

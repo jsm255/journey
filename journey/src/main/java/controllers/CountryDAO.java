@@ -33,11 +33,11 @@ public class CountryDAO {
 			
 			while(rs.next()) {
 				int code = rs.getInt(1);
-				String countryName = rs.getString(2);
-				String flag = rs.getString(3);
+				String flag = rs.getString(2);
+				String countryName = rs.getString(3);
 				String score = rs.getString(4);
 				
-				CountryDTO country = new CountryDTO(code, countryName, flag, score);
+				CountryDTO country = new CountryDTO(code, flag, countryName, score);
 				
 				countries.add(country);
 			}
