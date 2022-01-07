@@ -11,11 +11,6 @@
 <meta charset="UTF-8">
 
 	<style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-
         body{
             display: grid;
 
@@ -105,10 +100,17 @@ String flag = country.getFlag();
             </tr>
         	</table>
         </div>
+        <div id="writeReview">
+        	<form>
+        		<table>
+        			<tr>
+        				<td></td>
+        			</tr>
+        		</table>
+        	</form>
+        </div>
         <div id="review">	<!-- 10개까지 표시 + 작성 창 => 11줄 -->
         	<table>
-        	
-        	
         	<%
         		ReviewDAO rDao = ReviewDAO.getInstance();
         		ArrayList<ReviewDTO> reviews = rDao.getReviews(countryName);
@@ -117,7 +119,7 @@ String flag = country.getFlag();
         				currentPage = Integer.parseInt(request.getParameter("currentPage"));
         			}
         			int reviewStart = (currentPage-1)*10;
-        			int reviewEnd = reviewStart+9 > reviews.size() ? reviews.size() : reviewStart+9;
+        			int reviewEnd = reviewStart+9 > reviews.size()-1 ? reviews.size()-1 : reviewStart+9;
         			int pageStart = ((currentPage/10) * 10) + 1;
         			int pageEnd= (pageStart+9)*10 > reviews.size() ? ((reviews.size()-1)/10)+1 : pageStart+9;
         			
@@ -126,7 +128,7 @@ String flag = country.getFlag();
         			System.out.println(pageStart);
         			System.out.println(pageEnd);
         			
-        			for(int i = reviewStart; i<reviewEnd; i++) {
+        			for(int i = reviewStart; i<=reviewEnd; i++) {
             			ReviewDTO temp = reviews.get(i);
             			%>
             			<tr><td>리뷰 국가 : <%=temp.getCountryName() %></td>
