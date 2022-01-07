@@ -23,41 +23,44 @@ public class ReviewDAO {
 		return instance;
 	}
 	
-	public ArrayList<ReviewDTO> getBoard(){
+	public ArrayList<ReviewDTO> getReviews(String countryName){
 		reviews = new ArrayList<>();
 		
 		try {	
 			conn = DBManagerJo.getConnection();
 			
-			pstmt = conn.prepareStatement("select * from board");
+			pstmt = conn.prepareStatement("select * from review");
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				
-				ReviewDTO article = null;
-				
-				int code = rs.getInt(1);
-				int countryCode = rs.getInt(2);
-				String userName = rs.getString(3);
-				String content = rs.getString(4);
-				int score = rs.getInt(5);
-				Timestamp date = rs.getTimestamp(6);
-				String pw = "";
-				if(userName.equals("Guest")) {		// 비 회원 용
-					pw = rs.getString(7);
-					article = new ReviewDTO(code, countryCode, content, score, date, pw);
+				if(rs.getString(2).equals(countryName)) {
+					ReviewDTO review = null;
+					
+					int code = rs.getInt(1);
+					String getCountryName = rs.getString(2);
+					String userName = rs.getString(3);
+					String content = rs.getString(4);
+					int score = rs.getInt(5);
+					Timestamp date = rs.getTimestamp(6);
+					String pw = "";
+					if(userName.equals("Guest")) {		// 비 회원 용
+						pw = rs.getString(7);
+						review = new ReviewDTO(code, getCountryName, content, score, date, pw);
+					}
+					else {		// 회원 용
+						review = new ReviewDTO(code, getCountryName, userName, content, score, date);
+					}
+					
+					reviews.add(review);
 				}
-				else {		// 회원 용
-					article = new ReviewDTO(code, countryCode, userName, content, score, date);
-				}
-				
-				reviews.add(article);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return reviews;
-	}
+	}	
+	
 }

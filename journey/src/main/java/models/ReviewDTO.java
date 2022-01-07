@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class ReviewDTO {
 	private int code;
-	private int countryCode;
+	private String countryName;
 	private String userName;
 	private String content;
 	private int score;
@@ -12,9 +12,9 @@ public class ReviewDTO {
 	private String pw;
 	
 	// 회원이 쓴 걸 가져올 때
-	public ReviewDTO(int code, int countryCode, String userName, String content, int score, Timestamp date) {
+	public ReviewDTO(int code, String countryName, String userName, String content, int score, Timestamp date) {
 		this.code = code;
-		this.countryCode = countryCode;
+		this.countryName = countryName;
 		this.userName = userName;
 		this.content = content;
 		this.score = score;
@@ -22,9 +22,9 @@ public class ReviewDTO {
 	}
 	
 	// 게스트가 쓴 걸 가져올 때
-	public ReviewDTO(int code, int countryCode, String content, int score, Timestamp date, String pw) {
+	public ReviewDTO(int code, String countryName, String content, int score, Timestamp date, String pw) {
 		this.code = code;
-		this.countryCode = countryCode;
+		this.countryName = countryName;
 		this.userName = "Guest";
 		this.content = content;
 		this.score = score;
@@ -36,12 +36,12 @@ public class ReviewDTO {
 		return code;
 	}
 
-	public int getCountryCode() {
-		return countryCode;
+	public String getCountryName() {
+		return countryName;
 	}
 
-	public void setCountryCode(int countryCode) {
-		this.countryCode = countryCode;
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
 	}
 
 	public String getUserName() {
