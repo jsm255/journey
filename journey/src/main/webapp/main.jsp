@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/body.css" type="text/css">
-<title>Insert title here</title>
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<title>MAIN</title>
 </head>
 <body>
-   <header>
+    <header>
         <div class="top">
             <ul class="top-menu">
                 <li class="join"><a href="">
@@ -44,14 +44,13 @@
             <option value="country">이탈리아</option>
             <option value="country">그리스</option>
             <option value="country">인도</option>
-        </select> 
-        <input type="button" onclick="" value="검색">
+        </select>
+        <input type="button" onclick="" >
         </form>
     </main>
     <footer>
         <p> Copyright © TravelCommunity. All Rights Reserved.</p>
     </footer>
 </div>
- 
 </body>
 </html>
