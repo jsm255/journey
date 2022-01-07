@@ -5,6 +5,6 @@ function checkInfo(form){
 	if(id === "" || pw === ""){
 		alert("필수항목을 채워주세요");
 	}else{
-		form.submit();
+		
 	}
 }
