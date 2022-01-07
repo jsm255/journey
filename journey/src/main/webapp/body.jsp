@@ -44,7 +44,7 @@
             <option value="country">이탈리아</option>
             <option value="country">그리스</option>
             <option value="country">인도</option>
-        </select>
+        </select> 
         <input type="button" onclick="" value="검색">
         </form>
     </main>
