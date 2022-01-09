@@ -18,7 +18,18 @@ create table review(
 	content varchar(5000),
 	score integer default 0,
 	`date` datetime not null default current_timestamp,
-	pw varchar(30)		-- 게스트 상태에서 글을 쓸 경우 사용예정
+	pw varchar(30),		-- 게스트 상태에서 글을 쓸 경우 사용예정
+    attachCnt integer default 0
+);
+
+create table reReview(
+	code integer primary key auto_increment,
+    countryName varchar(30) not null,
+	userName varchar(30) not null default "guest",
+	content varchar(5000),
+	`date` datetime not null default current_timestamp,
+	pw varchar(30),		-- 게스트 상태에서 글을 쓸 경우 사용예정
+    attachCode integer not null
 );
 
 drop table country;
@@ -37,9 +48,9 @@ insert country(countryName) value("인도");
 
 update country set flag="images/usflag.png" where countryName="미국";
 
-insert review(countryName, userName, content, score) values("미국", "으악", "으아악", 6);
+insert review(countryName, userName, content, score, attachCnt) values("미국", "으악", "으아악", 6, 2);
 insert review(countryName, content, score, pw) values("영국", "으악!", 8, "1234");
-insert review(countryName, content, score, pw) values("미국","정말 멋있었다", 9, "1234");
+insert review(countryName, content, score, pw, attachCnt) values("미국","정말 멋있었다", 9, "1234", 1);
 insert review(countryName, content, score, pw) values("영국","정말 멋있었다", 8, "1234");
 insert review(countryName, content, score, pw) values("일본","정말 멋있었다", 7, "1234");
 insert review(countryName, content, score, pw) values("태국","정말 멋있었다", 8, "1234");
@@ -63,6 +74,9 @@ insert review(countryName, userName, content, score) values("미국", "으악=",
 insert review(countryName, userName, content, score) values("미국", "으악11", "으아악32323", 7);
 insert review(countryName, userName, content, score) values("미국", "으악12", "으아악43434", 7);
 
+insert reReview(countryName, userName, content, attachCode) values("미국", "대댓글다는 사람", "ㄹㅇㅋㅋ", 1);
+insert reReview(countryName, userName, content, attachCode) values("미국", "대댓글다는 사람2", "ㄹㅇㅋㅋ2", 1);
+insert reReview(countryName, userName, content, attachCode) values("미국", "대댓글다는 사람", "ㄹㅇㅋㅋ", 3);
 
 select * from country;
 select * from review;

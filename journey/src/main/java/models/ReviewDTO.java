@@ -10,19 +10,21 @@ public class ReviewDTO {
 	private int score;
 	private Timestamp date;
 	private String pw;
+	private int attachCnt;
 	
 	// 회원이 쓴 걸 가져올 때
-	public ReviewDTO(int code, String countryName, String userName, String content, int score, Timestamp date) {
+	public ReviewDTO(int code, String countryName, String userName, String content, int score, Timestamp date, int attachCnt) {
 		this.code = code;
 		this.countryName = countryName;
 		this.userName = userName;
 		this.content = content;
 		this.score = score;
 		this.date = date;
+		this.attachCnt = attachCnt;
 	}
 	
 	// 게스트가 쓴 걸 가져올 때
-	public ReviewDTO(int code, String countryName, String content, int score, Timestamp date, String pw) {
+	public ReviewDTO(int code, String countryName, String content, int score, Timestamp date, String pw, int attachCnt) {
 		this.code = code;
 		this.countryName = countryName;
 		this.userName = "Guest";
@@ -30,6 +32,7 @@ public class ReviewDTO {
 		this.score = score;
 		this.date = date;
 		this.pw = pw;
+		this.attachCnt = attachCnt;
 	}
 
 	public int getCode() {
@@ -80,5 +83,12 @@ public class ReviewDTO {
 		this.pw = pw;
 	}
 	
+	public int getAttachCnt() {
+		return this.attachCnt;
+	}
+	
+	public void setAttachCnt(int attachCnt) {
+		this.attachCnt = attachCnt;
+	}
 	
 }

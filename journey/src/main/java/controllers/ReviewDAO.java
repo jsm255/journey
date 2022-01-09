@@ -29,32 +29,33 @@ public class ReviewDAO {
 		try {	
 			conn = DBManagerJo.getConnection();
 			
-			pstmt = conn.prepareStatement("select * from review");
+			pstmt = conn.prepareStatement("select * from review where countryName=?");
+			pstmt.setString(1, countryName);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				
-				if(rs.getString(2).equals(countryName)) {
-					ReviewDTO review = null;
-					
-					int code = rs.getInt(1);
-					String getCountryName = rs.getString(2);
-					String userName = rs.getString(3);
-					String content = rs.getString(4);
-					int score = rs.getInt(5);
-					Timestamp date = rs.getTimestamp(6);
-					String pw = "";
-					if(userName.equals("Guest")) {		// 비 회원 용
-						pw = rs.getString(7);
-						review = new ReviewDTO(code, getCountryName, content, score, date, pw);
-					}
-					else {		// 회원 용
-						review = new ReviewDTO(code, getCountryName, userName, content, score, date);
-					}
-					
-					reviews.add(review);
+				 
+				ReviewDTO review = null;
+				
+				int code = rs.getInt(1);
+				String getCountryName = rs.getString(2);
+				String userName = rs.getString(3);
+				String content = rs.getString(4);
+				int score = rs.getInt(5);
+				Timestamp date = rs.getTimestamp(6);
+				String pw = "";
+				int attachCnt = rs.getInt(8);
+				if(userName.equals("Guest")) {		// 비 회원 용
+					pw = rs.getString(7);
+					review = new ReviewDTO(code, getCountryName, content, score, date, pw, attachCnt);
 				}
+				else {		// 회원 용
+					review = new ReviewDTO(code, getCountryName, userName, content, score, date, attachCnt);
+				}
+				
+				reviews.add(review);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
