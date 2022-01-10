@@ -34,16 +34,16 @@
         <form action="get" method="">
         <select size="1" class="country" name="country">
             
-            <option value="country">미국</option>
-            <option value="country">영국</option>
-            <option value="country">일본</option>
-            <option value="country">태국</option>
-            <option value="country">중국</option>
-            <option value="country">필리핀</option>
-            <option value="country">독일</option>
-            <option value="country">이탈리아</option>
-            <option value="country">그리스</option>
-            <option value="country">인도</option>
+            <option value="미국">미국</option>
+            <option value="영국">영국</option>
+            <option value="일본">일본</option>
+            <option value="태국">태국</option>
+            <option value="중국">중국</option>
+            <option value="필리핀">필리핀</option>
+            <option value="독일">독일</option>
+            <option value="이탈리아">이탈리아</option>
+            <option value="그리스">그리스</option>
+            <option value="인도">인도</option>
         </select>
         <input type="button" onclick="" >
         </form>
