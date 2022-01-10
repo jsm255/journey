@@ -43,5 +43,5 @@ body::before{
 .int-area input: focus + label,
 .int-area input: valid + label {
     top:0;
-    font-size : 13px; color : ##166cea;
+    font-size : 13px color : ##166cea;
 }
