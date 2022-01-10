@@ -48,15 +48,15 @@
                 <table border="1px solid black">
                     <tr>
                         <th>이름</th>
-                        <td>getName</td>
+                        <td><input type="text" name="name" value="">getName</td>
                     </tr>
                     <tr>
                         <th>아이디</th>
-                        <td>getId</td>
+                        <td><input type="text" name="id" value="">getId</td>
                     </tr>
                     <tr>
                         <th>비밀번호 변경</th>
-                        <td>setPw</td>
+                        <td><input type="password" name="pw">setPw</td>
                     </tr>
                 </table>
                 <div><input type="button" value="수정" onclick="" ></div> 

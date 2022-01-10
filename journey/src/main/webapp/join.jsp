@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<title>Insert title here</title>
 </head>
 <body>
 	<section>
