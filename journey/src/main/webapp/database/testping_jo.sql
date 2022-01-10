@@ -47,6 +47,15 @@ insert country(countryName) value("그리스");
 insert country(countryName) value("인도");
 
 update country set flag="images/usflag.png" where countryName="미국";
+update country set flag="images/chflag.png" where countryName="중국";
+update country set flag="images/deflag.png" where countryName="독일";
+update country set flag="images/grflag.png" where countryName="그리스";
+update country set flag="images/inflag.png" where countryName="인도";
+update country set flag="images/itflag.png" where countryName="이탈리아";
+update country set flag="images/jpflag.png" where countryName="일본";
+update country set flag="images/phflag.png" where countryName="필리핀";
+update country set flag="images/thflag.png" where countryName="태국";
+update country set flag="images/ukflag.png" where countryName="영국";
 
 insert review(countryName, userName, content, score, attachCnt) values("미국", "으악", "으아악", 6, 2);
 insert review(countryName, content, score, pw) values("영국", "으악!", 8, "1234");

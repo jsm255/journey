@@ -13,6 +13,7 @@
 <meta charset="UTF-8">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="viewCountry.js"></script>
 
 	<style>
         body{
@@ -65,13 +66,25 @@
 <%
 
 // user 처리가 어떻게 되는지 물어봐야함
-// 대댓글 처리는 원래 댓글에는 대댓글이 몇 개 있는지 기록	(테이블 설정 갱신 필요(새로 대댓글 개수 카운터를 만들어줘야함))
-// database에 새로 reReview를 만들어서 대댓글을 저장 및 조회할 수 있게함
-// 대댓글에는 이 대댓글이 어느 댓글에 달려있는지를 기록
-// 댓글 하나하나 테이블 처리하는게 깔끔하겠음
+// 대댓글 처리는 원래 댓글에는 대댓글이 몇 개 있는지 기록	(테이블 설정 갱신 필요(새로 대댓글 개수 카운터를 만들어줘야함))	- 끝
+// database에 새로 reReview를 만들어서 대댓글을 저장 및 조회할 수 있게함										- 끝
+// 대댓글에는 이 대댓글이 어느 댓글에 달려있는지를 기록															- 끝
+// 댓글 하나하나 테이블 처리하는게 깔끔하겠음																	- 끝
+// 로그인을 해놨다면 본인이 적은 댓글에 대하여 수정/삭제가 가능		=> 이미 로그인 중이라 비밀번호를 요구하지 않음
+// Guest 이름으로 된 댓글은 로그인을 했든 안했든 수정/삭제가 보임	=> 당연히 비밀번호를 씀
+// 어떤 댓글을 눌렀는지에 대한 검증이 필요함 => 버튼에 id를 달아놓으면 되겠다
+
+// 국가에 대한 정보를 좀 더 넣는게 낫겠다
+// 더미데이터나 api를 사용해서 넣으면 더 좋겠음
+
+// join jquery cdn 넣어야한다
+// 객체도 없다는건 좀 심하다
+// 데이터베이스도 통일하는게 좋다
 
 String countryName = "미국";
 // countryName = request.getParameter("country");
+
+String user = "";
 
 CountryDAO cDao = CountryDAO.getInstance();
 CountryDTO country = cDao.getCountry(countryName);
@@ -131,7 +144,7 @@ String flag = country.getFlag();
         				<td> <textarea name="content" placeholder="내용"></textarea> </td>
         			</tr>
         			<tr>
-        				<td> <input type="range" min=1 max=10 name="score"> </td>
+        				<td> <input id="range" type="range" min=1 max=10 value="5" name="score"><span id="child">5점</span></td>
         			</tr>
         			<tr>
         				<td></td>
@@ -158,31 +171,72 @@ String flag = country.getFlag();
         			for(int i = reviewStart; i<=reviewEnd; i++) {
             			ReviewDTO temp = reviews.get(i);
             			%>
-            			<tr><td>리뷰 국가 : <%=temp.getCountryName() %></td>
-            			<td>유저 이름 : <%=temp.getUserName() %></td>
-            			<td>평가 점수 : <%=temp.getScore() %> 점</td>
-            			<tr><td colspan="3">유저 리뷰 : <%=temp.getContent()%></td></tr>
-            			<tr><td>리뷰 날짜 : <%=temp.getDate() %></td></tr>
-            			<%
-            			if(temp.getAttachCnt() >= 1) {
+            			<tr><td>
+            				<table>
+            					<tr><td>리뷰 국가 : <%=temp.getCountryName() %></td>
+            					<td>유저 이름 : <%=temp.getUserName() %></td>
+            					<td>평가 점수 : <%=temp.getScore() %> 점</td></tr>
+            					<tr><td colspan="3">유저 리뷰 : <%=temp.getContent()%></td></tr>
+            					<tr><td colspan="2">리뷰 날짜 : <%=temp.getDate() %></td>
+            					<td>
+            					<button onclick="">답글</button>
+            					<%
+            					if(temp.getUserName().equals("Guest")) {
+            						%>
+                					<button onclick="modifyReviewGuest()">수정</button>
+                					<button onclick="deleteReviewGuest()">삭제</button>
+                					<%
+            					}
+            					else if(temp.getUserName().equals("")) {
+            						%>
+            						<button onclick="modifyReviewUser()">수정</button>
+                					<button onclick="deleteReviewUser()">삭제</button>
+            						<%
+            					}
+            					
+            					%>
+            					</td></tr>
+            					<%
+            					if(temp.getAttachCnt() >= 1) {
+            						%>
+            						<tr><td><button id="<%=temp.getCode() %>" onclick='toggleTable(event)'>답글 <%=temp.getAttachCnt() %>개 보기</button></td></tr>
+            						<tr><td colspan="3"><table id="<%=temp.getCode() %>_table" style="display:none;">
+            						<%
+            						ArrayList<ReReviewDTO> rrviews = rrDao.getReReviews(temp.getCode());
+            						for(ReReviewDTO rrtemp : rrviews) {
+	            					%>
+	            					<tr><td><span>&#9;</span>유저 이름 : <%=rrtemp.getUserName() %></td></tr>
+            						<tr><td><span>&#9;</span>유저 답글 : <%=rrtemp.getContent()%></td></tr>
+            						<tr><td><span>&#9;</span>답글 날짜 : <%=rrtemp.getDate() %></td></tr>
+            						<tr><td><button onclick="">답글</button>
+            						<%
+            						if(temp.getUserName().equals("Guest")) {
+            							%>
+                						<button onclick="modifyReReviewGuest()">수정</button>
+                						<button onclick="deleteReReviewGuest()">삭제</button>
+                						<%
+            						}
+            						else if(temp.getUserName().equals("")) {
+            							%>
+            							<button onclick="modifyReReviewUser()">수정</button>
+                						<button onclick="deleteReReviewUser()">삭제</button>
+            							<%
+            						}
+            					
+            					%>
+            					</td></tr>
+	            					<%
+            						}
+            					%>
+	            				</table>
+            					</td></tr>
+            					<%
+            					}
             				%>
-            				<tr><td><button id="<%=temp.getCode() %>" onclick="toggleTable()">답글 <%=temp.getAttachCnt() %>개 보기</button></td></tr>
-            				<tr><td colspan="3"><table id="<%=temp.getCode() %>_table" style="display:none;">
-            				<%
-            				ArrayList<ReReviewDTO> rrviews = rrDao.getReReviews(temp.getCode());
-            				for(ReReviewDTO rrtemp : rrviews) {
-	            				%>
-	            				<tr><td><span>&#9;</span>유저 이름 : <%=rrtemp.getUserName() %></td></tr>
-            					<tr><td colspan="3"><span>&#9;</span>유저 리뷰 : <%=rrtemp.getContent()%></td></tr>
-            					<tr><td><span>&#9;</span>리뷰 날짜 : <%=rrtemp.getDate() %></td></tr>
-	            				
-	            				<%
-            				}
-            				%>
-            				</table></td></tr>
+            				</table>
+            				</td></tr>
             				<%
             			}
-            		}
         			%>
         			<tr><td>
         			<%
@@ -220,13 +274,5 @@ String flag = country.getFlag();
 
     </footer>
     
-    <script>
-    	function toggleTable(){
-    		console.log(event.target.getAttribute("id"));
-    		console.log(event.target);
-    		const id = "#" + event.target.getAttribute("id") + "_table";
-    		$(id).toggle();
-    	}
-    </script>
 </body>
 </html>
