@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
-<section>
 	<section>
 		<h1>회원가입</h1>
 		<form action="">
@@ -26,21 +27,8 @@
 			</div>
 		</form>
 	</section>
-	
-</section>
-
 <script>
-    let id = $('#joinId');
-    let pw = $('#joinPw');
-    let btn = $('#joinbtn');
-
-	$(btn).on('click', function(){
-		if ($(id).val() == "") {
-			$(id).next('label').addClass('warning');
-		}else if($(pw).val() == ""){
-			$(pw).next('label').addClass('warning');
-		}
-	});
+	
 </script>
 </body>
 </html>
