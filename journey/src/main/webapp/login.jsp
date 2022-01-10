@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
     <section class = "login-form">
@@ -25,17 +26,7 @@
     </section>
 
     <script>
-        let id = $('#id');
-        let pw = $('#pw');
-        let btn = $('#btn');
-
-        $(btn).on('click', function(){
-            if($(id).val() == ""){
-                $(id).next('label').addClass('warning');
-            }else if($(pw).val() == ""){
-                $(pw).next('label').addClass('warning');
-            }
-        });
+		
     </script>
 </body>
 </html>
