@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="css/mypage.css" type="text/css">
+<title>Mypage</title>
 </head>
 <body>
     <div>
