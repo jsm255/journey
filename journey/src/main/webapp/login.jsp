@@ -25,8 +25,8 @@
             </div>
         </form>
     </section>
-		${sessionScope.user.joinId} <br>
-		${sessionScope.user.joinPw}	<br>
+		${sessionScope.user.id} <br>
+		${sessionScope.user.pw}	<br>
 		${sessionScope.user.userName}<br>
 		${sessionScope.user.tel}<br>
     <script>
