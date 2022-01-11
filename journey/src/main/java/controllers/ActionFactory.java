@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.action.Action;
+import controllers.action.joinAction;
 
 public class ActionFactory {
 	
@@ -12,6 +13,8 @@ public class ActionFactory {
 	
 	public static Action createAction(String command) {
 		
+		if(command.equals("join")) 
+			return new joinAction();
 		
 		return null;
 	}
