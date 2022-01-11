@@ -150,6 +150,32 @@ public class UserDAO {
 		
 		return true;
 	}
+	//해당 아이디 불러오기
+	
+	public UserDTO getId(String id) {
+		users = getUsers();
+		for(UserDTO u: users) {
+			if(id.equals(u.getId()))
+				return u;
+		}
+		return null;
+	}
+	
+	// update User
+	public void updateUser(UserDTO user) {
+		try {
+			conn = DBManager.getConnection();
+			String sql = "update users set pw=? , tel =? where code = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getPw());
+			pstmt.setString(2, user.getPw());
+			pstmt.setInt(3, user.getCode());
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	
 }

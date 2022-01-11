@@ -1,3 +1,5 @@
+<%@page import="models.UserDTO"%>
+<%@page import="controllers.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,6 +10,11 @@
 <title>Mypage</title>
 </head>
 <body>
+<%
+	String id = (String) session.getAttribute("log");
+	UserDTO user = UserDAO.getInstance().getId(id);
+	
+%>
     <div>
     <header>
         <div class="top">
@@ -42,24 +49,29 @@
 
         </aside>
         <div>
-            <article class="info">
+             <article class="info">
                 <p>＊회원정보 수정</p>
                 <form action="">
                 <table border="1px solid black">
                     <tr>
                         <th>이름</th>
-                        <td><input type="text" name="name" value="">getName</td>
+                        <td><input type="text" name="id" value="<%=user.getUserName()%>"></td>
                     </tr>
                     <tr>
                         <th>아이디</th>
-                        <td><input type="text" name="id" value="">getId</td>
+                        <td>getId</td>
+                    </tr>
+                    <tr>
+                        <th>전화번호</th>
+                        <td>tel</td>
                     </tr>
                     <tr>
                         <th>비밀번호 변경</th>
-                        <td><input type="password" name="pw">setPw</td>
+                        <td>setPw</td>
                     </tr>
                 </table>
                 <div><input type="button" value="수정" onclick="" ></div> 
+           	<input type="hidden" name="command" value="mypage">
             </form>
             </article>
         </div>

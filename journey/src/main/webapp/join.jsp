@@ -12,7 +12,7 @@
 <body>
 	<section>
 		<h1>회원가입</h1>
-		<form action="JoinServlet" method = "POST">
+		<form action="/JoinServlet" method = "POST">
 		 <input type="hidden" name="command" value="join">
 			<div class="join-area">
 				<input type="text" name = "id" id = "id" autocomplete="off" value = "asd" required><label for="joinId">아이디</label>

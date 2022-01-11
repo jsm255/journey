@@ -12,8 +12,9 @@ import models.UserDTO;
 
 public class LoginAction implements Action{
 	public void execute (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
-		System.out.println("asdfasdf");
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
@@ -34,11 +35,13 @@ public class LoginAction implements Action{
 		String url ="";
 		
 		if(check) {
+			request.setAttribute("log", id);
 			url="main.jsp";
 		}
 		else {
 			url = "join.jsp";
 		}
+		
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }

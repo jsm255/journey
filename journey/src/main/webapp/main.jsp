@@ -12,7 +12,7 @@
         <div class="top">
             <ul class="top-menu">
                 <%
-            	if(session.getAttribute("id") == null){
+            	if(session.getAttribute("log") == null){
             %>
 				<li class="join"><a href="join.jsp">
 						<p>회원가입</p>
@@ -23,7 +23,7 @@
 				<%
            		 }else{
            	%>
-				<li class="join"><a href="">
+				<li class="join"><a href="mypage.jsp">
 						<p>마이페이지</p>
 				</a></li>
 				<li class="join"><a href="">
@@ -39,7 +39,7 @@
         <ul>
             <li><a href="">국가 정보</a></li>
             <li><a href="">게시판</a></li>
-            <li><a href="">마이페이지</a></li>
+            <li><a href="mypage.jsp">마이페이지</a></li>
         </ul>
     </nav>
     <div class="image">

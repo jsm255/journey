@@ -5,6 +5,7 @@ import controllers.action.JoinAction;
 import controllers.action.LoginAction;
 import controllers.action.ModifyReviewAction;
 import controllers.action.ModifyReviewSubmitAction;
+import controllers.action.ModifyUserAction;
 import controllers.action.WriteReviewAction;
 
 
@@ -32,6 +33,9 @@ public class ActionFactory {
 		
 		else if(command.equals("modifyReviewSubmit"))
 			return new ModifyReviewSubmitAction();
+		
+		else if(command.equals("mypage"))
+			return new ModifyUserAction();
 		
 		return null;
 	}
