@@ -16,7 +16,7 @@ public class UserDTO {
 	private String userName;
 	private String tel;
 
-	public UserDTO(int code, String joinId, String joinPw, String userName, String tel) {
+	public UserDTO(int code, String id, String pw, String userName, String tel) {
 		super();
 		this.code = code;
 		this.id = id;
@@ -74,8 +74,9 @@ public class UserDTO {
 
 	@Override
 	public String toString() {
-		return "UserDTO [code=" + code + ", joinId=" + joinId + ", joinPw=" + joinPw + ", userName=" + userName
-				+ ", tel=" + tel + "]";
+		return "UserDTO [code=" + code + ", id=" + id + ", pw=" + pw + ", userName=" + userName + ", tel=" + tel + "]";
 	}
+
+	
 
 }
