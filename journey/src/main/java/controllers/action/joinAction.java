@@ -23,7 +23,7 @@ public class joinAction implements Action {
 		
 		if(dao.checkDup(id)) {
 			UserDTO newUser = new UserDTO(id,pw,username,tel);
-			dao.addUser(newUser);
+			dao.insertUser(newUser);
 			url="main";
 		}
 		

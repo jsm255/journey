@@ -59,16 +59,14 @@ public class UserDAO {
 	}
 	
 	public UserDTO insertUser(UserDTO dto) {
-		String sql = "insert into users(joinId, joinPw, UserName, tel) values(?,?,?,?)";
+		String sql = "insert into users(id,pw,username,tel) values(?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
-		String url = "jdbc:mysql://localhost:3306/journey";
-		String id = "root";
-		String pw = "0000";
+	
 		
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getJoinId());
 			pstmt.setString(2, dto.getJoinPw());
@@ -84,28 +82,28 @@ public class UserDAO {
 	}
 	
 	// addUser
-	public void addUser(UserDTO user) {
-		if(checkDup(user.getJoinId())) {
-			try {
-				conn = DBManager.getConnection();
-				
-				String sql = "insert into users(id,pw,username,tel) values(?,?,?,?)";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1,user.getJoinId());
-				pstmt.setString(2, user.getJoinPw());
-				pstmt.setString(3, user.getUserName());
-				pstmt.setString(4, user.getTel());
-				
-				pstmt.executeUpdate();
-				
-				System.out.println("회원가입 성공");
-				
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
+//	public void addUser(UserDTO user) {
+//		if(checkDup(user.getJoinId())) {
+//			try {
+//				conn = DBManager.getConnection();
+//				
+//				String sql = "insert into users(id,pw,username,tel) values(?,?,?,?)";
+//				pstmt = conn.prepareStatement(sql);
+//				pstmt.setString(1,user.getJoinId());
+//				pstmt.setString(2, user.getJoinPw());
+//				pstmt.setString(3, user.getUserName());
+//				pstmt.setString(4, user.getTel());
+//				
+//				pstmt.executeUpdate();
+//				
+//				System.out.println("회원가입 성공");
+//				
+//				
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	}
 	
 	// 중복아이디 check
 	

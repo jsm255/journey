@@ -50,7 +50,7 @@ public class JoinServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		UserDAO dao = new UserDAO();
+		UserDAO dao =  UserDAO.getInstance();
 		
 		String joinId = (String) request.getParameter("joinId");
 		String joinPw = (String) request.getParameter("joinPw");
