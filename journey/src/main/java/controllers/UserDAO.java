@@ -81,6 +81,40 @@ public class UserDAO {
 		return dto;
 	}
 	
+	
+	public UserDTO searchUser (String joinId) {
+		users = getUsers();
+		
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getJoinId().equals(joinId)) {
+				return users.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public String setUserPw(String joinId, String joinPw, String setPw) {
+		
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getJoinId().equals(joinId) && users.get(i).getJoinPw().equals(joinPw)) {
+				users.get(i).setJoinPw(setPw);
+				return users.get(i).getJoinPw();
+			}
+		}
+		return null;
+	}
+	
+	public String setUserName(String joinId, String joinPw, String setUserName) {
+		
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getJoinId().equals(joinId) && users.get(i).getJoinPw().equals(joinPw)) {
+				users.get(i).setUserName(setUserName);
+				return users.get(i).getUserName();
+			}
+		}
+		return null;
+	}
+	
 	// addUser
 //	public void addUser(UserDTO user) {
 //		if(checkDup(user.getJoinId())) {
