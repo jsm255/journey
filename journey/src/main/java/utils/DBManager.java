@@ -3,9 +3,9 @@ package utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DBManagerJo {
+public class DBManager {
 	
-	private DBManagerJo() {}
+	private DBManager() {}
 	
 	public static Connection getConnection() {
 		Connection conn = null;

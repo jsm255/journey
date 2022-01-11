@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import models.ReviewDTO;
-import utils.DBManagerJo;
+import utils.DBManager;
 
 public class ReviewDAO {
 	
@@ -27,7 +27,7 @@ public class ReviewDAO {
 		reviews = new ArrayList<>();
 		
 		try {	
-			conn = DBManagerJo.getConnection();
+			conn = DBManager.getConnection();
 			
 			pstmt = conn.prepareStatement("select * from review where countryName=?");
 			pstmt.setString(1, countryName);

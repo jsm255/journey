@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import models.ReReviewDTO;
-import utils.DBManagerJo;
+import utils.DBManager;
 
 public class ReReviewDAO {
 	
@@ -25,7 +25,7 @@ public class ReReviewDAO {
 	
 	public ArrayList<ReReviewDTO> getReReviews(int attachCode) {
 		try {
-			conn = DBManagerJo.getConnection();
+			conn = DBManager.getConnection();
 			
 			pstmt = conn.prepareStatement("select * from reReview where attachCode=?");
 			
