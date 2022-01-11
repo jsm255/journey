@@ -6,7 +6,7 @@ public class ActionFactory {
 	
 	private static ActionFactory instance = new ActionFactory();
 	private ActionFactory () {}
-	public ActionFactory getInstance() {
+	public static ActionFactory getInstance() {
 		return instance;
 	}
 	

@@ -64,8 +64,7 @@
             </article>
         </div>
     </main>
-    <div class="content"></div>
-
+    
     <footer>
         <p> Copyright © TravelCommunity. All Rights Reserved.</p>
     </footer>

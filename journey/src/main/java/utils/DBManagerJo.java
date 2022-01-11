@@ -26,5 +26,5 @@ public class DBManagerJo {
 		}
 		
 		return conn;
-	}
+	}             
 }
