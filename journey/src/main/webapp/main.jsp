@@ -14,10 +14,10 @@
                 <%
             	if(session.getAttribute("id") == null){
             %>
-				<li class="join"><a href="">
+				<li class="join"><a href="join.jsp">
 						<p>회원가입</p>
 				</a></li>
-				<li class="join"><a href="">
+				<li class="join"><a href="login.jsp">
 						<p>로그인</p>
 				</a></li>
 				<%

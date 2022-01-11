@@ -2,6 +2,7 @@ package controllers;
 
 import controllers.action.Action;
 import controllers.action.joinAction;
+import controllers.action.loginAction;
 
 public class ActionFactory {
 	
@@ -16,6 +17,9 @@ public class ActionFactory {
 		if(command.equals("join")) 
 			return new joinAction();
 		
+		else if(command.equals("login"))
+			
+			return new loginAction();
 		return null;
 	}
 	

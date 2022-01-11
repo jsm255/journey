@@ -12,7 +12,8 @@
 <body>
     <section class = "login-form">
         <h1>로그인</h1>
-        <form action="">
+         <input type="hidden" name="command" value="login">
+        <form action="service">
             <div class="int-area">
                 <input type="text" name="id" id="id" autocomplete="off" required><label for="id">아이디</label>
             </div>
