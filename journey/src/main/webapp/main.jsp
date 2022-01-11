@@ -45,7 +45,7 @@
     <div class="image">
      <main>
         <h1 class="mainTitle">어디로 떠나실건가요?</h1>
-        <form action="get" method="">
+        <form action="get" method="service">
         <select size="1" class="country" name="country">
         
             <option value="미국">미국</option>
