@@ -40,6 +40,7 @@ public class UserDAO {
 			 rs = pstmt.executeQuery();
 			
 			 while(rs.next()) {
+				 
 				 int code = rs.getInt(1);
 				 String id = rs.getString(2);
 				 String pw = rs.getString(3);
@@ -63,13 +64,11 @@ public class UserDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
-	
-		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getJoinId());
-			pstmt.setString(2, dto.getJoinPw());
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
 			pstmt.setString(3, dto.getUserName());
 			pstmt.setString(4, dto.getTel());
 			pstmt.executeUpdate();
@@ -86,7 +85,7 @@ public class UserDAO {
 		users = getUsers();
 		
 		for (int i = 0; i < users.size(); i++) {
-			if (users.get(i).getJoinId().equals(joinId)) {
+			if (users.get(i).getId().equals(joinId)) {
 				return users.get(i);
 			}
 		}
@@ -96,9 +95,9 @@ public class UserDAO {
 	public String setUserPw(String joinId, String joinPw, String setPw) {
 		
 		for (int i = 0; i < users.size(); i++) {
-			if (users.get(i).getJoinId().equals(joinId) && users.get(i).getJoinPw().equals(joinPw)) {
-				users.get(i).setJoinPw(setPw);
-				return users.get(i).getJoinPw();
+			if (users.get(i).getId().equals(joinId) && users.get(i).getPw().equals(joinPw)) {
+				users.get(i).setPw(setPw);
+				return users.get(i).getPw();
 			}
 		}
 		return null;
@@ -107,7 +106,7 @@ public class UserDAO {
 	public String setUserName(String joinId, String joinPw, String setUserName) {
 		
 		for (int i = 0; i < users.size(); i++) {
-			if (users.get(i).getJoinId().equals(joinId) && users.get(i).getJoinPw().equals(joinPw)) {
+			if (users.get(i).getId().equals(joinId) && users.get(i).getPw().equals(joinPw)) {
 				users.get(i).setUserName(setUserName);
 				return users.get(i).getUserName();
 			}
@@ -145,7 +144,7 @@ public class UserDAO {
 		ArrayList<UserDTO> users = getUsers();
 		
 		for(UserDTO u : users) {
-			if(id.equals(u.getJoinId())) {
+			if(id.equals(u.getId())) {
 				return false;
 			}
 		}

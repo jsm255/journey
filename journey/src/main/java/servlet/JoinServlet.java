@@ -52,12 +52,12 @@ public class JoinServlet extends HttpServlet {
 		
 		UserDAO dao =  UserDAO.getInstance();
 		
-		String joinId = (String) request.getParameter("joinId");
-		String joinPw = (String) request.getParameter("joinPw");
+		String id = (String) request.getParameter("id");
+		String pw = (String) request.getParameter("pw");
 		String userName = (String) request.getParameter("userName");
 		String tel = (String) request.getParameter("tel");
 		
-		UserDTO userdto = new UserDTO(joinId, joinPw,userName,tel);
+		UserDTO userdto = new UserDTO(id, pw,userName,tel);
 		
 		session.setAttribute("user", userdto);
 		
