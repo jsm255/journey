@@ -16,20 +16,20 @@ $("#range").change(e => {
    	$("#child").replaceWith(span);
 });
 
-function reReview(event){
+/*function reReview(event){
 	let check = false;
 	$.ajax({
 		method: 'post',
 		host: 'localhost',
-		url: 'service',
+		url: './service',
 		data: {
 			'command': 'writeReReview',
-			'code': event.target.getAttribute("id")
+			'code': event.target.getAttribute("id").substring(0,1)
 		}
 	}).done(result => {
 		console.log(result);
-		if(result.)
+		
 	})
-};
+};*/
 
 //function modifyReview

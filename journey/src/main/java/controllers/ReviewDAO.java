@@ -95,4 +95,42 @@ public class ReviewDAO {
 		return false;
 	}
 	
+	public ReviewDTO getReview(int code) {
+		
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("select * from review where code=?");
+			pstmt.setInt(1, code);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				ReviewDTO review = null;
+				
+				int reviewCode = rs.getInt(1);
+				String getCountryName = rs.getString(2);
+				String userName = rs.getString(3);
+				String content = rs.getString(4);
+				int score = rs.getInt(5);
+				Timestamp date = rs.getTimestamp(6);
+				String pw = "";
+				int attachCnt = rs.getInt(8);
+				if(userName.equals("Guest")) {		// 비 회원 용
+					pw = rs.getString(7);
+					review = new ReviewDTO(reviewCode, getCountryName, content, score, date, pw, attachCnt);
+				}
+				else {		// 회원 용
+					review = new ReviewDTO(reviewCode, getCountryName, userName, content, score, date, attachCnt);
+				}
+				
+				return review;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 }

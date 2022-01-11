@@ -35,7 +35,7 @@ public class ServiceServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		ActionFactory af = ActionFactory.getInstance();
-
+		
 		Action action = af.createAction(request.getParameter("command"));
 		action.execute(request, response);
 	}

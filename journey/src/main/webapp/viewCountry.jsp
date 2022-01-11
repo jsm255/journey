@@ -199,11 +199,11 @@ String flag = country.getFlag();
             					<tr><td colspan="3">유저 리뷰 : <%=temp.getContent()%></td></tr>
             					<tr><td colspan="2">리뷰 날짜 : <%=temp.getDate() %></td>
             					<td>
-            					<button id="<%=temp.getCode() %>_reReview" onclick="reReview(event)">답글</button>
+            					<button onclick="">답글</button>
             					<%
             					if(temp.getUserName().equals("Guest")) {
             						%>
-                					<button onclick="modifyReviewGuest()">수정</button>
+                					<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
                 					<button onclick="deleteReviewGuest()">삭제</button>
                 					<%
             					}
