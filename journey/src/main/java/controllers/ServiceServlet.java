@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controllers.action.Action;
+
 /**
  * Servlet implementation class ServiceServlet
  */
@@ -33,6 +35,9 @@ public class ServiceServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		ActionFactory af = ActionFactory.getInstance();
+
+		Action action = af.createAction(request.getParameter("command"));
+		action.execute(request, response);
 	}
 
 	/**

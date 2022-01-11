@@ -34,6 +34,23 @@ public class ReviewDTO {
 		this.pw = pw;
 		this.attachCnt = attachCnt;
 	}
+	
+	// 회원이 작성한 리뷰
+	public ReviewDTO(String countryName, String userName, String content, int score) {
+		this.countryName = countryName;
+		this.userName = userName;
+		this.content = content;
+		this.score = score;
+	}
+	
+	// 게스트가 작성한 리뷰
+	public ReviewDTO(String countryName, String content, int score, String pw) {
+		this.countryName = countryName;
+		this.userName = "Guest";
+		this.content = content;
+		this.score = score;
+		this.pw = pw;
+	}
 
 	public int getCode() {
 		return code;

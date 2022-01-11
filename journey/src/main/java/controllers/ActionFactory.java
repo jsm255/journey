@@ -2,6 +2,7 @@ package controllers;
 
 import controllers.action.Action;
 import controllers.action.joinAction;
+import controllers.action.writeReviewAction;
 
 public class ActionFactory {
 	
@@ -15,6 +16,8 @@ public class ActionFactory {
 		
 		if(command.equals("join")) 
 			return new joinAction();
+		else if(command.equals("writeReview"))
+			return new writeReviewAction();
 		
 		return null;
 	}
