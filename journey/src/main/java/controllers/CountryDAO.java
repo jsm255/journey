@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import models.CountryDTO;
-import utils.DBManagerJo;
+import utils.DBManager;
 
 public class CountryDAO {
 	
@@ -25,7 +25,7 @@ public class CountryDAO {
 	public ArrayList<CountryDTO> getCountries() {
 		countries = new ArrayList<>();
 		try {
-			conn = DBManagerJo.getConnection();
+			conn = DBManager.getConnection();
 			
 			pstmt = conn.prepareStatement("select* from country");
 			

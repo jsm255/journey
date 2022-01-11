@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script type="text/javascript" src="viewCountry.js"></script>
+
 
 	<style>
         body{
@@ -144,7 +144,7 @@ String flag = country.getFlag();
         				<td> <textarea name="content" placeholder="내용"></textarea> </td>
         			</tr>
         			<tr>
-        				<td> <input id="range" type="range" min=1 max=10 value="5" name="score"><span id="child">5점</span></td>
+        				<td> <input id="range" type="range" min=1 max=10 value=5 name="score"><span id="child">5점</span></td>
         			</tr>
         			<tr>
         				<td></td>
@@ -273,6 +273,9 @@ String flag = country.getFlag();
     <footer>
 
     </footer>
+    
+
+<script type="text/javascript" src="viewCountry.js"></script>
     
 </body>
 </html>
