@@ -80,7 +80,6 @@ public class UserDAO {
 		return dto;
 	}
 	
-	
 	public UserDTO searchUser (String id) {
 		users = getUsers();
 		

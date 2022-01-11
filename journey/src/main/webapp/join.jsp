@@ -15,10 +15,10 @@
 		<form action="/service" method = "POST">
 		 <input type="hidden" name="command" value="join">
 			<div class="join-area">
-				<input type="text" name = "id" id = "id" autocomplete="off" value = "연습용아이디" required><label for="joinId">아이디</label>
+				<input type="text" name = "id" id = "id" autocomplete="off" value = "asd" required><label for="joinId">아이디</label>
 			</div>
 			<div class="join-area">
-				<input type="password" name = "pw" id = "pw" autocomplete="off" value = "연습용비밀번호" required><label for="joinPw">비밀번호</label>
+				<input type="password" name = "pw" id = "pw" autocomplete="off" value = "123" required><label for="joinPw">비밀번호</label>
 			</div>
 			<div class="join-area">
 				<input type="text" name = "userName" id = "userName" autocomplete="off" value = "연습용이름" required><label for="joinName">이름</label>
