@@ -14,7 +14,7 @@ create table country(
 create table review(
 	code integer primary key auto_increment,
 	countryName varchar(30) not null,
-	userName varchar(30) not null default "guest",
+	userName varchar(30) not null default "Guest",
 	content varchar(5000),
 	score integer default 0,
 	`date` datetime not null default current_timestamp,
@@ -24,8 +24,7 @@ create table review(
 
 create table reReview(
 	code integer primary key auto_increment,
-    countryName varchar(30) not null,
-	userName varchar(30) not null default "guest",
+	userName varchar(30) not null default "Guest",
 	content varchar(5000),
 	`date` datetime not null default current_timestamp,
 	pw varchar(30),		-- 게스트 상태에서 글을 쓸 경우 사용예정
@@ -34,6 +33,7 @@ create table reReview(
 
 drop table country;
 drop table review;
+drop table reReview;
 
 insert country(countryName) value("미국");
 insert country(countryName) value("영국");
@@ -70,22 +70,26 @@ insert review(countryName, content, score, pw) values("이탈리아","정말 멋
 insert review(countryName, content, score, pw) values("그리스","정말 멋있었다", 7, "1234");
 insert review(countryName, content, score, pw) values("인도","정말 멋있었다", 10, "1234");
 
-insert review(countryName, userName, content, score) values("미국", "으악3", "으아악으아악", 6);
-insert review(countryName, userName, content, score) values("미국", "으악4", "으아악333", 9);
-insert review(countryName, userName, content, score) values("미국", "으악5", "으아악44444", 8);
-insert review(countryName, userName, content, score) values("미국", "으악6", "으아악55555", 7);
-insert review(countryName, userName, content, score) values("미국", "으악8", "으아악666", 6);
-insert review(countryName, userName, content, score) values("미국", "으악7", "으아악777", 5);
-insert review(countryName, userName, content, score) values("미국", "으악9", "으아악888", 10);
-insert review(countryName, userName, content, score) values("미국", "으악0", "으아악999", 9);
-insert review(countryName, userName, content, score) values("미국", "으악-", "으아악111123", 2);
-insert review(countryName, userName, content, score) values("미국", "으악=", "으아악32131", 6);
+insert review(countryName, userName, content, score) values("미국", "으악1", "으아악으아악", 6);
+insert review(countryName, userName, content, score) values("미국", "으악2", "으아악333", 9);
+insert review(countryName, userName, content, score) values("미국", "으악3", "으아악44444", 8);
+insert review(countryName, userName, content, score) values("미국", "으악4", "으아악55555", 7);
+insert review(countryName, userName, content, score) values("미국", "으악5", "으아악666", 6);
+insert review(countryName, userName, content, score) values("미국", "으악6", "으아악777", 5);
+insert review(countryName, userName, content, score) values("미국", "으악7", "으아악888", 10);
+insert review(countryName, userName, content, score) values("미국", "으악8", "으아악999", 9);
+insert review(countryName, userName, content, score) values("미국", "으악9", "으아악111123", 2);
+insert review(countryName, userName, content, score) values("미국", "으악10", "으아악32131", 6);
 insert review(countryName, userName, content, score) values("미국", "으악11", "으아악32323", 7);
 insert review(countryName, userName, content, score) values("미국", "으악12", "으아악43434", 7);
 
-insert reReview(countryName, userName, content, attachCode) values("미국", "대댓글다는 사람", "ㄹㅇㅋㅋ", 1);
-insert reReview(countryName, userName, content, attachCode) values("미국", "대댓글다는 사람2", "ㄹㅇㅋㅋ2", 1);
-insert reReview(countryName, userName, content, attachCode) values("미국", "대댓글다는 사람", "ㄹㅇㅋㅋ", 3);
+insert reReview(userName, content, attachCode) values("대댓글다는 사람", "ㄹㅇㅋㅋ", 1);
+insert reReview(userName, content, attachCode) values("대댓글다는 사람2", "ㄹㅇㅋㅋ2", 1);
+insert reReview(userName, content, attachCode) values("대댓글다는 사람", "ㄹㅇㅋㅋ", 3);
+
+update review set userName="Guest" where userName="guest";
 
 select * from country;
 select * from review;
+select * from reReview;
+select * from users;

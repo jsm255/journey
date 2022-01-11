@@ -56,11 +56,18 @@
         td{
         }
         
-        textarea{
+        div#writeReview textarea{
+        	width: 500px;
+        	height: 200px;
         	resize: none;
         }
         
         span{white-space:pre;}
+        
+        div#writeReview input {
+        	width: 200px;
+        	height: 35px;
+        }
     </style>
 
 <%
@@ -84,7 +91,10 @@
 String countryName = "미국";
 // countryName = request.getParameter("country");
 
-String user = "";
+String userName = "Guest";
+if(session.getAttribute("user") != null) {
+	userName = String.valueOf(session.getAttribute("user"));
+}
 
 CountryDAO cDao = CountryDAO.getInstance();
 CountryDTO country = cDao.getCountry(countryName);
@@ -132,25 +142,35 @@ String flag = country.getFlag();
         </div>
         <!-- 리뷰 쓰기 시스템을 넣을 것임 -->
         <div id="writeReview">
-        	<form method="post" action="">
+        	<form method="post" action="service">
         		<table>
         			<tr>
         				<th> 리뷰 쓰기 </th>
         			</tr>
         			<tr>
-        				<td> <textarea name="title" placeholder="제목"></textarea> </td>
+        				<td>
+        					<input id="range" type="range" min=1 max=10 value=5 name="score"><span id="child">5점</span>
+        				</td>
         			</tr>
         			<tr>
         				<td> <textarea name="content" placeholder="내용"></textarea> </td>
         			</tr>
         			<tr>
-        				<td> <input id="range" type="range" min=1 max=10 value=5 name="score"><span id="child">5점</span></td>
-        			</tr>
-        			<tr>
-        				<td></td>
+        				<td>
+        					<%
+        						if(userName.equals("Guest")) {
+        							%>
+        								<input name="pw" type="password" placeholder="비밀번호" required>
+        							<%
+        						}
+        					%>
+        					<input type="submit" value="댓글 적기">
+        				</td>
         			</tr>
         		</table>
         		<input type="hidden" name="countryName" value=<%=countryName %>>
+        		<input type="hidden" name="userName" value=<%=userName %>>
+        		<input type="hidden" name="command" value="writeReview">
         	</form>
         </div>
         <div id="review">	<!-- 10개까지 표시 + 작성 창 => 11줄 / 답글 -->

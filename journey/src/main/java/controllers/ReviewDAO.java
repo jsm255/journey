@@ -64,4 +64,35 @@ public class ReviewDAO {
 		return reviews;
 	}	
 	
+	public boolean writeReview(ReviewDTO review) {
+		try {
+			conn = DBManager.getConnection();
+			
+			if(review.getUserName().equals("Guest")) {
+				pstmt = conn.prepareStatement("insert review(countryName, content, score, pw) values(?, ?, ?, ?)");
+				pstmt.setString(1, review.getCountryName());
+				pstmt.setString(2, review.getContent());
+				pstmt.setInt(3, review.getScore());
+				pstmt.setString(4, review.getPw());
+				
+				pstmt.executeUpdate();
+			}
+			else {
+				pstmt = conn.prepareStatement("insert review(countryName, userName, content, score) values(?, ?, ?, ?)");
+				pstmt.setString(1, review.getCountryName());
+				pstmt.setString(2, review.getUserName());
+				pstmt.setString(3, review.getContent());
+				pstmt.setInt(3, review.getScore());
+				
+				pstmt.executeUpdate();
+			}
+			
+			System.out.println("처리 완료!");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }
