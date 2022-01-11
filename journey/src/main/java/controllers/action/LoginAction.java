@@ -25,11 +25,11 @@ public class LoginAction implements Action{
 		boolean check = false;
 		
 		for(UserDTO u : user) {
-			if(id.equals(u.getJoinId()) && pw.equals(u.getJoinPw())) {
+			if(id.equals(u.getId()) && pw.equals(u.getPw())) {
 				check = true;
 			}
 		}
-		System.out.println("ss");
+		
 		
 		String url ="";
 		

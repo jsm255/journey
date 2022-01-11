@@ -81,21 +81,21 @@ public class UserDAO {
 	}
 	
 	
-	public UserDTO searchUser (String joinId) {
+	public UserDTO searchUser (String id) {
 		users = getUsers();
 		
 		for (int i = 0; i < users.size(); i++) {
-			if (users.get(i).getId().equals(joinId)) {
+			if (users.get(i).getId().equals(id)) {
 				return users.get(i);
 			}
 		}
 		return null;
 	}
 	
-	public String setUserPw(String joinId, String joinPw, String setPw) {
+	public String setUserPw(String id, String pw, String setPw) {
 		
 		for (int i = 0; i < users.size(); i++) {
-			if (users.get(i).getId().equals(joinId) && users.get(i).getPw().equals(joinPw)) {
+			if (users.get(i).getId().equals(id) && users.get(i).getPw().equals(pw)) {
 				users.get(i).setPw(setPw);
 				return users.get(i).getPw();
 			}
@@ -103,10 +103,10 @@ public class UserDAO {
 		return null;
 	}
 	
-	public String setUserName(String joinId, String joinPw, String setUserName) {
+	public String setUserName(String id, String pw, String setUserName) {
 		
 		for (int i = 0; i < users.size(); i++) {
-			if (users.get(i).getId().equals(joinId) && users.get(i).getPw().equals(joinPw)) {
+			if (users.get(i).getId().equals(id) && users.get(i).getPw().equals(pw)) {
 				users.get(i).setUserName(setUserName);
 				return users.get(i).getUserName();
 			}
