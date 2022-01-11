@@ -2,8 +2,8 @@ package controllers;
 
 import controllers.action.Action;
 import controllers.action.JoinAction;
-import controllers.action.loginAction;
-import controllers.action.writeReviewAction;
+import controllers.action.LoginAction;
+import controllers.action.WriteReviewAction;
 
 
 public class ActionFactory {
@@ -19,11 +19,11 @@ public class ActionFactory {
 		if(command.equals("join")) 
 			return new JoinAction();
 		else if(command.equals("writeReview"))
-			return new writeReviewAction();
+			return new WriteReviewAction();
 		
 		else if(command.equals("login"))
 			
-			return new loginAction();
+			return new LoginAction();
 		return null;
 	}
 	

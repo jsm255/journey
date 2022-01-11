@@ -199,7 +199,7 @@ String flag = country.getFlag();
             					<tr><td colspan="3">유저 리뷰 : <%=temp.getContent()%></td></tr>
             					<tr><td colspan="2">리뷰 날짜 : <%=temp.getDate() %></td>
             					<td>
-            					<button onclick="">답글</button>
+            					<button id="<%=temp.getCode() %>_reReview" onclick="reReview(event)">답글</button>
             					<%
             					if(temp.getUserName().equals("Guest")) {
             						%>
@@ -207,7 +207,7 @@ String flag = country.getFlag();
                 					<button onclick="deleteReviewGuest()">삭제</button>
                 					<%
             					}
-            					else if(temp.getUserName().equals("")) {
+            					else if(temp.getUserName().equals(userName)) {
             						%>
             						<button onclick="modifyReviewUser()">수정</button>
                 					<button onclick="deleteReviewUser()">삭제</button>
@@ -236,7 +236,7 @@ String flag = country.getFlag();
                 						<button onclick="deleteReReviewGuest()">삭제</button>
                 						<%
             						}
-            						else if(temp.getUserName().equals("")) {
+            						else if(temp.getUserName().equals(userName)) {
             							%>
             							<button onclick="modifyReReviewUser()">수정</button>
                 						<button onclick="deleteReReviewUser()">삭제</button>

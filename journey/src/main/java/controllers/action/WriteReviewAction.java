@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import controllers.ReviewDAO;
 import models.ReviewDTO;
 
-public class writeReviewAction implements Action{
+public class WriteReviewAction implements Action{
 public void execute (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String content = request.getParameter("content");
@@ -29,7 +29,7 @@ public void execute (HttpServletRequest request, HttpServletResponse response) t
 		ReviewDAO rDao = ReviewDAO.getInstance();
 		rDao.writeReview(review);
 		
-		
+		request.getRequestDispatcher("viewCountry.jsp").forward(request, response);
 		
 	}
 }

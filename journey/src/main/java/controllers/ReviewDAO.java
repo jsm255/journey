@@ -29,7 +29,7 @@ public class ReviewDAO {
 		try {	
 			conn = DBManager.getConnection();
 			
-			pstmt = conn.prepareStatement("select * from review where countryName=?");
+			pstmt = conn.prepareStatement("select * from review where countryName=? order by attachCnt desc");
 			pstmt.setString(1, countryName);
 			
 			rs = pstmt.executeQuery();
