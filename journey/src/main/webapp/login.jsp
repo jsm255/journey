@@ -12,8 +12,8 @@
 <body>
     <section class = "login-form">
         <h1>로그인</h1>
-         <input type="hidden" name="command" value="login">
         <form action="service">
+        <input type="hidden" name="command" value="login">
             <div class="int-area">
                 <input type="text" name="id" id="id" autocomplete="off" required><label for="id">아이디</label>
             </div>
@@ -21,7 +21,7 @@
                 <input type="password" name="pw" id="pw" autocomplete="off" required><label for="pw">비밀번호</label>
             </div>
             <div class = "btn-area">
-                <button type="submit">로그인</button>
+                <input type="submit" value="로그인">
             </div>
         </form>
     </section>

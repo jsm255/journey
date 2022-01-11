@@ -13,6 +13,8 @@ import models.UserDTO;
 public class LoginAction implements Action{
 	public void execute (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
+		System.out.println("asdfasdf");
+		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
@@ -27,6 +29,7 @@ public class LoginAction implements Action{
 				check = true;
 			}
 		}
+		System.out.println("ss");
 		
 		String url ="";
 		
