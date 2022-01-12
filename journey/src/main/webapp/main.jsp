@@ -60,6 +60,7 @@
             <option value="인도">인도</option>
         </select>
         <input type="button" onclick="" >
+       	<input type="hidden" name="command">
         </form>
     </main>
     <footer>

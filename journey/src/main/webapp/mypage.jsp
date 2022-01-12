@@ -13,6 +13,7 @@
 <%
 	String id = (String) session.getAttribute("log");
 	UserDTO user = UserDAO.getInstance().getId(id);
+	System.out.println("id:"+id);
 	
 %>
     <div>
