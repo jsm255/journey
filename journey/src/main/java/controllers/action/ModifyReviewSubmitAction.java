@@ -2,9 +2,11 @@ package controllers.action;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controllers.ReviewDAO;
 import models.ReviewDTO;
@@ -16,24 +18,45 @@ public class ModifyReviewSubmitAction implements Action{
 		
 		ReviewDAO rDao = ReviewDAO.getInstance();
 		
+		int code = Integer.parseInt(request.getParameter("code"));
+		ReviewDTO before = rDao.getReview(code);
+		
 		String userName = request.getParameter("userName");
 		int score = Integer.parseInt(request.getParameter("score"));
 		String content = request.getParameter("content");
 		String countryName = request.getParameter("countryName");
 		if(userName.equals("Guest")) {
-			String pw = request.getParameter("pw");
-			ReviewDTO review = new ReviewDTO(countryName, content, score, pw);
-			// 반영 시켜야함
+			String beforePw = request.getParameter("beforePw");
+			String afterPw = request.getParameter("afterPw");
+			
+			if(afterPw.compareTo("") == 0) afterPw = beforePw;
+			
+			if(beforePw.equals(before.getPw())) {
+				ReviewDTO review = new ReviewDTO(code, countryName, content, score, afterPw);
+				rDao.modifyReview(review);
+			}
+			else {
+				HttpSession session = request.getSession();
+				session.setAttribute("code", code);
+				session.setAttribute("content", content);
+				session.setAttribute("review", rDao.getReview(code));
+				request.getRequestDispatcher("modifyReview.jsp?error=pw").forward(request, response);
+				return;
+//				response.sendRedirect("modifyReview.jsp?error=pw&code");
+			}
 		}
 		else {
-			ReviewDTO review = new ReviewDTO(countryName, userName, content, score);
-			// 반영 시켜야함
+			ReviewDTO review = new ReviewDTO(code, countryName, userName, content, score);
+			rDao.modifyReview(review);
 		}
 		
-		System.out.println("수정완료ㅛㅛㅛㅛㅛㅛㅛㅛㅛㅛㅛㅛㅛㅛㅛ");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("code") != null) session.removeAttribute("code");
+		else if(session.getAttribute("content") != null) session.removeAttribute("content");
+		else if(session.getAttribute("review") != null) session.removeAttribute("review");
 		
 		request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
-		
+		return;
 	}
 
 }

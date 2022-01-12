@@ -5,11 +5,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 <title>댓글 수정</title>
 </head>
 <body>
 <%
-ReviewDTO review = (ReviewDTO)request.getAttribute("review");
+String content = "";
+int score = 5;
+if(request.getParameter("error") != null) {
+	String error = request.getParameter("error");
+	
+	if(error.equals("pw")) {
+		%>
+		<script>alert("글의 비밀번호가 일치하지 않습니다.")</script>
+		<%
+		content = String.valueOf(session.getAttribute("content"));
+		score = Integer.parseInt(String.valueOf(session.getAttribute("score")));
+		
+	}
+}
+
+ReviewDTO review = (ReviewDTO)session.getAttribute("review");
+int code = Integer.parseInt(String.valueOf(session.getAttribute("code")));
 
 String userName = "Guest";
 if(session.getAttribute("user") != null) 
@@ -35,18 +54,21 @@ if(session.getAttribute("user") != null)
         			</tr>
         			<tr>
         				<td>
-        					<input id="range" type="range" min=1 max=10 value=5 name="score"><span id="child">5점</span>
+        					<input id="range" type="range" min=1 max=10 value=<%=score %> name="score"><span id="child">5점</span>
         				</td>
         			</tr>
         			<tr>
-        				<td> <textarea name="content" placeholder="내용"></textarea> </td>
+        				<td> <textarea name="content" placeholder="내용"><%=content %></textarea> </td>
         			</tr>
         			<tr>
         				<td>
         					<%
         						if(userName.equals("Guest")) {
         							%>
-        								<input name="pw" type="password" placeholder="비밀번호" required>
+        								<input name="beforePw" type="password" placeholder="이전 비밀번호" required></td>
+        								<td><input name="afterPw" type="password" placeholder="새 비밀번호"></td>
+        								<tr><td colspan=2><span>비밀번호를 바꾸려면 새 비밀번호를, 바꾸지 않으려면 공란으로 두세요.</span></td></tr>
+        								<tr><td>
         							<%
         						}
         					%>
@@ -56,11 +78,20 @@ if(session.getAttribute("user") != null)
         		</table>
         		<input type="hidden" name="countryName" value=<%=review.getCountryName() %>>
         		<input type="hidden" name="userName" value=<%=userName %>>
+        		<input type="hidden" name="code" value=<%=code %>>
         		<input type="hidden" name="command" value="modifyReviewSubmit">
         	</form>
 </div>
 
-<%
-%>
+<script>
+$("#range").change(e => {
+   	const getter = e.target.value;
+   	console.log(getter);
+   	const span = document.createElement("span");
+   	$(span).attr("id", "child");
+   	$(span).append(document.createTextNode(getter+"점"));
+   	$("#child").replaceWith(span);
+});
+</script>
 </body>
 </html>

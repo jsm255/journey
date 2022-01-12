@@ -51,6 +51,25 @@ public class ReviewDTO {
 		this.score = score;
 		this.pw = pw;
 	}
+	
+	// 회원이 작성한 리뷰 수정시에 사용
+	public ReviewDTO(int code, String countryName, String userName, String content, int score) {
+		this.code = code;
+		this.countryName = countryName;
+		this.userName = userName;
+		this.content = content;
+		this.score = score;
+	}
+	
+	// 게스트가 작성한 리뷰 수정시에 사용
+	public ReviewDTO(int code, String countryName, String content, int score, String pw) {
+		this.code = code;
+		this.countryName = countryName;
+		this.userName = "Guest";
+		this.content = content;
+		this.score = score;
+		this.pw = pw;
+	}
 
 	public int getCode() {
 		return code;

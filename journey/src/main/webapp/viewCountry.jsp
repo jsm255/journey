@@ -72,21 +72,14 @@
 
 <%
 
-// user 처리가 어떻게 되는지 물어봐야함
-// 대댓글 처리는 원래 댓글에는 대댓글이 몇 개 있는지 기록	(테이블 설정 갱신 필요(새로 대댓글 개수 카운터를 만들어줘야함))	- 끝
-// database에 새로 reReview를 만들어서 대댓글을 저장 및 조회할 수 있게함										- 끝
-// 대댓글에는 이 대댓글이 어느 댓글에 달려있는지를 기록															- 끝
-// 댓글 하나하나 테이블 처리하는게 깔끔하겠음																	- 끝
-// 로그인을 해놨다면 본인이 적은 댓글에 대하여 수정/삭제가 가능		=> 이미 로그인 중이라 비밀번호를 요구하지 않음
+
 // Guest 이름으로 된 댓글은 로그인을 했든 안했든 수정/삭제가 보임	=> 당연히 비밀번호를 씀
 // 어떤 댓글을 눌렀는지에 대한 검증이 필요함 => 버튼에 id를 달아놓으면 되겠다
+// 비밀번호 검증을 해야한다.
 
 // 국가에 대한 정보를 좀 더 넣는게 낫겠다
 // 더미데이터나 api를 사용해서 넣으면 더 좋겠음
 
-// join jquery cdn 넣어야한다
-// 객체도 없다는건 좀 심하다
-// 데이터베이스도 통일하는게 좋다
 
 String countryName = "미국";
 // countryName = request.getParameter("country");
@@ -201,16 +194,16 @@ String flag = country.getFlag();
             					<td>
             					<button onclick="">답글</button>
             					<%
-            					if(temp.getUserName().equals("Guest")) {
+            					if(temp.getUserName().equals("Guest") && temp.getUserName().equals(userName)) {
             						%>
                 					<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
-                					<button onclick="deleteReviewGuest()">삭제</button>
+                					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
                 					<%
             					}
             					else if(temp.getUserName().equals(userName)) {
             						%>
-            						<button onclick="modifyReviewUser()">수정</button>
-                					<button onclick="deleteReviewUser()">삭제</button>
+            						<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
+                					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
             						<%
             					}
             					
@@ -230,16 +223,16 @@ String flag = country.getFlag();
             						<tr><td><span>&#9;</span>답글 날짜 : <%=rrtemp.getDate() %></td></tr>
             						<tr><td><button onclick="">답글</button>
             						<%
-            						if(temp.getUserName().equals("Guest")) {
+            						if(rrtemp.getUserName().equals("Guest") && rrtemp.getUserName().equals(userName)) {
             							%>
-                						<button onclick="modifyReReviewGuest()">수정</button>
-                						<button onclick="deleteReReviewGuest()">삭제</button>
+                						<button onclick="location.href='service?command=modifyReReview&code=<%=temp.getCode()%>'">수정</button>
+                						<button onclick="location.href='service?command=deleteReReview&code=<%=temp.getCode()%>'">삭제</button>
                 						<%
             						}
-            						else if(temp.getUserName().equals(userName)) {
+            						else if(rrtemp.getUserName().equals(userName)) {
             							%>
-            							<button onclick="modifyReReviewUser()">수정</button>
-                						<button onclick="deleteReReviewUser()">삭제</button>
+            							<button onclick="location.href='service?command=modifyReReview&code=<%=temp.getCode()%>'">수정</button>
+                						<button onclick="location.href='service?command=deleteReReview&code=<%=temp.getCode()%>'">삭제</button>
             							<%
             						}
             					

@@ -133,4 +133,34 @@ public class ReviewDAO {
 		return null;
 	}
 	
+	public boolean modifyReview(ReviewDTO review) {
+		try {
+			conn = DBManager.getConnection();
+			
+			if(review.getUserName().equals("Guest")) {
+				pstmt = conn.prepareStatement("update review set content=?, score=?, pw=? where code=?");
+				pstmt.setString(1, review.getContent());
+				pstmt.setInt(2, review.getScore());
+				pstmt.setString(3, review.getPw());
+				pstmt.setInt(4, review.getCode());
+				
+				pstmt.executeUpdate();
+			}
+			else {
+				pstmt = conn.prepareStatement("update review set content=?, score=? where code=?");
+				pstmt.setString(1, review.getContent());
+				pstmt.setInt(2, review.getScore());
+				pstmt.setInt(3, review.getCode());
+				
+				pstmt.executeUpdate();
+			}
+			
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }
