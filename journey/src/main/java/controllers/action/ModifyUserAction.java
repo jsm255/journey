@@ -22,6 +22,10 @@ public class ModifyUserAction implements Action{
 		UserDTO user = dao.getId(id);
 		
 		if(user!=null) {
+			if(!pw.equals(user.getPw()))
+				user.setPw(pw);
+			if(!tel.equals(user.getTel()))
+				user.setTel(tel);
 			dao.updateUser(user);
 		}
 		request.setCharacterEncoding("utf-8");

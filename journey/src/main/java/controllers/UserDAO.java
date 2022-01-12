@@ -168,13 +168,42 @@ public class UserDAO {
 			String sql = "update users set pw=? , tel =? where code = ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getPw());
-			pstmt.setString(2, user.getPw());
+			pstmt.setString(2, user.getTel());
 			pstmt.setInt(3, user.getCode());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	// delete user
+	public int deleteUser(String id, String pw) {
+		users = getUsers();
+		int delIdx = -1;
+		
+		for(int i=0; i<users.size(); i++) {
+			if(users.get(i).getId().equals(id) && users.get(i).getPw().equals(pw))
+				delIdx = i;
+		}
+		
+		if(delIdx!=-1) {
+		
+		try {
+			
+			conn = DBManager.getConnection();
+			String sql = "delete from users where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			
+			users.remove(delIdx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		}
+		
+		return delIdx;
 	}
 
 	

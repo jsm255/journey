@@ -44,12 +44,12 @@
             <div>
                 <article class="info">
                     <p>＊회원탈퇴</p>
-                    <form action="">
+                    <form action="service">
                       
                        <span>Id:</span><input type="text"><br><br>
                         <span>Pw:</span><input type="text"><br><br>
-                    <div><input type="button" value="회원탈퇴" onclick="checkInfo(form)" ></div> 
-                        
+                    <div><input type="submit" value="회원탈퇴" ></div> 
+                     <input type="hidden" name="command" value="deleteUser">  
                 </form>
                 
                 </article>

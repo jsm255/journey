@@ -13,21 +13,34 @@
 <%
 	String id = (String) session.getAttribute("log");
 	UserDTO user = UserDAO.getInstance().getId(id);
-	System.out.println("id:"+id);
-	// null 
-	// log값 못받아오고있는중
+	// System.out.println("id:"+id);
+	
 	
 %>
     <div>
     <header>
         <div class="top">
             <ul class="top-menu">
-                <li class="join"><a href="">
-                        <p>회원가입</p>
-                    </a></li>
-                <li class="join"><a href="">
-                        <p>로그인</p>
-                    </a></li>
+<%
+            	if(session.getAttribute("log") == null){
+            %>
+				<li class="join"><a href="join.jsp">
+						<p>회원가입</p>
+				</a></li>
+				<li class="join"><a href="login.jsp">
+						<p>로그인</p>
+				</a></li>
+				<%
+           		 }else{
+           	%>
+				<li class="join"><a href="mypage.jsp">
+						<p>마이페이지</p>
+				</a></li>
+				<li class="join"><a href="">
+						<p>로그아웃</p>
+				</a></li>
+				<% }
+      		%>
             </ul>
         </div>
         <h1 id="title"><a href="">Travel Community</a></h1>
@@ -44,9 +57,9 @@
         <aside class="mypage">
             <p id="mypage">마이페이지</p>
             <ul>
-                <li><a href="">회원정보 수정</a></li>
+                <li><a href="mypage.jsp">회원정보 수정</a></li>
                 <li><a href="">내가 쓴 리뷰</a></li>
-                <li><a href="">회원탈퇴</a></li>
+                <li><a href="deleteUser.jsp">회원탈퇴</a></li>
 
             </ul>
 
@@ -54,7 +67,7 @@
         <div>
              <article class="info">
                 <p>＊회원정보 수정</p>
-                <form action="">
+                <form action="service" method="post">
                 <table border="1px solid black">
                     <tr>
                         <th>이름</th>
@@ -73,7 +86,7 @@
                         <td><input type="password" name="pw" value="<%=user.getPw()%>"></td>
                     </tr>
                 </table>
-                <div><input type="button" value="수정" onclick="" ></div> 
+                <div><input type="submit" value="수정" ></div> 
            	<input type="hidden" name="command" value="mypage">
             </form>
             </article>

@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.action.Action;
+import controllers.action.DeleteUserAction;
 import controllers.action.JoinAction;
 import controllers.action.LoginAction;
 import controllers.action.ModifyReviewAction;
@@ -36,6 +37,9 @@ public class ActionFactory {
 		
 		else if(command.equals("mypage"))
 			return new ModifyUserAction();
+		
+		else if(command.equals("deleteUser"))
+			return new DeleteUserAction();
 		
 		return null;
 	}

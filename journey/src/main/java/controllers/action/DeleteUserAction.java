@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controllers.UserDAO;
 import models.UserDTO;
@@ -19,16 +20,10 @@ public class DeleteUserAction implements Action{
 		String pw = request.getParameter("pw");
 		
 		UserDAO dao = UserDAO.getInstance();
-		ArrayList<UserDTO> user =dao.getUsers();
-		boolean check = false;
-		for(UserDTO u : user) {
-			if(id.equals(u.getId()) && pw.equals(u.getPw()))
-				check = true;
-		}
+		dao.deleteUser(id, pw);
 		
-		if(check) {
-			
-		}
+		HttpSession session = request.getSession();
+		session.removeAttribute(id);
 		
 	}
 
