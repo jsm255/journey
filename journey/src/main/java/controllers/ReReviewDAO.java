@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import models.ReReviewDTO;
+import models.ReviewDTO;
 import utils.DBManager;
 
 public class ReReviewDAO {
@@ -60,5 +61,78 @@ public class ReReviewDAO {
 		}
 		
 		return reReviews;
+	}
+	
+	public ReReviewDTO getReReview(int code) {
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("select * from reReview where code=?");
+			
+			pstmt.setInt(1, code);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				ReReviewDTO rrview = null;
+				
+				int rrviewCode = rs.getInt(1);
+				String userName = rs.getString(2);
+				String content = rs.getString(3);
+				Timestamp date = rs.getTimestamp(4);
+				String pw = "";
+				int attachCodeTemp = rs.getInt(6);
+				if(userName.equals("Guest")) {
+					pw = rs.getString(5);
+					rrview = new ReReviewDTO(rrviewCode, content, date, pw, attachCodeTemp);
+				}
+				else {
+					rrview = new ReReviewDTO(rrviewCode, userName, content, date, attachCodeTemp);
+				}
+				
+				return rrview;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public boolean removeReReview(ReReviewDTO rrview) {
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("delete from reReview where code=?");
+			
+			pstmt.setInt(1, rrview.getCode());
+			
+			pstmt.executeUpdate();
+			
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public boolean removeReReviewsAttached(ReviewDTO review) {
+		try {
+			int attach = review.getAttachCnt();
+			if(attach != 0) {
+				conn = DBManager.getConnection();
+				
+				pstmt = 
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 }

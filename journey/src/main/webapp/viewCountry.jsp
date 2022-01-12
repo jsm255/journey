@@ -225,14 +225,14 @@ String flag = country.getFlag();
             						<%
             						if(rrtemp.getUserName().equals("Guest") && rrtemp.getUserName().equals(userName)) {
             							%>
-                						<button onclick="location.href='service?command=modifyReReview&code=<%=temp.getCode()%>'">수정</button>
-                						<button onclick="location.href='service?command=deleteReReview&code=<%=temp.getCode()%>'">삭제</button>
+                						<button onclick="location.href='service?command=modifyReReview&code=<%=rrtemp.getCode()%>'">수정</button>
+                						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>'">삭제</button>
                 						<%
             						}
             						else if(rrtemp.getUserName().equals(userName)) {
             							%>
-            							<button onclick="location.href='service?command=modifyReReview&code=<%=temp.getCode()%>'">수정</button>
-                						<button onclick="location.href='service?command=deleteReReview&code=<%=temp.getCode()%>'">삭제</button>
+            							<button onclick="location.href='service?command=modifyReReview&code=<%=rrtemp.getCode()%>'">수정</button>
+                						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>'">삭제</button>
             							<%
             						}
             					

@@ -163,4 +163,29 @@ public class ReviewDAO {
 		return false;
 	}
 	
+	public boolean removeReview(ReviewDTO review) {
+		
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("delete from review where code=?");
+			pstmt.setInt(1, review.getCode());
+			
+			pstmt.executeUpdate();
+			
+//			// 만약 답글이 있으면 그것도 지워줘야함
+//			// 이건 reReviewDAO를 통해 처리하도록 하자
+//			pstmt = conn.prepareStatement("delete from reReview where attachCode=?");
+//			pstmt.setInt(1, review.getCode());
+//			
+//			pstmt.executeUpdate();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
 }
