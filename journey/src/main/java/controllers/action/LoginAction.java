@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controllers.UserDAO;
 import models.UserDTO;
@@ -35,7 +36,9 @@ public class LoginAction implements Action{
 		String url ="";
 		
 		if(check) {
-			request.setAttribute("log", id);
+			//request.setAttribute("log", id);
+			HttpSession session = request.getSession();
+			session.setAttribute("log", id);
 			url="main.jsp";
 		}
 		else {

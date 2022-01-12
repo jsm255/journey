@@ -14,6 +14,8 @@
 	String id = (String) session.getAttribute("log");
 	UserDTO user = UserDAO.getInstance().getId(id);
 	System.out.println("id:"+id);
+	// null 
+	// log값 못받아오고있는중
 	
 %>
     <div>
@@ -56,19 +58,19 @@
                 <table border="1px solid black">
                     <tr>
                         <th>이름</th>
-                        <td><input type="text" name="id" value="<%=user.getUserName()%>"></td>
+                        <td><input type="text" name="name" value="<%=user.getUserName()%>" readonly></td>
                     </tr>
                     <tr>
                         <th>아이디</th>
-                        <td>getId</td>
+                        <td><input type="text" name="id" value="<%=user.getId()%>" readonly></td>
                     </tr>
                     <tr>
                         <th>전화번호</th>
-                        <td>tel</td>
+                        <td><input type="text" name="tel" value="<%=user.getTel()%>"></td>
                     </tr>
                     <tr>
                         <th>비밀번호 변경</th>
-                        <td>setPw</td>
+                        <td><input type="password" name="pw" value="<%=user.getPw()%>"></td>
                     </tr>
                 </table>
                 <div><input type="button" value="수정" onclick="" ></div> 
