@@ -38,10 +38,25 @@ public class ModifyReReviewAction implements Action{
 			if(userName.equals("Guest")) {
 				String beforePw = request.getParameter("beforePw");
 				String afterPw = beforePw;
-				if(request.getParameter("afterPw").compareTo("") != 0) afterPw = request.getParameter(afterPw);
+				if(request.getParameter("afterPw").compareTo("") != 0) afterPw = request.getParameter("afterPw");
 				if(rrview.getPw().equals(beforePw)) {
-					
+					rrDao.modifyReReview(new ReReviewDTO(rrCode, userName, content, afterPw));
+					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
+					return;
 				}
+				else {
+					HttpSession session = request.getSession();
+					session.setAttribute("rrCode", rrCode);
+					session.setAttribute("content", content);
+					session.setAttribute("rrview", rrview);
+					request.getRequestDispatcher("modifyReReview.jsp?error=pw").forward(request, response);
+					return;
+				}
+			}
+			else {
+				rrDao.modifyReReview(new ReReviewDTO(rrCode, userName, content));
+				request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
+				return;
 			}
 		}
 	}

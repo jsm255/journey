@@ -210,7 +210,32 @@ public class ReReviewDAO {
 		return false;
 	}
 	
-	public boolean updateReReview() {
+	public boolean modifyReReview(ReReviewDTO rrview) {
 		
+		try {
+			conn = DBManager.getConnection();
+			System.out.println(rrview.getUserName());
+			System.out.println(rrview.getPw());
+			
+			if(rrview.getUserName().equals("Guest")) {
+				pstmt = conn.prepareStatement("update reReview set content=?, pw=? where code=?");
+				pstmt.setString(1, rrview.getContent());
+				pstmt.setString(2, rrview.getPw());
+				pstmt.setInt(3, rrview.getCode());
+				
+				pstmt.executeUpdate();
+			}
+			else {
+				pstmt = conn.prepareStatement("update reReview set content=? where code=?");
+				pstmt.setString(1, rrview.getContent());
+				pstmt.setInt(2, rrview.getCode());
+				
+				pstmt.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 }
