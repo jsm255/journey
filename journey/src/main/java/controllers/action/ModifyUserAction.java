@@ -26,11 +26,12 @@ public class ModifyUserAction implements Action{
 				user.setPw(pw);
 			if(!tel.equals(user.getTel()))
 				user.setTel(tel);
+			
 			dao.updateUser(user);
 		}
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
-		request.getRequestDispatcher("mypage.jsp").forward(request,response);
+		request.getRequestDispatcher("main.jsp").forward(request,response);
 		
 		
 	}

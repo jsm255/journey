@@ -31,9 +31,9 @@ public class DeleteUserAction implements Action{
 		
 		
 		HttpSession session = request.getSession();
-		session.removeAttribute(id);
+		session.removeAttribute("log");
 		
-		String url ="deleteUser.jsp";
+		String url ="main.jsp";
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}

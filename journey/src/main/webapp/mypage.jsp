@@ -36,21 +36,21 @@
 				<li class="join"><a href="mypage.jsp">
 						<p>마이페이지</p>
 				</a></li>
-				<li class="join"><a href="">
+				<li class="join"><a href="service?command=logout">
 						<p>로그아웃</p>
 				</a></li>
 				<% }
       		%>
             </ul>
         </div>
-        <h1 id="title"><a href="">Travel Community</a></h1>
+        <h1 id="title"><a href="main.jsp">Travel Community</a></h1>
 
     </header>
     <nav>
         <ul>
-            <li><a href="">국가 정보</a></li>
+            <li><a href="viewCountry.jsp">국가 정보</a></li>
             <li><a href="">게시판</a></li>
-            <li><a href="">마이페이지</a></li>
+            <li><a href="mypage.jsp">마이페이지</a></li>
         </ul>
     </nav>
     <main>
@@ -58,7 +58,7 @@
             <p id="mypage">마이페이지</p>
             <ul>
                 <li><a href="mypage.jsp">회원정보 수정</a></li>
-                <li><a href="">내가 쓴 리뷰</a></li>
+                <li><a href="myboardList.jsp">내가 작성한 리뷰</a></li>
                 <li><a href="deleteUser.jsp">회원탈퇴</a></li>
 
             </ul>
@@ -79,7 +79,7 @@
                     </tr>
                     <tr>
                         <th>전화번호</th>
-                        <td><input type="text" name="tel" value="<%=user.getTel()%>"></td>
+                        <td><input type="text" name="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" value="<%=user.getTel()%>"></td>
                     </tr>
                     <tr>
                         <th>비밀번호 변경</th>

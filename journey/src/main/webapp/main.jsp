@@ -33,11 +33,11 @@
       		%>
             </ul>
         </div>
-        <h1 id="title"><a href="">Travel Community</a></h1>
+        <h1 id="title"><a href="main.jsp">Travel Community</a></h1>
     </header>
     <nav>
         <ul>
-            <li><a href="">국가 정보</a></li>
+            <li><a href="viewCountry.jsp">국가 정보</a></li>
             <li><a href="">게시판</a></li>
             <li><a href="mypage.jsp">마이페이지</a></li>
         </ul>

@@ -17,7 +17,7 @@ public class JoinAction implements Action {
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		String username = request.getParameter("username");
+		String username = request.getParameter("userName");
 		String tel = request.getParameter("tel");
 		
 		UserDAO dao = UserDAO.getInstance();
@@ -26,7 +26,7 @@ public class JoinAction implements Action {
 		if(dao.checkDup(id)) {
 			UserDTO newUser = new UserDTO(id,pw,username,tel);
 			dao.insertUser(newUser);
-			url="main";
+			url="main.jsp";
 		}
 		
 		request.getRequestDispatcher(url).forward(request, response);

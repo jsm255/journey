@@ -6,20 +6,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel = "stylesheet" href="css/deleteUser.css" type="text/css">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/myboardList.css">
+<title>boardList</title>
 </head>
 <body>
 <%
 	String id = (String) session.getAttribute("log");
 	UserDTO user = UserDAO.getInstance().getId(id);
-	System.out.println("id:"+id);
+	
+	
+
 %>
-  <div>
+ <div>
         <header>
             <div class="top">
                 <ul class="top-menu">
-                     <%
+                    <%
             	if(session.getAttribute("log") == null){
             %>
 				<li class="join"><a href="join.jsp">
@@ -63,24 +65,31 @@
     
             </aside>
             <div>
-                <article class="info">
-                    <p>＊회원탈퇴</p>
-                    <form action="service" method="post">
-                      
-                       <span>Id:</span><input type="text" name="id" value="<%=user.getId()%>" readonly><br><br>
-                        <span>Pw:</span><input type="text" name="pw"><br><br>
-                    <div><input type="submit" value="회원탈퇴" ></div> 
-                     <input type="hidden" name="command" value="deleteUser">  
-                </form>
-                
+                <article class="review">
+                    <p>＊내가 작성한 리뷰</p>
+                   
+                    <table border="1px solid">
+                     <tr>
+                        <td>No</td>
+                        <td>Title</td>
+                        <td>Id</td>
+                        <td>Date</td>
+                    
+                    </tr>
+                    <tr>
+                        <td>no</td>
+                        <td>Title</td>
+                        <td>Id</td>
+                        <td>Date</td>
+                    </tr>
+                </table>
                 </article>
             </div>
         </main>
-       
     
         <footer>
             <p> Copyright © TravelCommunity. All Rights Reserved.</p>
         </footer>
-    </div>
+        </div>
 </body>
 </html>

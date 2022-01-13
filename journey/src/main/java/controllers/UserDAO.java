@@ -60,7 +60,7 @@ public class UserDAO {
 	}
 	
 	public UserDTO insertUser(UserDTO dto) {
-		String sql = "insert into users(id,pw,username,tel) values(?,?,?,?)";
+		String sql = "insert into users(id,pw,userName,tel) values(?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
