@@ -111,6 +111,8 @@ public class ReReviewDAO {
 			pstmt.executeUpdate();
 			
 			// 지웠으면 원래 리뷰에 있던 attachCnt도 하나 줄여줘야 한다.
+			ReviewDAO rDao = ReviewDAO.getInstance();
+			rDao.changeAttachCnt(rrview.getAttachCode(), -1);
 			
 			return true;
 			
@@ -171,5 +173,44 @@ public class ReReviewDAO {
 		}
 		
 		return false;
+	}
+	
+	public boolean writeReReview(ReReviewDTO rrview) {
+		
+		try {
+			conn = DBManager.getConnection();
+			
+			if(rrview.getUserName().equals("Guest")) {
+				pstmt = conn.prepareStatement("insert reReview(content, pw, attachCode) values(?,?,?)");
+				
+				pstmt.setString(1, rrview.getContent());
+				pstmt.setString(2, rrview.getPw());
+				pstmt.setInt(3, rrview.getAttachCode());
+				
+				pstmt.executeUpdate();
+			}
+			else {
+				pstmt = conn.prepareStatement("insert reReview(userName, content, attachCode) values(?,?,?)");
+				
+				pstmt.setString(1, rrview.getUserName());
+				pstmt.setString(2, rrview.getContent());
+				pstmt.setInt(3, rrview.getAttachCode());
+				
+				pstmt.executeUpdate();
+			}
+			
+			ReviewDAO rDao = ReviewDAO.getInstance();
+			rDao.changeAttachCnt(rrview.getAttachCode(), 1);
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public boolean updateReReview() {
+		
 	}
 }

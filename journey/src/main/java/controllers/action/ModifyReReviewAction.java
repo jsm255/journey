@@ -1,0 +1,48 @@
+package controllers.action;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import controllers.ReReviewDAO;
+import models.ReReviewDTO;
+
+public class ModifyReReviewAction implements Action{
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int rrCode = Integer.parseInt(request.getParameter("code"));
+		String countryName = request.getParameter("countryName");
+	
+		ReReviewDAO rrDao = ReReviewDAO.getInstance();
+		ReReviewDTO rrview = rrDao.getReReview(rrCode);
+		
+		if(request.getParameter("additional") == null) {	// 수정을 해야하면
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("rrview", rrview);
+			session.setAttribute("rrCode", rrCode);
+			session.setAttribute("countryName", countryName);
+			
+			request.getRequestDispatcher("modifyReReview.jsp").forward(request, response);
+			return;
+		}
+		else {	// 했으면
+			String content = request.getParameter("content");
+			String userName = request.getParameter("userName");
+			
+			if(userName.equals("Guest")) {
+				String beforePw = request.getParameter("beforePw");
+				String afterPw = beforePw;
+				if(request.getParameter("afterPw").compareTo("") != 0) afterPw = request.getParameter(afterPw);
+				if(rrview.getPw().equals(beforePw)) {
+					
+				}
+			}
+		}
+	}
+}

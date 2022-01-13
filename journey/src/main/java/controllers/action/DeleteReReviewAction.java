@@ -26,10 +26,8 @@ public class DeleteReReviewAction implements Action{
 		if(session.getAttribute("log") == null) {	// Guest이면
 			if(request.getParameter("additional") != null) {	// 비밀번호를 입력하는 단계를 거쳤으면
 				if(rrview.getPw().equals(request.getParameter("pw"))) {	// 그래서 그게 맞았으면
-					ReviewDAO rDao = ReviewDAO.getInstance();
-					
 					rrDao.removeReReview(rrview);
-					rDao.changeAttachCnt(rrview.getAttachCode(), -1);
+
 					if(session.getAttribute("rrview") != null) 
 						session.removeAttribute("rrview");
 					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);

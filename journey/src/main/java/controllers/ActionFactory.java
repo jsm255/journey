@@ -7,9 +7,11 @@ import controllers.action.DeleteUserAction;
 import controllers.action.JoinAction;
 import controllers.action.LoginAction;
 import controllers.action.LogoutAction;
+import controllers.action.ModifyReReviewAction;
 import controllers.action.ModifyReviewAction;
 import controllers.action.ModifyReviewSubmitAction;
 import controllers.action.ModifyUserAction;
+import controllers.action.WriteReReviewAction;
 import controllers.action.WriteReviewAction;
 
 
@@ -52,6 +54,12 @@ public class ActionFactory {
 		
 		else if(command.equals("logout"))
 			return new LogoutAction();
+		
+		else if(command.equals("writeReReview"))
+			return new WriteReReviewAction();
+		
+		else if(command.equals("modifyReReview"))
+			return new ModifyReReviewAction();
 		
 		
 		return null;

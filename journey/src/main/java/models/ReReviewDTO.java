@@ -26,6 +26,19 @@ public class ReReviewDTO {
 		this.pw = pw;
 		this.attachCode = attachCode;
 	}
+	
+	public ReReviewDTO(String userName, String content, int attachCode) {
+		this.userName = userName;
+		this.content = content;
+		this.attachCode = attachCode;
+	}
+	
+	public ReReviewDTO(String content, int attachCode, String pw) {
+		this.userName = "Guest";
+		this.content = content;
+		this.pw = pw;
+		this.attachCode = attachCode;
+	}
 
 	public int getCode() {
 		return code;
