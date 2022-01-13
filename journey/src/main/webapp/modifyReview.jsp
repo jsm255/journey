@@ -23,7 +23,6 @@ if(request.getParameter("error") != null) {
 		<%
 		content = String.valueOf(session.getAttribute("content"));
 		score = Integer.parseInt(String.valueOf(session.getAttribute("score")));
-		
 	}
 }
 

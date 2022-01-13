@@ -21,7 +21,7 @@ public class UserDAO {
 	public static UserDAO getInstance() {
 		return instance;
 	}
-//	
+	
 //	// 데이터 연동준비
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
@@ -147,7 +147,6 @@ public class UserDAO {
 				return false;
 			}
 		}
-		
 		return true;
 	}
 	//해당 아이디 불러오기

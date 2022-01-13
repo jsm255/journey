@@ -9,6 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
+
 <body>
 	<section>
 		<h1>회원가입</h1>
@@ -30,8 +31,6 @@
 				<!-- <button type="submit">회원가입</button> -->
 				<input type = "submit" value = "회원가입">
 			</div>
-			
-			
 		</form>
 	</section>
 <script>
