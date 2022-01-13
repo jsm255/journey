@@ -80,6 +80,9 @@
 // 국가에 대한 정보를 좀 더 넣는게 낫겠다
 // 더미데이터나 api를 사용해서 넣으면 더 좋겠음
 
+// 22 01 13 할 일 : 답글 수정, 답글 작성, 
+// 			한 일 : 답글 삭제 보완(완료)
+
 
 String countryName = "미국";
 // countryName = request.getParameter("country");
@@ -192,7 +195,7 @@ String flag = country.getFlag();
             					<tr><td colspan="3">유저 리뷰 : <%=temp.getContent()%></td></tr>
             					<tr><td colspan="2">리뷰 날짜 : <%=temp.getDate() %></td>
             					<td>
-            					<button onclick="">답글</button>
+            					<button onclick="location.href='service?command=writeReReview&code=<%=temp.getCode()%>'">답글</button>
             					<%
             					if(temp.getUserName().equals("Guest") && temp.getUserName().equals(userName)) {
             						%>
@@ -225,14 +228,14 @@ String flag = country.getFlag();
             						<%
             						if(rrtemp.getUserName().equals("Guest") && rrtemp.getUserName().equals(userName)) {
             							%>
-                						<button onclick="location.href='service?command=modifyReReview&code=<%=rrtemp.getCode()%>'">수정</button>
-                						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>'">삭제</button>
+                						<button onclick="location.href='service?command=modifyReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">수정</button>
+                						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">삭제</button>
                 						<%
             						}
             						else if(rrtemp.getUserName().equals(userName)) {
             							%>
-            							<button onclick="location.href='service?command=modifyReReview&code=<%=rrtemp.getCode()%>'">수정</button>
-                						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>'">삭제</button>
+            							<button onclick="location.href='service?command=modifyReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">수정</button>
+                						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">삭제</button>
             							<%
             						}
             					

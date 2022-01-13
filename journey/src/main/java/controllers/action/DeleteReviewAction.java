@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import controllers.ReReviewDAO;
 import controllers.ReviewDAO;
-import models.ReReviewDTO;
 import models.ReviewDTO;
 
 public class DeleteReviewAction implements Action {
@@ -18,23 +16,8 @@ public class DeleteReviewAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int code = Integer.parseInt(request.getParameter("code"));
-		String target;
-		ReviewDTO review;
-		ReReviewDTO rrview;
-		
 		ReviewDAO rDao = ReviewDAO.getInstance();
-		ReReviewDAO rrDao = ReReviewDAO.getInstance();
-		
-		if(request.getParameter("target") != null) {
-			target = request.getParameter("target");
-			if(target.equals("review")) {
-				review = rDao.getReview(code);
-			}
-			else {
-				rrview = rrDao.get
-			}
-		}
-		
+		ReviewDTO review = rDao.getReview(code);		
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("log") == null) {	// Guest이면

@@ -14,8 +14,8 @@ String delete = "";
 if(session.getAttribute("review") != null) {
 	delete = "review";
 }
-else if(session.getAttribute("reReview") != null) {
-	delete = "reReview";
+else if(session.getAttribute("rrview") != null) {
+	delete = "rrview";
 }
 
 if(request.getParameter("error") != null) {
@@ -40,28 +40,26 @@ if(delete.equals("review")) {
     	<input type="password" name="pw" placeholder="글의 비밀번호" required>
     	<input type="hidden" name="command" value="deleteReview">
     	<input type="hidden" name="additional" value="confirmed">
-    	<input type="hidden" name="target" value="review">
     	<input type="hidden" name="code" value=<%=review.getCode() %>>
     	<input type="submit" value="제출하기">
     </form>
 </div>
 <%
 }
-else if(delete.equals("reReview")) {
-	ReReviewDTO rrview = (ReReviewDTO) session.getAttribute("reReview");
+else if(delete.equals("rrview")) {
+	ReReviewDTO rrview = (ReReviewDTO) session.getAttribute("rrview");
 	%>
-	<div id="reReview">
+	<div id="rrview">
 	<table>
-		<tr><th> 지울 리뷰 </th></tr>
+		<tr><th> 지울 답글 </th></tr>
     	<tr><td>유저 이름 : <%=rrview.getUserName() %></td>
    		<tr><td colspan="3">유저 리뷰 : <%=rrview.getContent()%></td></tr>
     	<tr><td colspan="2">리뷰 날짜 : <%=rrview.getDate() %></td></tr>
     </table>
     <form method="post" action="service">
     	<input type="password" name="pw" placeholder="글의 비밀번호" required>
-    	<input type="hidden" name="command" value="deleteReview">
+    	<input type="hidden" name="command" value="deleteReReview">
     	<input type="hidden" name="additional" value="confirmed">
-    	<input type="hidden" name="target" value="reReview">
     	<input type="hidden" name="code" value=<%=rrview.getCode() %>>
     	<input type="submit" value="제출하기">
     </form>

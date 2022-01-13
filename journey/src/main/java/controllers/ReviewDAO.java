@@ -173,12 +173,39 @@ public class ReviewDAO {
 			
 			pstmt.executeUpdate();
 			
+			ReReviewDAO rrDao = ReReviewDAO.getInstance();
+			
+			rrDao.removeReReviewsAttached(review);
+			
 //			// 만약 답글이 있으면 그것도 지워줘야함
 //			// 이건 reReviewDAO를 통해 처리하도록 하자
 //			pstmt = conn.prepareStatement("delete from reReview where attachCode=?");
 //			pstmt.setInt(1, review.getCode());
 //			
 //			pstmt.executeUpdate();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public boolean changeAttachCnt(int code, int change) {
+		
+		try {
+			
+			ReviewDTO review = getReview(code);
+			
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("update review set attachCnt=? where code=?");
+			
+			pstmt.setInt(1, review.getAttachCnt()+change);
+			pstmt.setInt(2, code);
+			
+			pstmt.executeUpdate();
 			
 			return true;
 		} catch (Exception e) {

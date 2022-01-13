@@ -110,6 +110,8 @@ public class ReReviewDAO {
 			
 			pstmt.executeUpdate();
 			
+			// 지웠으면 원래 리뷰에 있던 attachCnt도 하나 줄여줘야 한다.
+			
 			return true;
 			
 		} catch (Exception e) {
@@ -125,7 +127,42 @@ public class ReReviewDAO {
 			if(attach != 0) {
 				conn = DBManager.getConnection();
 				
-				pstmt = 
+				pstmt = conn.prepareStatement("select * from reReview where attachCode=?");
+				
+				pstmt.setInt(1, review.getCode());
+				
+				rs = pstmt.executeQuery();
+				
+				reReviews = new ArrayList<>();
+				
+				while(rs.next()) {
+					ReReviewDTO rrview = null;
+					
+					int code = rs.getInt(1);
+					String userName = rs.getString(2);
+					String content = rs.getString(3);
+					Timestamp date = rs.getTimestamp(4);
+					String pw = "";
+					int attachCodeTemp = rs.getInt(6);
+					if(userName.equals("Guest")) {
+						pw = rs.getString(5);
+						rrview = new ReReviewDTO(code, content, date, pw, attachCodeTemp);
+					}
+					else {
+						rrview = new ReReviewDTO(code, userName, content, date, attachCodeTemp);
+					}
+					
+					reReviews.add(rrview);
+				}
+				
+				for(ReReviewDTO rrview : reReviews) {
+					pstmt = conn.prepareStatement("delete from reReview where code=?");
+					
+					pstmt.setInt(1, rrview.getCode());
+					
+					pstmt.executeUpdate();
+				}
+				return true;
 			}
 			
 			
