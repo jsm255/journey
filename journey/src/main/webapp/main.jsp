@@ -14,7 +14,7 @@
                 <%
             	if(session.getAttribute("log") == null){
             %>
-				<li class="join"><a href="service?command=join">
+				<li class="join"><a href="join.jsp">
 						<p>회원가입</p>
 				</a></li>
 				<li class="join"><a href="login.jsp">

@@ -12,12 +12,26 @@
         <header>
             <div class="top">
                 <ul class="top-menu">
-                    <li class="join"><a href="">
-                            <p>회원가입</p>
-                        </a></li>
-                    <li class="join"><a href="">
-                            <p>로그인</p>
-                        </a></li>
+                     <%
+            	if(session.getAttribute("log") == null){
+            %>
+				<li class="join"><a href="service?command=join">
+						<p>회원가입</p>
+				</a></li>
+				<li class="join"><a href="login.jsp">
+						<p>로그인</p>
+				</a></li>
+				<%
+           		 }else{
+           	%>
+				<li class="join"><a href="mypage.jsp">
+						<p>마이페이지</p>
+				</a></li>
+				<li class="join"><a href="">
+						<p>로그아웃</p>
+				</a></li>
+				<% }
+      		%>
                 </ul>
             </div>
             <h1 id="title"><a href="">Travel Community</a></h1>

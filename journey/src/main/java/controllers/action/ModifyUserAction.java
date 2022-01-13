@@ -33,8 +33,6 @@ public class ModifyUserAction implements Action{
 		request.getRequestDispatcher("mypage.jsp").forward(request,response);
 		
 		
-		
-		
 	}
 
 }

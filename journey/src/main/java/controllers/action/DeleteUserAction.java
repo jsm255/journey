@@ -20,11 +20,17 @@ public class DeleteUserAction implements Action{
 		String pw = request.getParameter("pw");
 		
 		UserDAO dao = UserDAO.getInstance();
-		dao.deleteUser(id, pw);
 		
 		HttpSession session = request.getSession();
-		session.removeAttribute(id);
+
+		System.out.println("id"+session.getAttribute("log"));
 		
+		String delUser = String.valueOf(dao.deleteUser(id, pw));
+		
+		session.removeAttribute(delUser);
+		System.out.println("ddd");
+		String url="deleteUser.jsp";
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 }

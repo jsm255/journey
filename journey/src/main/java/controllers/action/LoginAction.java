@@ -39,6 +39,7 @@ public class LoginAction implements Action{
 			//request.setAttribute("log", id);
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
+			System.out.println("id: "+session.getAttribute("log"));
 			url="main.jsp";
 		}
 		else {
