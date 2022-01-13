@@ -14,6 +14,7 @@
         <h1>로그인</h1>
         <form action="service">
         <input type="hidden" name="command" value="login">
+
             <div class="int-area">
                 <input type="text" name="id" id="id" autocomplete="off" required><label for="id">아이디</label>
             </div>

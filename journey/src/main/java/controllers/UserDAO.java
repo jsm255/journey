@@ -154,8 +154,10 @@ public class UserDAO {
 	public UserDTO getId(String id) {
 		users = getUsers();
 		for(UserDTO u: users) {
-			if(id.equals(u.getId()))
+			if(id.equals(u.getId())) {
+				System.out.println("ids:" + u.getId());
 				return u;
+			}
 		}
 		return null;
 	}
@@ -177,32 +179,18 @@ public class UserDAO {
 	}
 	
 	// delete user
-	public int deleteUser(String id, String pw) {
-		users = getUsers();
-		int delIdx = -1;
-		
-		for(int i=0; i<users.size(); i++) {
-			if(users.get(i).getId().equals(id) && users.get(i).getPw().equals(pw))
-				delIdx = i;
-		}
-		
-		if(delIdx!=-1) {
-		
+	public void deleteUser(UserDTO user) {
 		try {
-			
 			conn = DBManager.getConnection();
 			String sql = "delete from users where id = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.executeUpdate();
+			pstmt.setString(1, user.getId());
 			
-			users.remove(delIdx);
+			pstmt.executeUpdate();
+			System.out.println("delete");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		}
-		
-		return delIdx;
 	}
 
 	

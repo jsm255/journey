@@ -26,7 +26,7 @@
 				<li class="join"><a href="mypage.jsp">
 						<p>마이페이지</p>
 				</a></li>
-				<li class="join"><a href="">
+				<li class="join"><a href="service?command=logout">
 						<p>로그아웃</p>
 				</a></li>
 				<% }
@@ -59,7 +59,7 @@
             <option value="그리스">그리스</option>
             <option value="인도">인도</option>
         </select>
-        <input type="button" onclick="" >
+        <input type="button"  onclick="location.href='viewCountry.jsp'" >
        	<input type="hidden" name="command">
         </form>
     </main>
