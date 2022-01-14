@@ -11,9 +11,15 @@
 </head>
 <body>
 <%
+	if(session.getAttribute("log") == null){
+		response.sendRedirect("login.jsp?error=needLogin");
+	}
+	else{
+
 	String id = (String) session.getAttribute("log");
 	UserDTO user = UserDAO.getInstance().getId(id);
 	System.out.println("id:"+id);
+
 %>
   <div>
         <header>
@@ -84,3 +90,6 @@
     </div>
 </body>
 </html>
+<%
+	}
+%>
