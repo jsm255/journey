@@ -14,6 +14,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
+<link rel="stylesheet" href="css/viewCountry.css" type="text/css">
+
 
 	<style>
         body{
@@ -84,7 +86,8 @@
 // jsp페이지를 모바일 css 먹일 생각하면서 만들어야함
 
 String countryName = "미국";
-// countryName = request.getParameter("country");
+if(request.getParameter("countryName") != null)
+	countryName = request.getParameter("countryName");
 
 String id = "Guest";
 if(session.getAttribute("user") != null) {
@@ -99,14 +102,59 @@ String flag = country.getFlag();
 <title>정보</title>
 </head>
 <body>
-	<header>
-        <h2> 여행 정보 </h2>
+	    <header>
+        <div class="top">
+            <ul class="top-menu">
+<%
+            	if(session.getAttribute("log") == null){
+            %>
+				<li class="join"><a href="join.jsp">
+						<p>회원가입</p>
+				</a></li>
+				<li class="join"><a href="login.jsp">
+						<p>로그인</p>
+				</a></li>
+				<%
+           		 }else{
+           	%>
+				<li class="join"><a href="mypage.jsp">
+						<p>마이페이지</p>
+				</a></li>
+				<li class="join"><a href="service?command=logout">
+						<p>로그아웃</p>
+				</a></li>
+				<% }
+      		%>
+            </ul>
+        </div>
+        <h1 id="title"><a href="main.jsp">Travel Community</a></h1>
+
     </header>
     <nav>
-        <button onclick="ServiceServlet">여행 정보</button>
-        <button onclick="ServiceServlet">마이 페이지</button>
+        <ul>
+            <li><a href="viewCountry.jsp">국가 정보</a></li>
+            <li><a href="">게시판</a></li>
+            <li><a href="mypage.jsp">마이페이지</a></li>
+        </ul>
     </nav>
+    
     <main>
+        <aside class="country">
+            <p id="country">국가 목록</p>
+            <ul>
+                <li><a href="viewCountry.jsp?countryName=미국">미국</a></li>
+                <li><a href="viewCountry.jsp?countryName=영국">영국</a></li>
+                <li><a href="viewCountry.jsp?countryName=일본">일본</a></li>
+                <li><a href="viewCountry.jsp?countryName=태국">태국</a></li>
+                <li><a href="viewCountry.jsp?countryName=중국">중국</a></li>
+                <li><a href="viewCountry.jsp?countryName=필리핀">필리핀</a></li>
+                <li><a href="viewCountry.jsp?countryName=독일">독일</a></li>
+                <li><a href="viewCountry.jsp?countryName=이탈리아">이탈리아</a></li>
+                <li><a href="viewCountry.jsp?countryName=그리스">그리스</a></li>
+                <li><a href="viewCountry.jsp?countryName=인도">인도</a></li>
+            </ul>
+        </aside>
+        
         <div id="country">
         	<table>
         	<tr>
@@ -181,8 +229,9 @@ String flag = country.getFlag();
         			}
         			int reviewStart = (currentPage-1)*10;
         			int reviewEnd = reviewStart+9 > reviews.size()-1 ? reviews.size()-1 : reviewStart+9;
-        			int pageStart = ((currentPage/10) * 10) + 1;
+        			int pageStart = (((currentPage-1)/10) * 10) + 1;
         			int pageEnd= (pageStart+9)*10 > reviews.size() ? ((reviews.size()-1)/10)+1 : pageStart+9;
+        			int lastPage = ((reviews.size() - 1) / 10) + 1;
         			
         			for(int i = reviewStart; i<=reviewEnd; i++) {
             			ReviewDTO temp = reviews.get(i);
@@ -224,7 +273,7 @@ String flag = country.getFlag();
 	            					<tr><td><span>&#9;</span>유저 이름 : <%=rrtemp.getId() %></td></tr>
             						<tr><td><span>&#9;</span>유저 답글 : <%=rrtemp.getContent()%></td></tr>
             						<tr><td><span>&#9;</span>답글 날짜 : <%=rrtemp.getDate() %></td></tr>
-            						<tr><td>
+            						<tr><td><span>&#9;</span>
             						<%
             						if(rrtemp.getId().equals("Guest") && rrtemp.getId().equals(id)) {
             							%>
@@ -257,8 +306,10 @@ String flag = country.getFlag();
         			<tr><td>
         			<%
         			if(pageStart != 1) {
+        				int targetPage = currentPage-10;
+        				if(targetPage < 1) targetPage = 1;
         				%>
-        				<button onclick="loaction.href='viewCountry.jsp?countryName=<%=countryName %>&currentPage=<%= currentPage-10 %>'">이전 10페이지</button>
+        				<button onclick="location.href='viewCountry.jsp?countryName=<%=countryName %>&currentPage=<%= targetPage %>'">이전 10페이지</button>
         				<%
         			}
         			for(int i = pageStart; i<=pageEnd; i++) {
@@ -275,8 +326,10 @@ String flag = country.getFlag();
         			}
         			
         			if((pageStart+10) * 10 <= reviews.size()) {
+        				int targetPage = currentPage+10;
+        				if(targetPage >= lastPage) targetPage = lastPage;
         				%>
-        				      <button onclick="location.href='viewCountry.jsp?countryName=<%=countryName %>&currentPage=<%= currentPage-10 %>'"></button>
+        				      <button onclick="location.href='viewCountry.jsp?countryName=<%=countryName %>&currentPage=<%= targetPage %>'">이후 10페이지</button>
         				<%
         			}
         			
@@ -287,7 +340,7 @@ String flag = country.getFlag();
         </div>
     </main>
     <footer>
-
+        <p> Copyright © TravelCommunity. All Rights Reserved.</p>
     </footer>
     
 

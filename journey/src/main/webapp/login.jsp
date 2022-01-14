@@ -10,6 +10,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
+<%
+if(request.getParameter("error") != null) {
+	if(request.getParameter("error").equals("needLogin")){
+	%>
+	<script>alert("로그인 후 사용할 수 있는 메뉴입니다.")</script>
+	<%
+	}
+}
+%>
     <section class = "login-form">
         <h1>로그인</h1>
         <form action="service">
