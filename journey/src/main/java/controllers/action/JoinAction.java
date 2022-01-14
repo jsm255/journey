@@ -15,7 +15,7 @@ public class JoinAction implements Action {
 	public void execute (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
-		HttpSession s = request.getSession();
+		HttpSession session = request.getSession();
 		String url ="";
 		
 		
@@ -32,13 +32,21 @@ public class JoinAction implements Action {
 		
 		if(dao.checkDup(id)) {
 			UserDTO newUser = new UserDTO(id,pw,username,tel);
-			dao.insertUser(newUser);
-			url="main.jsp";
-			s.invalidate();
+			if(tel.length()>9) {
+				dao.insertUser(newUser);
+				url="main.jsp";
+			session.invalidate();
+			}else {
+				user.setTel(null);
+				session.setAttribute("checkTel","정확한 전화번호 입력");
+				session.setAttribute("user", user);
+				url = "join.jsp";
+			}
 		}else {
 			url = "join.jsp";
-			user.setId("중복된 아이디 입니다");
-			s.setAttribute("user", user);
+			user.setId(null);
+			session.setAttribute("checkId","중복된 아이디");
+			session.setAttribute("user", user);
 		}
 		
 		
