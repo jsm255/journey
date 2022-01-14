@@ -39,7 +39,7 @@
         <ul>
             <li><a href="viewCountry.jsp">국가 정보</a></li>
             <li><a href="">게시판</a></li>
-            <li><a href="mypage.jsp">마이페이지</a></li>
+            <li><a href="">공지사항</a></li>
         </ul>
     </nav>
 </body>

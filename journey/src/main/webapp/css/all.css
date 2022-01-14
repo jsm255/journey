@@ -93,8 +93,8 @@ footer{
     background-color: rgba(248, 160, 45, 0.856);
     color: white;
     text-align: center;
-    height: 13vh;
-   
+    height: 10vh;
+   	bottom:-5px;
    
 }
 

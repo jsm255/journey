@@ -63,6 +63,9 @@
 						</tr>
 						<%} %>
 					</table>
+					<form action="service" method="post">
+					<input type="hidden" name="command" value="myBoardList">
+					</form>
 				</article>
 			</div>
 		</main>
