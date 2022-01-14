@@ -22,15 +22,15 @@ ReviewDTO review = null;
 if(session.getAttribute("review") instanceof ReviewDTO) {
 	review = (ReviewDTO)session.getAttribute("review");
 }
-String userName = "Guest";
+String id = "Guest";
 if(session.getAttribute("log") != null) {
-	userName = String.valueOf(session.getAttribute("log"));
+	id = String.valueOf(session.getAttribute("log"));
 }
 %>
 <table>
 	<tr><th> 답글을 적을 댓글 </th></tr>
 	<tr><td>리뷰 국가 : <%=review.getCountryName() %></td>
-    <td>유저 이름 : <%=review.getUserName() %></td>
+    <td>유저 이름 : <%=review.getId() %></td>
     <td>평가 점수 : <%=review.getScore() %> 점</td></tr>
    	<tr><td colspan="3">유저 리뷰 : <%=review.getContent()%></td></tr>
     <tr><td colspan="2">리뷰 날짜 : <%=review.getDate() %></td></tr>
@@ -41,7 +41,7 @@ if(session.getAttribute("log") != null) {
 	<tr><th> 답글 작성 </th></tr>
 	<tr><td> <textarea name="content" placeholder="내용을 적으세요" required></textarea> </td></tr>
 	<%
-	if(userName.equals("Guest")) {
+	if(id.equals("Guest")) {
 		%>
 		<tr><td><h3>글에 대한 비밀번호를 기억해둬야 <br>수정 및 삭제가 가능합니다.</h3></td></tr>
 		<tr><td><input type="password" name="pw" placeholder="답글의 비밀번호" required></td></tr>
@@ -53,7 +53,7 @@ if(session.getAttribute("log") != null) {
 	<input type="hidden" name="command" value="writeReReview">
 	<input type="hidden" name="additional" value="written">
 	<input type="hidden" name="code" value=<%=review.getCode() %>>
-	<input type="hidden" name="userName" value=<%=userName %>>
+	<input type="hidden" name="id" value=<%=id %>>
 </form>
 </body>
 </html>

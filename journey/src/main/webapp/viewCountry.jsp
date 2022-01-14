@@ -71,8 +71,6 @@
     </style>
 
 <%
-
-
 // Guest 이름으로 된 댓글은 로그인을 했든 안했든 수정/삭제가 보임	=> 당연히 비밀번호를 씀
 // 어떤 댓글을 눌렀는지에 대한 검증이 필요함 => 버튼에 id를 달아놓으면 되겠다
 // 비밀번호 검증을 해야한다.
@@ -81,19 +79,21 @@
 // 더미데이터나 api를 사용해서 넣으면 더 좋겠음
 
 // 22 01 13 한 일 : 답글 삭제 보완(완료), 답글 작성(완료), 답글 수정(완료)
+// 22 01 14 할 일 : 국가 평점 평균 내서 보여주기 / css
 
 // jsp페이지를 모바일 css 먹일 생각하면서 만들어야함
 
 String countryName = "미국";
 // countryName = request.getParameter("country");
 
-String userName = "Guest";
+String id = "Guest";
 if(session.getAttribute("user") != null) {
-	userName = String.valueOf(session.getAttribute("user"));
+	id = String.valueOf(session.getAttribute("user"));
 }
 
 CountryDAO cDao = CountryDAO.getInstance();
 CountryDTO country = cDao.getCountry(countryName);
+country.setScore(cDao.setCountryScore(countryName));
 String flag = country.getFlag();
 %>
 <title>정보</title>
@@ -154,7 +154,7 @@ String flag = country.getFlag();
         			<tr>
         				<td>
         					<%
-        						if(userName.equals("Guest")) {
+        						if(id.equals("Guest")) {
         							%>
         								<input name="pw" type="password" placeholder="비밀번호" required>
         							<%
@@ -165,7 +165,7 @@ String flag = country.getFlag();
         			</tr>
         		</table>
         		<input type="hidden" name="countryName" value=<%=countryName %>>
-        		<input type="hidden" name="userName" value=<%=userName %>>
+        		<input type="hidden" name="id" value=<%=id %>>
         		<input type="hidden" name="command" value="writeReview">
         	</form>
         </div>
@@ -190,20 +190,20 @@ String flag = country.getFlag();
             			<tr><td>
             				<table>
             					<tr><td>리뷰 국가 : <%=temp.getCountryName() %></td>
-            					<td>유저 이름 : <%=temp.getUserName() %></td>
+            					<td>유저 이름 : <%=temp.getId() %></td>
             					<td>평가 점수 : <%=temp.getScore() %> 점</td></tr>
             					<tr><td colspan="3">유저 리뷰 : <%=temp.getContent()%></td></tr>
             					<tr><td colspan="2">리뷰 날짜 : <%=temp.getDate() %></td>
             					<td>
             					<button onclick="location.href='service?command=writeReReview&code=<%=temp.getCode()%>'">답글</button>
             					<%
-            					if(temp.getUserName().equals("Guest") && temp.getUserName().equals(userName)) {
+            					if(temp.getId().equals("Guest") && temp.getId().equals(id)) {
             						%>
                 					<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
                 					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
                 					<%
             					}
-            					else if(temp.getUserName().equals(userName)) {
+            					else if(temp.getId().equals(id)) {
             						%>
             						<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
                 					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
@@ -221,18 +221,18 @@ String flag = country.getFlag();
             						ArrayList<ReReviewDTO> rrviews = rrDao.getReReviews(temp.getCode());
             						for(ReReviewDTO rrtemp : rrviews) {
 	            					%>
-	            					<tr><td><span>&#9;</span>유저 이름 : <%=rrtemp.getUserName() %></td></tr>
+	            					<tr><td><span>&#9;</span>유저 이름 : <%=rrtemp.getId() %></td></tr>
             						<tr><td><span>&#9;</span>유저 답글 : <%=rrtemp.getContent()%></td></tr>
             						<tr><td><span>&#9;</span>답글 날짜 : <%=rrtemp.getDate() %></td></tr>
-            						<tr><td><button onclick="">답글</button>
+            						<tr><td>
             						<%
-            						if(rrtemp.getUserName().equals("Guest") && rrtemp.getUserName().equals(userName)) {
+            						if(rrtemp.getId().equals("Guest") && rrtemp.getId().equals(id)) {
             							%>
                 						<button onclick="location.href='service?command=modifyReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">수정</button>
                 						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">삭제</button>
                 						<%
             						}
-            						else if(rrtemp.getUserName().equals(userName)) {
+            						else if(rrtemp.getId().equals(id)) {
             							%>
             							<button onclick="location.href='service?command=modifyReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">수정</button>
                 						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">삭제</button>

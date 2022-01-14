@@ -40,17 +40,17 @@ public class ReReviewDAO {
 				ReReviewDTO rrview = null;
 				
 				int code = rs.getInt(1);
-				String userName = rs.getString(2);
+				String id = rs.getString(2);
 				String content = rs.getString(3);
 				Timestamp date = rs.getTimestamp(4);
 				String pw = "";
 				int attachCodeTemp = rs.getInt(6);
-				if(userName.equals("Guest")) {
+				if(id.equals("Guest")) {
 					pw = rs.getString(5);
 					rrview = new ReReviewDTO(code, content, date, pw, attachCodeTemp);
 				}
 				else {
-					rrview = new ReReviewDTO(code, userName, content, date, attachCodeTemp);
+					rrview = new ReReviewDTO(code, id, content, date, attachCodeTemp);
 				}
 				
 				reReviews.add(rrview);
@@ -77,17 +77,17 @@ public class ReReviewDAO {
 				ReReviewDTO rrview = null;
 				
 				int rrviewCode = rs.getInt(1);
-				String userName = rs.getString(2);
+				String id = rs.getString(2);
 				String content = rs.getString(3);
 				Timestamp date = rs.getTimestamp(4);
 				String pw = "";
 				int attachCodeTemp = rs.getInt(6);
-				if(userName.equals("Guest")) {
+				if(id.equals("Guest")) {
 					pw = rs.getString(5);
 					rrview = new ReReviewDTO(rrviewCode, content, date, pw, attachCodeTemp);
 				}
 				else {
-					rrview = new ReReviewDTO(rrviewCode, userName, content, date, attachCodeTemp);
+					rrview = new ReReviewDTO(rrviewCode, id, content, date, attachCodeTemp);
 				}
 				
 				return rrview;
@@ -141,17 +141,17 @@ public class ReReviewDAO {
 					ReReviewDTO rrview = null;
 					
 					int code = rs.getInt(1);
-					String userName = rs.getString(2);
+					String id = rs.getString(2);
 					String content = rs.getString(3);
 					Timestamp date = rs.getTimestamp(4);
 					String pw = "";
 					int attachCodeTemp = rs.getInt(6);
-					if(userName.equals("Guest")) {
+					if(id.equals("Guest")) {
 						pw = rs.getString(5);
 						rrview = new ReReviewDTO(code, content, date, pw, attachCodeTemp);
 					}
 					else {
-						rrview = new ReReviewDTO(code, userName, content, date, attachCodeTemp);
+						rrview = new ReReviewDTO(code, id, content, date, attachCodeTemp);
 					}
 					
 					reReviews.add(rrview);
@@ -180,7 +180,7 @@ public class ReReviewDAO {
 		try {
 			conn = DBManager.getConnection();
 			
-			if(rrview.getUserName().equals("Guest")) {
+			if(rrview.getId().equals("Guest")) {
 				pstmt = conn.prepareStatement("insert reReview(content, pw, attachCode) values(?,?,?)");
 				
 				pstmt.setString(1, rrview.getContent());
@@ -190,9 +190,9 @@ public class ReReviewDAO {
 				pstmt.executeUpdate();
 			}
 			else {
-				pstmt = conn.prepareStatement("insert reReview(userName, content, attachCode) values(?,?,?)");
+				pstmt = conn.prepareStatement("insert reReview(id, content, attachCode) values(?,?,?)");
 				
-				pstmt.setString(1, rrview.getUserName());
+				pstmt.setString(1, rrview.getId());
 				pstmt.setString(2, rrview.getContent());
 				pstmt.setInt(3, rrview.getAttachCode());
 				
@@ -214,10 +214,8 @@ public class ReReviewDAO {
 		
 		try {
 			conn = DBManager.getConnection();
-			System.out.println(rrview.getUserName());
-			System.out.println(rrview.getPw());
 			
-			if(rrview.getUserName().equals("Guest")) {
+			if(rrview.getId().equals("Guest")) {
 				pstmt = conn.prepareStatement("update reReview set content=?, pw=? where code=?");
 				pstmt.setString(1, rrview.getContent());
 				pstmt.setString(2, rrview.getPw());

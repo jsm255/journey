@@ -41,18 +41,18 @@ public class ReviewDAO {
 				
 				int code = rs.getInt(1);
 				String getCountryName = rs.getString(2);
-				String userName = rs.getString(3);
+				String id = rs.getString(3);
 				String content = rs.getString(4);
 				int score = rs.getInt(5);
 				Timestamp date = rs.getTimestamp(6);
 				String pw = "";
 				int attachCnt = rs.getInt(8);
-				if(userName.equals("Guest")) {		// 비 회원 용
+				if(id.equals("Guest")) {		// 비 회원 용
 					pw = rs.getString(7);
 					review = new ReviewDTO(code, getCountryName, content, score, date, pw, attachCnt);
 				}
 				else {		// 회원 용
-					review = new ReviewDTO(code, getCountryName, userName, content, score, date, attachCnt);
+					review = new ReviewDTO(code, getCountryName, id, content, score, date, attachCnt);
 				}
 				
 				reviews.add(review);
@@ -68,7 +68,7 @@ public class ReviewDAO {
 		try {
 			conn = DBManager.getConnection();
 			
-			if(review.getUserName().equals("Guest")) {
+			if(review.getId().equals("Guest")) {
 				pstmt = conn.prepareStatement("insert review(countryName, content, score, pw) values(?, ?, ?, ?)");
 				pstmt.setString(1, review.getCountryName());
 				pstmt.setString(2, review.getContent());
@@ -78,16 +78,16 @@ public class ReviewDAO {
 				pstmt.executeUpdate();
 			}
 			else {
-				pstmt = conn.prepareStatement("insert review(countryName, userName, content, score) values(?, ?, ?, ?)");
+				pstmt = conn.prepareStatement("insert review(countryName, id, content, score) values(?, ?, ?, ?)");
 				pstmt.setString(1, review.getCountryName());
-				pstmt.setString(2, review.getUserName());
+				pstmt.setString(2, review.getId());
 				pstmt.setString(3, review.getContent());
 				pstmt.setInt(3, review.getScore());
 				
 				pstmt.executeUpdate();
 			}
 			
-			System.out.println("처리 완료!");
+			CountryDAO cDao = CountryDAO.getInstance();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,18 +110,18 @@ public class ReviewDAO {
 				
 				int reviewCode = rs.getInt(1);
 				String getCountryName = rs.getString(2);
-				String userName = rs.getString(3);
+				String id = rs.getString(3);
 				String content = rs.getString(4);
 				int score = rs.getInt(5);
 				Timestamp date = rs.getTimestamp(6);
 				String pw = "";
 				int attachCnt = rs.getInt(8);
-				if(userName.equals("Guest")) {		// 비 회원 용
+				if(id.equals("Guest")) {		// 비 회원 용
 					pw = rs.getString(7);
 					review = new ReviewDTO(reviewCode, getCountryName, content, score, date, pw, attachCnt);
 				}
 				else {		// 회원 용
-					review = new ReviewDTO(reviewCode, getCountryName, userName, content, score, date, attachCnt);
+					review = new ReviewDTO(reviewCode, getCountryName, id, content, score, date, attachCnt);
 				}
 				
 				return review;
@@ -137,7 +137,7 @@ public class ReviewDAO {
 		try {
 			conn = DBManager.getConnection();
 			
-			if(review.getUserName().equals("Guest")) {
+			if(review.getId().equals("Guest")) {
 				pstmt = conn.prepareStatement("update review set content=?, score=?, pw=? where code=?");
 				pstmt.setString(1, review.getContent());
 				pstmt.setInt(2, review.getScore());

@@ -33,14 +33,14 @@ public class ModifyReReviewAction implements Action{
 		}
 		else {	// 했으면
 			String content = request.getParameter("content");
-			String userName = request.getParameter("userName");
+			String id = request.getParameter("id");
 			
-			if(userName.equals("Guest")) {
+			if(id.equals("Guest")) {
 				String beforePw = request.getParameter("beforePw");
 				String afterPw = beforePw;
 				if(request.getParameter("afterPw").compareTo("") != 0) afterPw = request.getParameter("afterPw");
 				if(rrview.getPw().equals(beforePw)) {
-					rrDao.modifyReReview(new ReReviewDTO(rrCode, userName, content, afterPw));
+					rrDao.modifyReReview(new ReReviewDTO(rrCode, id, content, afterPw));
 					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
 					return;
 				}
@@ -54,7 +54,7 @@ public class ModifyReReviewAction implements Action{
 				}
 			}
 			else {
-				rrDao.modifyReReview(new ReReviewDTO(rrCode, userName, content));
+				rrDao.modifyReReview(new ReReviewDTO(rrCode, id, content));
 				request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
 				return;
 			}

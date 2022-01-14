@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class ReviewDTO {
 	private int code;
 	private String countryName;
-	private String userName;
+	private String id;
 	private String content;
 	private int score;
 	private Timestamp date;
@@ -13,10 +13,10 @@ public class ReviewDTO {
 	private int attachCnt;
 	
 	// 회원이 쓴 걸 가져올 때
-	public ReviewDTO(int code, String countryName, String userName, String content, int score, Timestamp date, int attachCnt) {
+	public ReviewDTO(int code, String countryName, String id, String content, int score, Timestamp date, int attachCnt) {
 		this.code = code;
 		this.countryName = countryName;
-		this.userName = userName;
+		this.id = id;
 		this.content = content;
 		this.score = score;
 		this.date = date;
@@ -27,7 +27,7 @@ public class ReviewDTO {
 	public ReviewDTO(int code, String countryName, String content, int score, Timestamp date, String pw, int attachCnt) {
 		this.code = code;
 		this.countryName = countryName;
-		this.userName = "Guest";
+		this.id = "Guest";
 		this.content = content;
 		this.score = score;
 		this.date = date;
@@ -36,9 +36,9 @@ public class ReviewDTO {
 	}
 	
 	// 회원이 작성한 리뷰
-	public ReviewDTO(String countryName, String userName, String content, int score) {
+	public ReviewDTO(String countryName, String id, String content, int score) {
 		this.countryName = countryName;
-		this.userName = userName;
+		this.id = id;
 		this.content = content;
 		this.score = score;
 	}
@@ -46,17 +46,17 @@ public class ReviewDTO {
 	// 게스트가 작성한 리뷰
 	public ReviewDTO(String countryName, String content, int score, String pw) {
 		this.countryName = countryName;
-		this.userName = "Guest";
+		this.id = "Guest";
 		this.content = content;
 		this.score = score;
 		this.pw = pw;
 	}
 	
 	// 회원이 작성한 리뷰 수정시에 사용
-	public ReviewDTO(int code, String countryName, String userName, String content, int score) {
+	public ReviewDTO(int code, String countryName, String id, String content, int score) {
 		this.code = code;
 		this.countryName = countryName;
-		this.userName = userName;
+		this.id = id;
 		this.content = content;
 		this.score = score;
 	}
@@ -65,7 +65,7 @@ public class ReviewDTO {
 	public ReviewDTO(int code, String countryName, String content, int score, String pw) {
 		this.code = code;
 		this.countryName = countryName;
-		this.userName = "Guest";
+		this.id = "Guest";
 		this.content = content;
 		this.score = score;
 		this.pw = pw;
@@ -83,8 +83,8 @@ public class ReviewDTO {
 		this.countryName = countryName;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getId() {
+		return id;
 	}
 
 	public String getContent() {

@@ -31,7 +31,7 @@ if(delete.equals("review")) {
 	<table>
 		<tr><th> 지울 리뷰 </th></tr>
     	<tr><td>리뷰 국가 : <%=review.getCountryName() %></td>
-    	<td>유저 이름 : <%=review.getUserName() %></td>
+    	<td>유저 이름 : <%=review.getId() %></td>
     	<td>평가 점수 : <%=review.getScore() %> 점</td></tr>
    		<tr><td colspan="3">유저 리뷰 : <%=review.getContent()%></td></tr>
     	<tr><td colspan="2">리뷰 날짜 : <%=review.getDate() %></td></tr>
@@ -52,7 +52,7 @@ else if(delete.equals("rrview")) {
 	<div id="rrview">
 	<table>
 		<tr><th> 지울 답글 </th></tr>
-    	<tr><td>유저 이름 : <%=rrview.getUserName() %></td>
+    	<tr><td>유저 이름 : <%=rrview.getId() %></td>
    		<tr><td colspan="3">유저 리뷰 : <%=rrview.getContent()%></td></tr>
     	<tr><td colspan="2">리뷰 날짜 : <%=rrview.getDate() %></td></tr>
     </table>

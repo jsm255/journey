@@ -32,15 +32,15 @@ if(request.getParameter("countryName") != null)
 else if(session.getAttribute("countryName") != null)
 	countryName = String.valueOf(session.getAttribute("countryName"));
 
-String userName = "Guest";
+String id = "Guest";
 if(session.getAttribute("user") != null) 
-	userName = String.valueOf(session.getAttribute("user"));
+	id = String.valueOf(session.getAttribute("user"));
 %>
 
 <div id="before">
 	<table>
 		<tr><th> 수정 전 답글 </th></tr>
-    	<tr><td>유저 이름 : <%=rrview.getUserName() %></td></tr>
+    	<tr><td>유저 이름 : <%=rrview.getId() %></td></tr>
    		<tr><td colspan="3">유저 리뷰 : <%=rrview.getContent()%></td></tr>
     	<tr><td colspan="2">리뷰 날짜 : <%=rrview.getDate() %></td></tr>
     </table>
@@ -58,7 +58,7 @@ if(session.getAttribute("user") != null)
         			<tr>
         				<td>
         					<%
-        						if(userName.equals("Guest")) {
+        						if(id.equals("Guest")) {
         							%>
         								<input name="beforePw" type="password" placeholder="이전 비밀번호" required></td>
         								<td><input name="afterPw" type="password" placeholder="새 비밀번호"></td>
@@ -72,7 +72,7 @@ if(session.getAttribute("user") != null)
         			</tr>
         		</table>
         		<input type="hidden" name="countryName" value=<%=countryName %>>
-        		<input type="hidden" name="userName" value=<%=userName %>>
+        		<input type="hidden" name="id" value=<%=id %>>
         		<input type="hidden" name="code" value=<%=rrview.getCode() %>>
         		<input type="hidden" name="additional" value="confirmed">
         		<input type="hidden" name="command" value="modifyReReview">

@@ -13,17 +13,17 @@ public class WriteReviewAction implements Action{
 public void execute (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String content = request.getParameter("content");
-		String userName = request.getParameter("userName");
+		String id = request.getParameter("id");
 		String countryName = request.getParameter("countryName");
 		int score = Integer.parseInt(request.getParameter("score"));
 		String pw = "";
 		
 		ReviewDTO review = null;
-		if(userName.equals("Guest")) {
+		if(id.equals("Guest")) {
 			pw = request.getParameter("pw");
 			review = new ReviewDTO(countryName, content, score, pw);
 		}
-		else review = new ReviewDTO(countryName, userName, content, score);
+		else review = new ReviewDTO(countryName, id, content, score);
 		
 		
 		ReviewDAO rDao = ReviewDAO.getInstance();

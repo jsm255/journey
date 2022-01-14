@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import models.CountryDTO;
+import models.ReviewDTO;
 import utils.DBManager;
 
 public class CountryDAO {
@@ -56,6 +57,37 @@ public class CountryDAO {
 		}
 		
 		return null;
+	}
+	
+	
+	public String setCountryScore(String countryName) {
+		
+		Double average = 0.0;
+		String score = "0.0";
+		
+		try {
+			ReviewDAO rDao = ReviewDAO.getInstance();
+			ArrayList<ReviewDTO> reviews = rDao.getReviews(countryName);
+			
+			if(reviews.size() >= 1) {
+				for(ReviewDTO temp : reviews) 
+					average += temp.getScore();
+				
+				average /= reviews.size();
+				score = String.format("%2.2f", average);
+			}
+			
+			pstmt = conn.prepareStatement("update countries set score=? where countryName=?");
+			pstmt.setString(1, score);
+			pstmt.setString(2, countryName);
+			
+			return score;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return score;
 	}
 	
 }

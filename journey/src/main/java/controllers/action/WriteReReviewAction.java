@@ -20,9 +20,9 @@ public class WriteReReviewAction implements Action{
 		
 		int reviewCode = Integer.parseInt(request.getParameter("code"));
 		
-		String userName = "Guest";
-		if(request.getParameter("userName") != null)
-			userName = request.getParameter("userName");
+		String id = "Guest";
+		if(request.getParameter("id") != null)
+			id = request.getParameter("id");
 		
 		HttpSession session = request.getSession();
 		if(request.getParameter("additional") == null) {	// 답글을 작성하러 간다
@@ -44,7 +44,7 @@ public class WriteReReviewAction implements Action{
 			ReReviewDAO rrDao = ReReviewDAO.getInstance();
 			
 			ReReviewDTO rrview = null;
-			if(userName.equals("Guest")) {
+			if(id.equals("Guest")) {
 				String content = request.getParameter("content");
 				int attachCode = Integer.parseInt(request.getParameter("code"));
 				String pw = request.getParameter("pw");
@@ -55,7 +55,7 @@ public class WriteReReviewAction implements Action{
 				String content = request.getParameter("content");
 				int attachCode = Integer.parseInt(request.getParameter("code"));
 				
-				rrview = new ReReviewDTO(userName, content, attachCode);
+				rrview = new ReReviewDTO(id, content, attachCode);
 			}
 			
 			rrDao.writeReReview(rrview);

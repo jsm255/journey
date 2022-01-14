@@ -21,11 +21,11 @@ public class ModifyReviewSubmitAction implements Action{
 		int code = Integer.parseInt(request.getParameter("code"));
 		ReviewDTO before = rDao.getReview(code);
 		
-		String userName = request.getParameter("userName");
+		String id = request.getParameter("id");
 		int score = Integer.parseInt(request.getParameter("score"));
 		String content = request.getParameter("content");
 		String countryName = request.getParameter("countryName");
-		if(userName.equals("Guest")) {
+		if(id.equals("Guest")) {
 			String beforePw = request.getParameter("beforePw");
 			String afterPw = request.getParameter("afterPw");
 			
@@ -46,7 +46,7 @@ public class ModifyReviewSubmitAction implements Action{
 			}
 		}
 		else {
-			ReviewDTO review = new ReviewDTO(code, countryName, userName, content, score);
+			ReviewDTO review = new ReviewDTO(code, countryName, id, content, score);
 			rDao.modifyReview(review);
 		}
 		

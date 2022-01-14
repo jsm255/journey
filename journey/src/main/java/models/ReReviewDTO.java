@@ -4,15 +4,15 @@ import java.sql.Timestamp;
 
 public class ReReviewDTO {
 	private int code;
-	private String userName;
+	private String id;
 	private String content;
 	private Timestamp date;
 	private String pw;
 	private int attachCode;
 	
-	public ReReviewDTO(int code, String userName, String content, Timestamp date, int attachCode) {
+	public ReReviewDTO(int code, String id, String content, Timestamp date, int attachCode) {
 		this.code = code;
-		this.userName = userName;
+		this.id = id;
 		this.content = content;
 		this.date = date;
 		this.attachCode = attachCode;
@@ -20,35 +20,35 @@ public class ReReviewDTO {
 	
 	public ReReviewDTO(int code, String content, Timestamp date, String pw, int attachCode) {
 		this.code = code;
-		this.userName = "Guest";
+		this.id = "Guest";
 		this.content = content;
 		this.date = date;
 		this.pw = pw;
 		this.attachCode = attachCode;
 	}
 	
-	public ReReviewDTO(String userName, String content, int attachCode) {
-		this.userName = userName;
+	public ReReviewDTO(String id, String content, int attachCode) {
+		this.id = id;
 		this.content = content;
 		this.attachCode = attachCode;
 	}
 	
 	public ReReviewDTO(String content, int attachCode, String pw) {
-		this.userName = "Guest";
+		this.id = "Guest";
 		this.content = content;
 		this.pw = pw;
 		this.attachCode = attachCode;
 	}
 	
-	public ReReviewDTO(int code, String userName, String content) {
+	public ReReviewDTO(int code, String id, String content) {
 		this.code = code;
-		this.userName = userName;
+		this.id = id;
 		this.content = content;
 	}
 	
-	public ReReviewDTO(int code, String userName, String content, String pw) {
+	public ReReviewDTO(int code, String id, String content, String pw) {
 		this.code = code;
-		this.userName = "Guest";
+		this.id = "Guest";
 		this.content = content;
 		this.pw = pw;
 	}
@@ -61,8 +61,8 @@ public class ReReviewDTO {
 		this.code = code;
 	}
 	
-	public String getUserName() {
-		return userName;
+	public String getId() {
+		return id;
 	}
 
 	public String getContent() {
