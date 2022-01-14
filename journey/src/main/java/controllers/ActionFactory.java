@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.action.Action;
+import controllers.action.CountryViewAction;
 import controllers.action.DeleteReReviewAction;
 import controllers.action.DeleteReviewAction;
 import controllers.action.DeleteUserAction;
@@ -60,8 +61,8 @@ public class ActionFactory {
 		
 		else if(command.equals("modifyReReview"))
 			return new ModifyReReviewAction();
-		
-		
+		else if(command.equals("viewCountry"))
+			return new CountryViewAction();
 		return null;
 	}
 	

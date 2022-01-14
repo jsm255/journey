@@ -60,7 +60,7 @@
             <option value="인도">인도</option>
         </select>
         <input type="button"  onclick="location.href='viewCountry.jsp'" >
-       	<input type="hidden" name="command">
+       	<input type="hidden" name="command" value="viewCountry">
         </form>
     </main>
     <footer>

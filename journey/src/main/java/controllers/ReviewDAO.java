@@ -215,4 +215,29 @@ public class ReviewDAO {
 		return false;
 	}
 	
+	public ArrayList<ReviewDTO> getMyBoardList(String reviewId){
+		reviews = new ArrayList<ReviewDTO>();
+		try {
+			conn = DBManager.getConnection();
+			String sql = "select * from review where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reviewId);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int code = rs.getInt(1);
+				String countryName = rs.getString(2);
+				String id = rs.getString(3);
+				String content = rs.getString(4);
+				Timestamp date = rs.getTimestamp(5);
+				
+				ReviewDTO review = new ReviewDTO(code,countryName,id,content, date);
+				reviews.add(review);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reviews;
+	}
+	
 }

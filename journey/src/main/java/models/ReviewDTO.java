@@ -70,6 +70,15 @@ public class ReviewDTO {
 		this.score = score;
 		this.pw = pw;
 	}
+	
+	// 회원이 작성한 리뷰보기
+	public ReviewDTO(int code, String countryName, String id,String content, Timestamp date) {
+		this.code = code;
+		this.countryName = countryName;
+		this.id = id;
+		this.content = content;
+		this.date = date;
+	}
 
 	public int getCode() {
 		return code;

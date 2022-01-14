@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="models.ReviewDTO"%>
+<%@page import="controllers.ReviewDAO"%>
 <%@page import="controllers.UserDAO"%>
 <%@page import="models.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,10 +14,12 @@
 </head>
 <body>
 <%
-	String id = (String) session.getAttribute("log");
-	UserDTO user = UserDAO.getInstance().getId(id);
+	String reviewId = (String) session.getAttribute("log");
+	UserDTO user = UserDAO.getInstance().getId(reviewId);
 	
 	
+	ReviewDAO dao = ReviewDAO.getInstance();
+	ArrayList<ReviewDTO> review = dao.getMyBoardList(reviewId);
 
 %>
  <div>
@@ -71,17 +76,23 @@
                     <table border="1px solid">
                      <tr>
                         <td>No</td>
-                        <td>Title</td>
+                        <td>Country</td>
                         <td>Id</td>
                         <td>Date</td>
-                    
                     </tr>
+                  <%
+                  for(int i=0; i<review.size(); i++){
+                	  
+                  
+                  
+                  %>
                     <tr>
-                        <td>no</td>
-                        <td>Title</td>
-                        <td>Id</td>
-                        <td>Date</td>
+                        <td><%=review.get(i).getCode()%></td>
+                        <td><%=review.get(i).getCountryName() %></td>
+                        <td><%=review.get(i).getId() %></td>
+                        <td><%=review.get(i).getDate()%></td>
                     </tr>
+                  <%} %>
                 </table>
                 </article>
             </div>
