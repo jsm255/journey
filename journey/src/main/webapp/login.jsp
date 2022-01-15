@@ -21,7 +21,7 @@ if(request.getParameter("error") != null) {
 %>
     <section class = "login-form">
         <h1>로그인</h1>
-        <form action="service">
+        <form action="service" method = "post">
         <input type="hidden" name="command" value="login">
 
             <div class="int-area">
