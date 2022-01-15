@@ -11,6 +11,9 @@ public class CountryViewAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String id = request.getParameter("id");
+		String countryName = request.getParameter("countryName");
+		
 		
 		request.getRequestDispatcher("viewCountry").forward(request, response);
 	}
