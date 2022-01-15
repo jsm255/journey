@@ -82,7 +82,7 @@ public class ReviewDAO {
 				pstmt.setString(1, review.getCountryName());
 				pstmt.setString(2, review.getId());
 				pstmt.setString(3, review.getContent());
-				pstmt.setInt(3, review.getScore());
+				pstmt.setInt(4, review.getScore());
 				
 				pstmt.executeUpdate();
 			}

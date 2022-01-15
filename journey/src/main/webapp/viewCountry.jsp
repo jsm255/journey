@@ -86,13 +86,16 @@
 
 // jsp페이지를 모바일 css 먹일 생각하면서 만들어야함
 
+// 로그인 method post로 바꾸기
+
+
 String countryName = "미국";
 if(request.getParameter("countryName") != null)
 	countryName = request.getParameter("countryName");
 
 String id = "Guest";
-if(session.getAttribute("user") != null) {
-	id = String.valueOf(session.getAttribute("user"));
+if(session.getAttribute("log") != null) {
+	id = String.valueOf(session.getAttribute("log"));
 }
 
 CountryDAO cDao = CountryDAO.getInstance();
