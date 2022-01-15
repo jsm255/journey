@@ -13,22 +13,28 @@ aside{
     height: 60vh;
    
 }
+#mypage{
+    margin-top: 3%;
+    font-size: 20pt;
+    padding-bottom: 7px;
+    border-bottom: 1px solid  gray; 
+    
+}
 .mypage{
     text-align: center;
     border: 1px solid black;
-}
-.mypage p{
-    font-size: 15pt;
+    border-radius: 10px;
 }
 
-.mypage ul{
+.myList{
     list-style: none;
-
+    
 }
 
 .mypage ul li{
-    margin:20px 0 20px 0;
-    font-size: 15pt;
+    margin: 30% 0 30% 0;
+    font-size: 18pt;
+    color: black;
 }
 
 article{
@@ -37,11 +43,21 @@ article{
     height: 60vh;
     font-size: 15pt;
 }
-
-input[type="button"]{
-    font-size: 15pt;
-    text-align: center;
-    width: 6vw;
-    margin-left: 73%;
+.review{
+    border: 1px solid black;
+    border-radius: 10px;
 }
+
+.review p{
+    font-size:25pt;
+}
+.review table{
+    border-collapse: collapse;
+    text-align: center;
+    margin: 4% 0 0 23%;
+    width: 60%;
+    font-family: sans-serif;
+
+}
+
 

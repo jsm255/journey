@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/mypage.css" type="text/css">
 <link rel="stylesheet" href="css/all.css" type="text/css">
 <title>Mypage</title>
@@ -27,7 +28,7 @@
 		<main>
 			<aside class="mypage">
 				<p id="mypage">마이페이지</p>
-				<ul>
+				<ul class="myList">
 					<li><a href="mypage.jsp">회원정보 수정</a></li>
 					<li><a href="myboardList.jsp">내가 작성한 리뷰</a></li>
 					<li><a href="deleteUser.jsp">회원탈퇴</a></li>
@@ -39,7 +40,7 @@
 				<article class="info">
 					<p>＊회원정보 수정</p>
 					<form action="service" method="post">
-						<table border="1px solid black">
+						<table>
 							<tr>
 								<th>이름</th>
 								<td><input type="text" name="name"
@@ -53,7 +54,7 @@
 							<tr>
 								<th>전화번호</th>
 								<td><input type="text" name="tel"
-									pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" value="<%=user.getTel()%>"></td>
+									pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-0000-0000" value="<%=user.getTel()%>"></td>
 							</tr>
 							<tr>
 								<th>비밀번호 변경</th>
@@ -62,7 +63,7 @@
 							</tr>
 						</table>
 						<div>
-							<input type="submit" value="수정">
+							<input type="submit" id="changeBtn" value="수정">
 						</div>
 						<input type="hidden" name="command" value="mypage">
 					</form>
@@ -70,6 +71,7 @@
 			</div>
 		</main>
 		<c:import url="footer.jsp" />
+		<script type="text/javascript" src="mypage.js"></script>
 	</div>
 </body>
 </html>

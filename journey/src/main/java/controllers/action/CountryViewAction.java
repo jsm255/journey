@@ -12,7 +12,7 @@ public class CountryViewAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		request.getRequestDispatcher("viewCountry.jsp").forward(request, response);
+		request.getRequestDispatcher("viewCountry").forward(request, response);
 	}
 
 }

@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/deleteUser.css" type="text/css">
 <link rel="stylesheet" href="css/all.css" type="text/css">
 <title>Insert title here</title>
@@ -20,7 +21,7 @@
 
 	String id = (String) session.getAttribute("log");
 	UserDTO user = UserDAO.getInstance().getId(id);
-	System.out.println("id:"+id);
+	//System.out.println("id:"+id);
 
 %>
 	<div>
@@ -28,7 +29,7 @@
 		<main>
 			<aside class="mypage">
 				<p id="mypage">마이페이지</p>
-				<ul>
+				<ul class="myList">
 					<li><a href="mypage.jsp">회원정보 수정</a></li>
 					<li><a href="myboardList.jsp">내가 작성한 리뷰</a></li>
 					<li><a href="deleteUser.jsp">회원탈퇴</a></li>
@@ -37,17 +38,17 @@
 
 			</aside>
 			<div>
-				<article class="info">
+				<article class="delete">
 					<p>＊회원탈퇴</p>
 					<form action="service" method="post">
 
-						<span>Id:</span><input type="text" name="id"
-							value="<%=user.getId()%>" readonly><br>
-						<br> <span>Pw:</span><input type="text" name="pw"><br>
-						<br>
-						<div>
-							<input type="submit" value="회원탈퇴">
-						</div>
+					   <div id="info">
+                        아이디:&#9;<input type='text' name='id'id="id" value="<%=user.getId()%>" readonly><br><br>
+                        비밀번호:&#9;<input type='password' name='pw' id="pw" required>
+                        <input type="hidden" id="pwCheck" value="<%=user.getPw()%>" >
+                       </div>
+                        <div><input type="button" onclick="deleteCheck(form)" id="submitBtn" value="회원탈퇴"></div> 
+                        
 						<input type="hidden" name="command" value="deleteUser">
 					</form>
 
@@ -55,6 +56,7 @@
 			</div>
 		</main>
 		<c:import url="footer.jsp" />
+		<script type="text/javascript" src="mypage.js"></script>
 	</div>
 </body>
 </html>

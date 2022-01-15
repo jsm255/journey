@@ -22,14 +22,14 @@
 	
 	ReviewDAO dao = ReviewDAO.getInstance();
 	ArrayList<ReviewDTO> review = dao.getMyBoardList(reviewId);
-	System.out.println("reviewId: "+reviewId);
+//	System.out.println("reviewId: "+reviewId);
 %>
 	<div>
 		<c:import url="header.jsp" />
 		<main>
 			<aside class="mypage">
 				<p id="mypage">마이페이지</p>
-				<ul>
+				<ul class="myList">
 					<li><a href="mypage.jsp">회원정보 수정</a></li>
 					<li><a href="myboardList.jsp">내가 작성한 리뷰</a></li>
 					<li><a href="deleteUser.jsp">회원탈퇴</a></li>

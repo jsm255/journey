@@ -26,8 +26,9 @@ public class DeleteUserAction implements Action{
 	
 		
 		
-			if(pw.equals(user.getPw()))
-				dao.deleteUser(user);
+			if(pw.equals(user.getPw())) {
+				dao.deleteUser(user);				
+			}
 		
 		
 		HttpSession session = request.getSession();

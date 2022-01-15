@@ -13,22 +13,28 @@ aside{
     height: 60vh;
    
 }
+#mypage{
+    margin-top: 3%;
+    font-size: 20pt;
+    padding-bottom: 7px;
+    border-bottom: 1px solid  gray; 
+    
+}
 .mypage{
     text-align: center;
     border: 1px solid black;
-}
-.mypage p{
-    font-size: 15pt;
+    border-radius: 10px;
 }
 
-.mypage ul{
+.myList{
     list-style: none;
-
+    
 }
 
 .mypage ul li{
-    margin:20px 0 20px 0;
-    font-size: 15pt;
+    margin: 30% 0 30% 0;
+    font-size: 18pt;
+    color: black;
 }
 
 article{
@@ -36,23 +42,41 @@ article{
     float: right;
     height: 60vh;
 }
-.info{
+.delete{
     border: 1px solid black;
+    border-radius: 10px;
+}
+.delete p{
+    font-size: 25pt;
+}
+.delete span{
+    text-align: center;
+    font-size: 18pt;
+}
+
+#info{
+    text-align: center;
+    margin:7% 12% 0 0;
+    white-space: pre;
     font-size: 20pt;
 }
 
-form{
-    text-align: center;
-    white-space: pre-line;
-}
-
 input[type="text"]{
-    width:10vw;
-    height:2vh;
+    width:15vw;
+    height:3vh;
+    font-size: 18pt;
+}
+input[type="password"]{
+    width:15vw;
+    height:3vh;
+    font-size: 18pt;
 }
 input[type="button"]{
     font-size: 15pt;
     text-align: center;
-    width: 6vw;
-    
+    width: 7vw;
+    margin: 5% 0 0 45%;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
 }

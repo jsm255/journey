@@ -7,6 +7,7 @@ main{
     grid-area: main;
     height: 61.4vh;
     margin: 1%;
+   
 }
 
 aside{
@@ -15,55 +16,77 @@ aside{
     height: 60vh;
    
 }
+#mypage{
+    margin-top: 3%;
+    font-size: 20pt;
+    padding-bottom: 7px;
+    border-bottom: 1px solid  gray; 
+    
+}
+
 .mypage{
     text-align: center;
     border: 1px solid black;
-}
-.mypage p{
-    font-size: 15pt;
+    border-radius: 10px;
 }
 
-.mypage ul{
+.myList{
     list-style: none;
-
+    
 }
 
 .mypage ul li{
-    margin:20px 0 20px 0;
-    font-size: 15pt;
+    margin: 30% 0 30% 0;
+    font-size: 18pt;
+    color: black;
 }
 
 article{
     width: 75%;
     float: right;
     height: 60vh;
+    
 }
 .info p{
-    font-size: 20pt;
+    font-size: 25pt;
 }
 .info{
     border: 1px solid black;
-    
+    border-radius: 10px;
 }
 
 .info table{
+    align-items: center;
     text-align: center;
-    border-collapse: collapse;
-    margin: 1% 0 0 1%;
+    margin: 7% 0 0 25%;
     width: 60%;
-    
+    font-family: sans-serif;
+
+}
+.info table input{
+    width: 15vw;
+    height: 3vh;
+    background-color: transparent;
+    border: 0 solid black;
+    font-size: 18pt;
 }
 table th{
     width:20%;
     height: 5vh;
+    font-size: 18pt;
+    font-weight: normal;
 }
 table td{
     width:40%;
+    
 }
 
-input[type="button"]{
+input[type="submit"]{
     font-size: 15pt;
     text-align: center;
-    width: 6vw;
-    margin-left: 53%;
-}
+    width: 7vw;
+    margin: 5% 0 0 45%;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}}

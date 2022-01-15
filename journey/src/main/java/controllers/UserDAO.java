@@ -180,13 +180,14 @@ public class UserDAO {
 	
 	// delete user
 	public void deleteUser(UserDTO user) {
+		
 		try {
 			conn = DBManager.getConnection();
 			String sql = "delete from users where id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getId());
 			
-			pstmt.executeUpdate();
+		    pstmt.executeUpdate();
 			System.out.println("delete");
 		} catch (Exception e) {
 			e.printStackTrace();
