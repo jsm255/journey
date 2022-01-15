@@ -1,25 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    display: grid;
 
-    width: 100vw;
-    height: 100vh;
-
-    grid-template-columns: 100%;
-    grid-template-rows: 15% 15% 60% 10%;
-    grid-template-areas: 
-    "header"
-    "nav"
-    "main"
-    "footer"
-    ;
-    font-family:  'Jua', sans-serif;
-}
 
 /* 이 밑에만 변경사항 위에는 고정 */
 /* 메인  */
@@ -29,7 +10,7 @@ main{
     background-image: url(img/main.jpg);
     background-size: cover;
     text-align: center;
-    height: 60vh;
+    height: 64.9vh;
     font-size: 15pt;
     
 }

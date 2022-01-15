@@ -56,7 +56,7 @@
 						<tr>
 							<td><%=review.get(i).getCode()%></td>
 							<td><a
-								href="viewCountry.jsp?code=<%=review.get(i).getCode()%>"><%=review.get(i).getCountryName() %></a></td>
+								href="service?command=modifyReview&code=<%=review.get(i).getCode()%>"><%=review.get(i).getCountryName() %></a></td>
 							<td><%=review.get(i).getId() %></td>
 							<td><%=review.get(i).getContent() %></td>
 							<td><%=review.get(i).getDate()%></td>
