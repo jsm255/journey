@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Travel Community</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/main.css" type="text/css">
  <link rel="stylesheet" href="css/all.css" type="text/css">
@@ -25,7 +25,8 @@ if(request.getParameter("error") != null) {
 	}
 }
 %>
-<div class = "login-form">
+
+<div class = "login-form" >
     	
         <h1>로그인</h1>
         
@@ -50,6 +51,8 @@ if(request.getParameter("error") != null) {
         </form>
         </div> <!-- end login-inputbox div -->
         </div> <!-- end login-form div -->
+        <div class="footer-div" >
         <c:import url="footer.jsp"/>
+        </div>
 </body>
 </html>

@@ -63,6 +63,7 @@ a {
 
 /* nav 바 */
 nav{
+	display:block;
     grid-area: nav;
     height:10vh;
     background-color: rgba(248, 160, 45, 0.856);
