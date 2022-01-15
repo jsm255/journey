@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/main.css" type="text/css">
+ <link rel="stylesheet" href="css/all.css" type="text/css">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
 </head>
 <body>
+
+<c:import url="header.jsp"/>
 <%
 if(request.getParameter("error") != null) {
 	if(request.getParameter("error").equals("needLogin")){
@@ -20,28 +25,31 @@ if(request.getParameter("error") != null) {
 	}
 }
 %>
-    <section class = "login-form">
+<div class = "login-form">
+    	
         <h1>로그인</h1>
+        
+        <div class = "login-inputbox">
         <form action="service" method = "post">
+        
         <input type="hidden" name="command" value="login">
-
+        
             <div class="int-area">
-                <input type="text" name="id" id="id" autocomplete="off" required><label for="id">아이디</label>
+            <label class="join-label" for="joinId">아이디</label> <br>
+                <input type="text" name="id" id="id" autocomplete="off" required/>
             </div>
             <div class="int-area">
-                <input type="password" name="pw" id="pw" autocomplete="off" required><label for="pw">비밀번호</label>
+            <label class="join-label" for="joinId">비밀번호</label> <br>
+                <input type="password" name="pw" id="pw" autocomplete="off" required/> 
             </div>
+            
             <div class = "btn-area">
-                <input type="submit" value="로그인">
+                <input class="login-btn" type="submit" value="로그인">
             </div>
+
         </form>
-    </section>
-		${sessionScope.user.id} <br>
-		${sessionScope.user.pw}	<br>
-		${sessionScope.user.userName}<br>
-		${sessionScope.user.tel}<br>
-    <script>
-		
-    </script>
+        </div> <!-- end login-inputbox div -->
+        </div> <!-- end login-form div -->
+        <c:import url="footer.jsp"/>
 </body>
 </html>

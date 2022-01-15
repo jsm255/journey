@@ -9,32 +9,125 @@ body{
     background-size: cover;
 }
 
-.login-form{position : relative;z-index: 2;}
+.login-form{
+	position : flex;
+	justify-content:center;
+	align-items: center;
+	/* z-index: 2; */}
 
 .login-form h1{
-    font-size: 32px; color: #0000ff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    font-size: 60px; 
+    color: #000000;
     text-align: center;
+    margin: 0px 0px 80px 0px;
+    padding: 0px;
 }
 
-.int-area{width: 400px; position: relative;}
+.int-area{
+	width: 400px; 
+	display: block;
+	/* justify-content: center;
+	align-items: center; */
+	}
+	
 .int-area input{
-    width : 100%;
-    padding: 20px 10px 10px;
+	/* display: block; */
+    width : 300px;
+    padding: 20px 10px 10px 0px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #999;
-    font-size : 18px; color: #0000ff;
+    font-size : 18px; 
+    color: #0000ff;
     outline : none;
+    margin: 0px 0px 30px 50px;
+}
+
+.login-inputbox{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	/* margin-left: 400px; */
 }
 
 .int-area label{
-    position: absolute; left: 10px; top:15px;
-    font-size: 18px; color : #999;
-    transition : top .5s ease;
+	padding:0px;
+	margin: 0px 0px 0px 55px;
 }
 
-/*.int-area input: focus + label,
-.int-area input: valid + label {
-    top:0;
-    font-size : 13px color : ##166cea;
-}*/
+.inputbox{
+	display:flex;
+	justify-content: center;
+	align-items:center;
+}
+
+.inputbox div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-btn{
+	margin-top: 30px;
+	margin-left: 250px;
+	height: 70px;
+	width: 100px;
+	border: none;
+	border-radius: 11px;
+	background: rgba(248, 160, 45, 0.856);
+	font-size : 30px;
+	font-family:  'Jua', sans-serif;
+}
+
+.login-btn:hover{
+	cursor: pointer;
+	background: violet;
+}
+
+/* join.jsp */
+
+.join-h1{
+	margin-bottom: 35px;
+}
+.join-label{
+	width: 100px;
+	font-size: 30px;
+	padding: 0px;
+	margin: 0px 0px 0px 30px;
+}
+
+.join-area input{
+	border: none;
+	border-bottom: 1px solid gray;
+	width: 400px;
+	height: 40px;
+	margin: 0px 0px 20px 30px;
+}
+
+.form-div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.join-btn{
+	height: 70px;
+	width: 200px;
+	margin-left: 230px;
+	margin-top: 20px;
+	border: none;
+	border-radius: 11px;
+	background: rgba(248, 160, 45, 0.856);
+	font-size : 30px;
+	font-family:  'Jua', sans-serif;
+}
+
+.join-btn:hover{
+	cursor: pointer;
+	background: violet;
+}
+
