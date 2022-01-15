@@ -30,8 +30,8 @@ ReviewDTO review = (ReviewDTO)session.getAttribute("review");
 int code = Integer.parseInt(String.valueOf(session.getAttribute("code")));
 
 String id = "Guest";
-if(session.getAttribute("user") != null) 
-	id = String.valueOf(session.getAttribute("user"));
+if(session.getAttribute("log") != null) 
+	id = String.valueOf(session.getAttribute("log"));
 %>
 
 <div id="before">

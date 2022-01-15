@@ -33,8 +33,8 @@ else if(session.getAttribute("countryName") != null)
 	countryName = String.valueOf(session.getAttribute("countryName"));
 
 String id = "Guest";
-if(session.getAttribute("user") != null) 
-	id = String.valueOf(session.getAttribute("user"));
+if(session.getAttribute("log") != null) 
+	id = String.valueOf(session.getAttribute("log"));
 %>
 
 <div id="before">

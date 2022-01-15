@@ -229,7 +229,7 @@ public class ReviewDAO {
 				String countryName = rs.getString(2);
 				String id = rs.getString(3);
 				String content = rs.getString(4);
-				Timestamp date = rs.getTimestamp(5);
+				Timestamp date = rs.getTimestamp(6);
 				
 				ReviewDTO review = new ReviewDTO(code,countryName,id,content, date);
 				reviews.add(review);
