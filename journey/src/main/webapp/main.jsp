@@ -1,47 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/main.css" type="text/css">
+<link rel="stylesheet" href="css/all.css" type="text/css">
 <title>MAIN</title>
 </head>
 <body>
-    <header>
-        <div class="top">
-            <ul class="top-menu">
-                <%
-            	if(session.getAttribute("log") == null){
-            %>
-				<li class="join"><a href="join.jsp">
-						<p>회원가입</p>
-				</a></li>
-				<li class="join"><a href="login.jsp">
-						<p>로그인</p>
-				</a></li>
-				<%
-           		 }else{
-           	%>
-				<li class="join"><a href="mypage.jsp">
-						<p>마이페이지</p>
-				</a></li>
-				<li class="join"><a href="service?command=logout">
-						<p>로그아웃</p>
-				</a></li>
-				<% }
-      		%>
-            </ul>
-        </div>
-        <h1 id="title"><a href="main.jsp">Travel Community</a></h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="viewCountry.jsp">국가 정보</a></li>
-            <li><a href="">게시판</a></li>
-            <li><a href="mypage.jsp">마이페이지</a></li>
-        </ul>
-    </nav>
+	<div class=wrap>
+    <c:import url="header.jsp"/>
     <div class="image">
      <main>
         <h1 class="mainTitle">어디로 떠나실건가요?</h1>
@@ -63,9 +33,8 @@
        	<input type="hidden" name="command" value="viewCountry">
         </form>
     </main>
-    <footer>
-        <p> Copyright © TravelCommunity. All Rights Reserved.</p>
-    </footer>
+    <c:import url="footer.jsp"/>
+</div>
 </div>
 </body>
 </html>

@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrap{
+	position:relative;
+	height:100%;
+	
+}
+body{
+    display: grid;
+
+    width: 100vw;
+    min-height: 100vh;
+
+    grid-template-columns: 100%;
+    grid-template-rows: 15% 10% 60% 15%;
+    grid-template-areas: 
+    "header"
+    "nav"
+    "main"
+    "footer"
+    ;
+    font-family:  'Jua', sans-serif;
+}
+/* header */
+header{
+    grid-area: header;
+    background-color:white;
+    height:15vh;
+   
+}
+#title{
+    text-align: center;
+    margin-left: 140px;
+    font-size: 40pt;
+}
+
+/* 상단 로그인 회원가입 */
+.top-menu{
+    display: inline;
+}
+.top-menu li{
+    display: inline-block;
+}
+
+.top-menu .join{
+    float:right;
+    margin-right: 20px;
+    font-size: 20pt;
+}
+
+.top-menu .join:hover p{
+    color:black;
+}
+
+a {
+    text-decoration: none; 
+    color: rgba(248, 160, 45, 0.856);
+}
+
+/* nav 바 */
+nav{
+    grid-area: nav;
+    height:10vh;
+    background-color: rgba(248, 160, 45, 0.856);
+    text-align: center;
+    color: black; 
+    padding-top: 0.1px;
+    font-size: 20pt;
+}
+
+nav a:hover {
+    color: gray; 
+    border-color: darkgray;
+}
+nav li {
+    display: inline; 
+    margin: 8%;
+}
+nav a {
+    text-decoration: none; 
+    color: black;
+    border-style: hidden hidden solid hidden; 
+    border-color: transparent;
+    font-weight: bold
+    }
+
+footer{
+    grid-area: footer;
+    background-color: rgba(248, 160, 45, 0.856);
+    color: white;
+    text-align: center;
+    height: 10vh;
+   	bottom:-5px;
+   
+}
+

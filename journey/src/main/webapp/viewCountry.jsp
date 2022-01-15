@@ -7,13 +7,14 @@
 <%@page import="controllers.CountryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+<link rel="stylesheet" href="css/all.css" type="text/css">
 <link rel="stylesheet" href="css/viewCountry.css" type="text/css">
 
 
@@ -85,13 +86,16 @@
 
 // jsp페이지를 모바일 css 먹일 생각하면서 만들어야함
 
+// 로그인 method post로 바꾸기
+
+
 String countryName = "미국";
 if(request.getParameter("countryName") != null)
 	countryName = request.getParameter("countryName");
 
 String id = "Guest";
-if(session.getAttribute("user") != null) {
-	id = String.valueOf(session.getAttribute("user"));
+if(session.getAttribute("log") != null) {
+	id = String.valueOf(session.getAttribute("log"));
 }
 
 CountryDAO cDao = CountryDAO.getInstance();
@@ -102,42 +106,7 @@ String flag = country.getFlag();
 <title>정보</title>
 </head>
 <body>
-	    <header>
-        <div class="top">
-            <ul class="top-menu">
-<%
-            	if(session.getAttribute("log") == null){
-            %>
-				<li class="join"><a href="join.jsp">
-						<p>회원가입</p>
-				</a></li>
-				<li class="join"><a href="login.jsp">
-						<p>로그인</p>
-				</a></li>
-				<%
-           		 }else{
-           	%>
-				<li class="join"><a href="mypage.jsp">
-						<p>마이페이지</p>
-				</a></li>
-				<li class="join"><a href="service?command=logout">
-						<p>로그아웃</p>
-				</a></li>
-				<% }
-      		%>
-            </ul>
-        </div>
-        <h1 id="title"><a href="main.jsp">Travel Community</a></h1>
-
-    </header>
-    <nav>
-        <ul>
-            <li><a href="viewCountry.jsp">국가 정보</a></li>
-            <li><a href="">게시판</a></li>
-            <li><a href="mypage.jsp">마이페이지</a></li>
-        </ul>
-    </nav>
-    
+	   <c:import url="header.jsp"/>
     <main>
         <aside class="country">
             <p id="country">국가 목록</p>
@@ -339,9 +308,7 @@ String flag = country.getFlag();
         	</table>
         </div>
     </main>
-    <footer>
-        <p> Copyright © TravelCommunity. All Rights Reserved.</p>
-    </footer>
+    <c:import url="footer.jsp"/>
     
 
 <script type="text/javascript" src="viewCountry.js"></script>

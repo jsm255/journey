@@ -12,6 +12,7 @@ import controllers.action.ModifyReReviewAction;
 import controllers.action.ModifyReviewAction;
 import controllers.action.ModifyReviewSubmitAction;
 import controllers.action.ModifyUserAction;
+import controllers.action.MyBoardListAction;
 import controllers.action.WriteReReviewAction;
 import controllers.action.WriteReviewAction;
 
@@ -63,6 +64,9 @@ public class ActionFactory {
 			return new ModifyReReviewAction();
 		else if(command.equals("viewCountry"))
 			return new CountryViewAction();
+		else if(command.equals("myBoardList"))
+			return new MyBoardListAction();
+		
 		return null;
 	}
 	
