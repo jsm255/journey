@@ -17,20 +17,20 @@ aside{
     height: 60vh;
    
 }
-.mypage{
+.country{
     text-align: center;
     border: 1px solid black;
 }
-.mypage p{
+.country p{
     font-size: 15pt;
 }
 
-.mypage ul{
+.country ul{
     list-style: none;
 
 }
 
-.mypage ul li{
+.country ul li{
     margin:20px 0 20px 0;
     font-size: 15pt;
 }

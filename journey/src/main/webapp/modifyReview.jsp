@@ -8,6 +8,14 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
+<style>
+	textarea {
+	width: 300px;
+	height: 100px;
+		resize: none;
+	}
+</style>
+
 <title>댓글 수정</title>
 </head>
 <body>

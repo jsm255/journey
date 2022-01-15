@@ -49,6 +49,7 @@
 
         footer{
             grid-area: footer;
+            margin-top: 60%;
         }
         
         img{
