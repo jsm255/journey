@@ -14,6 +14,7 @@ public class LogoutAction implements Action{
 		
 		HttpSession session = request.getSession();
 		session.removeAttribute("log");
+		session.removeAttribute("msg");
 		String url ="main.jsp";
 		request.getRequestDispatcher(url).forward(request, response);
 	}

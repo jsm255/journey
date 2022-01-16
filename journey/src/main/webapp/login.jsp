@@ -30,6 +30,8 @@ if(request.getParameter("error") != null) {
     	
         <h1>로그인</h1>
         
+        <h2> ${sessionScope.msg} </h2>
+        
         <div class = "login-inputbox">
         <form action="service" method = "post">
         
@@ -54,5 +56,6 @@ if(request.getParameter("error") != null) {
         <div class="footer-div" >
         <c:import url="footer.jsp"/>
         </div>
+        
 </body>
 </html>

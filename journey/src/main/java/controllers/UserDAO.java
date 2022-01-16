@@ -6,8 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-
+import java.util.Iterator;
 
 import models.UserDTO;
 import utils.DBManager;
@@ -89,6 +88,16 @@ public class UserDAO {
 			}
 		}
 		return null;
+	}
+	
+	public boolean UsercheckLogin(String id, String pw) {
+		for (int i = 0; i < users.size(); i++) {
+			if (id.equals(users.get(i).getId()) && pw.equals(users.get(i).getPw())) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	public String setUserPw(String id, String pw, String setPw) {

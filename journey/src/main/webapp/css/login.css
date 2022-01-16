@@ -28,6 +28,17 @@
     padding: 0px;
 }
 
+.login-form h2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    font-size: 25px; 
+    color: blue;
+    text-align: center;
+    margin: 40px 0px 50px 0px;
+    padding: 0px;
+}
+
 .int-area{
 	width: 400px; 
 	display: block;
