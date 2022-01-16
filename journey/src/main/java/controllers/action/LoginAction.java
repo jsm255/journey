@@ -15,12 +15,13 @@ public class LoginAction implements Action{
 	public void execute (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
+		HttpSession session = request.getSession();	
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
 		UserDAO dao = UserDAO.getInstance();
+		
 		
 		ArrayList<UserDTO> user = dao.getUsers();
 		
@@ -37,13 +38,14 @@ public class LoginAction implements Action{
 		
 		if(check) {
 			//request.setAttribute("log", id);
-			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
 			System.out.println("id: "+session.getAttribute("log"));
 			url="main.jsp";
 		}
 		else {
-			url = "join.jsp";
+			session.setAttribute("msg", "아이디, 비밀번호를 다시 확인해주세요");
+			url = "login.jsp";
+			
 		}
 		
 		request.getRequestDispatcher(url).forward(request, response);
