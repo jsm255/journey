@@ -22,7 +22,6 @@ public class LoginAction implements Action{
 		
 		UserDAO dao = UserDAO.getInstance();
 		
-		
 		ArrayList<UserDTO> user = dao.getUsers();
 		
 		boolean check = false;
