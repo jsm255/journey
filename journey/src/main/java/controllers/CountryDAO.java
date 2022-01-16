@@ -37,8 +37,9 @@ public class CountryDAO {
 				String flag = rs.getString(2);
 				String countryName = rs.getString(3);
 				String score = rs.getString(4);
+				String content = rs.getString(5);
 				
-				CountryDTO country = new CountryDTO(code, flag, countryName, score);
+				CountryDTO country = new CountryDTO(code, flag, countryName, score, content);
 				
 				countries.add(country);
 			}

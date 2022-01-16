@@ -6,18 +6,21 @@ public class CountryDTO {
 	private String flag;
 	private String countryName;
 	private String score;
+	private String content;
 	
-	public CountryDTO(String flag, String countryName, String score) {
+	public CountryDTO(String flag, String countryName, String score, String content) {
 		this.flag = flag;
 		this.countryName = countryName;
 		this.score = score;
+		this.content = content; 
 	}
 	
-	public CountryDTO(int code, String flag, String countryName, String score) {
+	public CountryDTO(int code, String flag, String countryName, String score, String content) {
 		this.code = code;
 		this.flag = flag;
 		this.countryName = countryName;
 		this.score = score;
+		this.content = content; 
 	}
 
 	public int getCode() {
@@ -46,5 +49,13 @@ public class CountryDTO {
 
 	public void setScore(String score) {
 		this.score = score;
+	}
+	
+	public String getContent() {
+		return content;
+	}
+	
+	public void setContent(String content) {
+		this.content = content;
 	}
 }

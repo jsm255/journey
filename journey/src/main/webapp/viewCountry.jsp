@@ -18,62 +18,6 @@
 <link rel="stylesheet" href="css/viewCountry.css" type="text/css">
 
 
-	<style>
-        body{
-            display: grid;
-
-            width: 100vw;
-            height: 100vh;
-
-            grid-template-columns: 100%;
-            grid-template-rows: 15% 15% 60% 10%;
-            grid-template-areas: 
-            "header"
-            "nav"
-            "main"
-            "footer"
-            ;
-        }
-
-        header{
-            grid-area: header;
-        }
-
-        nav{
-            grid-area: nav;
-        }
-
-        main{
-            grid-area: main;
-        }
-
-        footer{
-            grid-area: footer;
-            margin-top: 60%;
-        }
-        
-        img{
-        	width: 250px;
-        	height: 175px;
-        }
-        
-        td{
-        }
-        
-        div#writeReview textarea{
-        	width: 500px;
-        	height: 200px;
-        	resize: none;
-        }
-        
-        span{white-space:pre;}
-        
-        div#writeReview input {
-        	width: 200px;
-        	height: 35px;
-        }
-    </style>
-
 <%
 // Guest 이름으로 된 댓글은 로그인을 했든 안했든 수정/삭제가 보임	=> 당연히 비밀번호를 씀
 // 어떤 댓글을 눌렀는지에 대한 검증이 필요함 => 버튼에 id를 달아놓으면 되겠다
@@ -125,10 +69,11 @@ String flag = country.getFlag();
             </ul>
         </aside>
         
-        <div id="country">
+        <div id="contents">
+        	<div id="countryInfo">
         	<table>
         	<tr>
-                <td rowspan="4">
+                <td id="flagTd" rowspan="4">
 					<%
 						if(flag.compareTo("") != 0) {
 							%>
@@ -144,13 +89,13 @@ String flag = country.getFlag();
 				</td>
             </tr>
             <tr>
-                <td><%=country.getCountryName() %></td>
+                <td><span>국가 이름 : </span><%=country.getCountryName() %></td>
             </tr>
             <tr>
-                <td><%=country.getScore() %> 점</td>
+                <td><span>리뷰 평균 : </span><%=country.getScore() %> 점</td>
             </tr>
             <tr>
-                <td><!-- 맛집, 여행, 비행기 표 연동 --></td>
+                <td><%=country.getContent() %></td>
             </tr>
         	</table>
         </div>
@@ -308,6 +253,8 @@ String flag = country.getFlag();
         	
         	</table>
         </div>
+        </div>
+        
     </main>
     <c:import url="footer.jsp"/>
     
