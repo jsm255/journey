@@ -2,13 +2,41 @@
 <%@page import="models.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
+ <link rel="stylesheet" href="css/all.css" type="text/css">
+ 
+ <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+	div#contents{
+		display: flex;
+		flex-direction: column;
+		
+		align-items: center;
+		justify-content: space-around;
+	}
+	
+	div{
+		text-align: center;
+	}
+	textarea{
+		width: 300px;
+		height: 100px;
+		resize: none;
+	}
+</style>
+
 <title>글 삭제 비밀번호 입력</title>
 </head>
 <body>
+
+<c:import url="header.jsp"/>
+
+<div id="contents">
 <%
 String delete = "";
 if(session.getAttribute("review") != null) {
@@ -67,5 +95,7 @@ else if(delete.equals("rrview")) {
 <%
 }
 %>
+</div>
+<c:import url="footer.jsp"/>
 </body>
 </html>

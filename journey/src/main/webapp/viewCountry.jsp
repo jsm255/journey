@@ -17,6 +17,108 @@
 <link rel="stylesheet" href="css/all.css" type="text/css">
 <link rel="stylesheet" href="css/viewCountry.css" type="text/css">
 
+<style>
+	@charset "UTF-8";
+
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+body{
+	height: 80vh;
+}
+
+main{
+    grid-area: main;
+    height: 100vh;
+    margin-left: 2%;
+    margin-top: 3%;
+}
+
+aside{
+    width: 15%;
+    float: left;
+    height: 100vh;
+    margin-right: 3%;
+   
+}
+.country{
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.country ul{
+    list-style: none;
+
+}
+
+.country ul li{
+    margin: 10% 0 10% 0;
+    font-size: 18pt;
+    color: black;
+}
+
+.contents{
+	width: 70%;
+}
+
+table{
+	width: 70%;
+}
+
+input[type="button"]{
+    font-size: 15pt;
+    text-align: center;
+    width: 6vw;
+    margin-left: 53%;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+img{
+  	width: 250px;
+   	height: 175px;
+}
+
+div#writeReview textarea{
+   	width: 500px;
+   	height: 200px;
+   	resize: none;
+}
+        
+span{white-space:pre;}
+       
+div#writeReview input {
+   	width: 200px;
+   	height: 35px;
+}
+
+footer{
+	margin-top : 58vh;
+	display:block;
+	width:100%;
+	position:fixed;
+	bottom:0;
+	
+}
+
+div#review a:link {
+	color : blue;
+}
+div#review a:visited {
+	color : orange;
+}
+
+div#countryInfo table{
+	width: 50%;
+}
+
+div#writeReview table{
+	width: 50%;
+}
+</style>
 
 <%
 // Guest 이름으로 된 댓글은 로그인을 했든 안했든 수정/삭제가 보임	=> 당연히 비밀번호를 씀
@@ -256,7 +358,7 @@ String flag = country.getFlag();
         </div>
         
     </main>
-    <c:import url="footer.jsp"/>
+<%--     <c:import url="footer.jsp"/> --%>
     
 
 <script type="text/javascript" src="viewCountry.js"></script>
