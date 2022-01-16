@@ -25,11 +25,17 @@ main{
     border-radius: 5px;
 }
 
-input[type="button"]{
-    width: 3vw;
-    height: 5vh;
-    vertical-align: bottom;
-    border-radius: 5px;
-    font-size: 20pt;
-    background-image: url(img/search.png);
+button[type="submit"]{
+    display: inline-flex;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.button_icon{
+    height:100%;
+    width: 100%;
+    font-size: 22pt;
 }

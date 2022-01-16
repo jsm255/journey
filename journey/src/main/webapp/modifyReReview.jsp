@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="models.ReReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -63,6 +64,8 @@ else if(session.getAttribute("countryName") != null)
 String id = "Guest";
 if(session.getAttribute("log") != null) 
 	id = String.valueOf(session.getAttribute("log"));
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+String date = sdf.format(rrview.getDate());
 %>
 
 <div id="before">
@@ -70,7 +73,7 @@ if(session.getAttribute("log") != null)
 		<tr><th> 수정 전 답글 </th></tr>
     	<tr><td>유저 이름 : <%=rrview.getId() %></td></tr>
    		<tr><td colspan="3">유저 리뷰 : <%=rrview.getContent()%></td></tr>
-    	<tr><td colspan="2">리뷰 날짜 : <%=rrview.getDate() %></td></tr>
+    	<tr><td colspan="2">리뷰 날짜 : <%=date %></td></tr>
     </table>
 </div>
 

@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="models.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -53,6 +54,8 @@ if(request.getParameter("error") != null) {
 }
 
 ReviewDTO review = (ReviewDTO)session.getAttribute("review");
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+String date = sdf.format(review.getDate());
 int code = Integer.parseInt(String.valueOf(session.getAttribute("code")));
 
 String id = "Guest";
@@ -67,7 +70,7 @@ if(session.getAttribute("log") != null)
     	<td>유저 이름 : <%=review.getId() %></td>
     	<td>평가 점수 : <%=review.getScore() %> 점</td></tr>
    		<tr><td colspan="3">유저 리뷰 : <%=review.getContent()%></td></tr>
-    	<tr><td colspan="2">리뷰 날짜 : <%=review.getDate() %></td></tr>
+    	<tr><td colspan="2">리뷰 날짜 : <%=date %></td></tr>
     </table>
 </div>
 

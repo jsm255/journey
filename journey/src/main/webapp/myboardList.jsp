@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.ReviewDTO"%>
 <%@page import="controllers.ReviewDAO"%>
@@ -23,6 +24,9 @@
 	ReviewDAO dao = ReviewDAO.getInstance();
 	ArrayList<ReviewDTO> review = dao.getMyBoardList(reviewId);
 //	System.out.println("reviewId: "+reviewId);
+
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
 %>
 	<div>
 		<c:import url="header.jsp" />
@@ -51,15 +55,15 @@
 						</tr>
 						<%
                   for(int i=0; i<review.size(); i++){
-                	  
+                	  String date = sdf.format(review.get(i).getDate());
                   %>
 						<tr>
 							<td><%=review.get(i).getCode()%></td>
-							<td><a
-								href="service?command=modifyReview&code=<%=review.get(i).getCode()%>"><%=review.get(i).getCountryName() %></a></td>
+							<td><%=review.get(i).getCountryName() %></a></td>
 							<td><%=review.get(i).getId() %></td>
-							<td><%=review.get(i).getContent() %></td>
-							<td><%=review.get(i).getDate()%></td>
+							<td><a
+								href="service?command=modifyReview&code=<%=review.get(i).getCode()%>"><%=review.get(i).getContent() %></td>
+							<td><%=date%></td>
 						</tr>
 						<%} %>
 					</table>

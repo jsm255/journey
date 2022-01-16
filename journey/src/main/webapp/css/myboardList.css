@@ -47,7 +47,12 @@ article{
     border: 1px solid black;
     border-radius: 10px;
 }
-
+.review a:link {
+	color : blue;
+}
+.review a:visited {
+	color : orange;
+}
 .review p{
     font-size:25pt;
 }

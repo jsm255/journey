@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="models.ReReviewDTO"%>
 <%@page import="controllers.ReReviewDAO"%>
 <%@page import="models.ReviewDTO"%>
@@ -249,9 +250,11 @@ String flag = country.getFlag();
         			int pageStart = (((currentPage-1)/10) * 10) + 1;
         			int pageEnd= (pageStart+9)*10 > reviews.size() ? ((reviews.size()-1)/10)+1 : pageStart+9;
         			int lastPage = ((reviews.size() - 1) / 10) + 1;
-        			
+        			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        		
         			for(int i = reviewStart; i<=reviewEnd; i++) {
             			ReviewDTO temp = reviews.get(i);
+            			String date = sdf.format(reviews.get(i).getDate());
             			%>
             			<tr><td>
             				<table>
@@ -259,7 +262,7 @@ String flag = country.getFlag();
             					<td>유저 이름 : <%=temp.getId() %></td>
             					<td>평가 점수 : <%=temp.getScore() %> 점</td></tr>
             					<tr><td colspan="3">유저 리뷰 : <%=temp.getContent()%></td></tr>
-            					<tr><td colspan="2">리뷰 날짜 : <%=temp.getDate() %></td>
+            					<tr><td colspan="2">리뷰 날짜 : <%=date %></td>
             					<td>
             					<button onclick="location.href='service?command=writeReReview&code=<%=temp.getCode()%>'">답글</button>
             					<%
@@ -285,11 +288,12 @@ String flag = country.getFlag();
             						<tr><td colspan="3"><table id="<%=temp.getCode() %>_table" style="display:none;">
             						<%
             						ArrayList<ReReviewDTO> rrviews = rrDao.getReReviews(temp.getCode());
+            						date = sdf.format(rrviews.get(i).getDate());
             						for(ReReviewDTO rrtemp : rrviews) {
 	            					%>
 	            					<tr><td><span>&#9;</span>유저 이름 : <%=rrtemp.getId() %></td></tr>
             						<tr><td><span>&#9;</span>유저 답글 : <%=rrtemp.getContent()%></td></tr>
-            						<tr><td><span>&#9;</span>답글 날짜 : <%=rrtemp.getDate() %></td></tr>
+            						<tr><td><span>&#9;</span>답글 날짜 : <%=date %></td></tr>
             						<tr><td><span>&#9;</span>
             						<%
             						if(rrtemp.getId().equals("Guest") && rrtemp.getId().equals(id)) {

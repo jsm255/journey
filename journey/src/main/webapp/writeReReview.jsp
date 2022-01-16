@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="models.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -46,6 +47,8 @@ String id = "Guest";
 if(session.getAttribute("log") != null) {
 	id = String.valueOf(session.getAttribute("log"));
 }
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+String date = sdf.format(review.getDate());
 %>
 <table>
 	<tr><th> 답글을 적을 댓글 </th></tr>
@@ -53,7 +56,7 @@ if(session.getAttribute("log") != null) {
     <td>유저 이름 : <%=review.getId() %></td>
     <td>평가 점수 : <%=review.getScore() %> 점</td></tr>
    	<tr><td colspan="3">유저 리뷰 : <%=review.getContent()%></td></tr>
-    <tr><td colspan="2">리뷰 날짜 : <%=review.getDate() %></td></tr>
+    <tr><td colspan="2">리뷰 날짜 : <%=date %></td></tr>
 </table>
 
 <form method="post" action="service">
