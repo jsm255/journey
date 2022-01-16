@@ -1,12 +1,28 @@
 <%@page import="models.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
+
+ <link rel="stylesheet" href="css/all.css" type="text/css">
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+	div#contents{
+		display: flex;
+		flex-direction: column;
+		
+		align-items: center;
+		justify-content: space-around;
+	}
+	
+	div form{
+		text-align: center;
+	}
 	textarea{
 		width: 300px;
 		height: 100px;
@@ -17,6 +33,10 @@
 <title>답글 적기</title>
 </head>
 <body>
+
+<c:import url="header.jsp"/>
+
+<div id="contents">
 <%
 ReviewDTO review = null;
 if(session.getAttribute("review") instanceof ReviewDTO) {
@@ -55,5 +75,10 @@ if(session.getAttribute("log") != null) {
 	<input type="hidden" name="code" value=<%=review.getCode() %>>
 	<input type="hidden" name="id" value=<%=id %>>
 </form>
+
+</div>
+
+<c:import url="footer.jsp"/>
+
 </body>
 </html>

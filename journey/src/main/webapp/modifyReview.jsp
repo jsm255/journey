@@ -1,6 +1,7 @@
 <%@page import="models.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +9,24 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
+ <link rel="stylesheet" href="css/all.css" type="text/css">
+
 <style>
-	textarea {
-	width: 300px;
-	height: 100px;
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+	div#contents{
+		display: flex;
+		flex-direction: column;
+		
+		align-items: center;
+		justify-content: space-around;
+	}
+	
+	div form table{
+		text-align: center;
+	}
+	textarea{
+		width: 300px;
+		height: 100px;
 		resize: none;
 	}
 </style>
@@ -19,6 +34,9 @@
 <title>댓글 수정</title>
 </head>
 <body>
+<c:import url="header.jsp"/>
+
+<div id="contents">
 <%
 String content = "";
 int score = 5;
@@ -65,15 +83,15 @@ if(session.getAttribute("log") != null)
         				</td>
         			</tr>
         			<tr>
-        				<td> <textarea name="content" placeholder="내용"><%=content %></textarea> </td>
+        				<td><textarea name="content" placeholder="내용"><%=content %></textarea></td>
         			</tr>
         			<tr>
         				<td>
         					<%
         						if(id.equals("Guest")) {
         							%>
-        								<input name="beforePw" type="password" placeholder="이전 비밀번호" required></td>
-        								<td><input name="afterPw" type="password" placeholder="새 비밀번호"></td>
+        								<input name="beforePw" type="password" placeholder="이전 비밀번호" required>
+        								<input name="afterPw" type="password" placeholder="새 비밀번호"></td>
         								<tr><td colspan=2><span>비밀번호를 바꾸려면 새 비밀번호를, 바꾸지 않으려면 공란으로 두세요.</span></td></tr>
         								<tr><td>
         							<%
@@ -89,7 +107,8 @@ if(session.getAttribute("log") != null)
         		<input type="hidden" name="command" value="modifyReviewSubmit">
         	</form>
 </div>
-
+</div>
+<c:import url="footer.jsp"/>
 <script>
 $("#range").change(e => {
    	const getter = e.target.value;
