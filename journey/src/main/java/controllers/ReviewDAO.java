@@ -269,16 +269,39 @@ public class ReviewDAO {
 			rs = pstmt.executeQuery();
 			
 			codes = new ArrayList<>();
+			ArrayList<Integer> attachCodes = new ArrayList<>();
 			
 			while(rs.next()) {
 				int code = rs.getInt(1);
+				int attachCode = rs.getInt(6);
 				
 				codes.add(code);
+				attachCodes.add(attachCode);
 			}
 			
 			for(int i = 0; i<codes.size(); i++) {
 				pstmt = conn.prepareStatement("delete from reReview where code=?");
 				pstmt.setInt(1, codes.get(i));
+				pstmt.executeUpdate();
+			}
+			
+			ArrayList<Integer> attachCnt = new ArrayList<>();
+			
+			for(int i = 0; i<attachCodes.size(); i++) {
+				pstmt = conn.prepareStatement("select * from review where code=?");
+				pstmt.setInt(1, attachCodes.get(i));
+				
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					attachCnt.add(rs.getInt(8));
+				}
+			}
+			
+			for(int i = 0; i<attachCodes.size(); i++) {
+				pstmt = conn.prepareStatement("update review set attachCnt=? where code=?");
+				pstmt.setInt(1, attachCnt.get(i)-1);
+				pstmt.setInt(2, attachCodes.get(i));
+				
 				pstmt.executeUpdate();
 			}
 			
