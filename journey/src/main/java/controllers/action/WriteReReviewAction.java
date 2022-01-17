@@ -54,8 +54,9 @@ public class WriteReReviewAction implements Action{
 			else {
 				String content = request.getParameter("content");
 				int attachCode = Integer.parseInt(request.getParameter("code"));
+				int userCode = Integer.parseInt(request.getParameter("userCode"));
 				
-				rrview = new ReReviewDTO(id, content, attachCode);
+				rrview = new ReReviewDTO(id, content, attachCode, userCode);
 			}
 			
 			rrDao.writeReReview(rrview);

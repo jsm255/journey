@@ -50,7 +50,8 @@ public class ReReviewDAO {
 					rrview = new ReReviewDTO(code, content, date, pw, attachCodeTemp);
 				}
 				else {
-					rrview = new ReReviewDTO(code, id, content, date, attachCodeTemp);
+					int userCode = rs.getInt(7);
+					rrview = new ReReviewDTO(code, id, content, date, attachCodeTemp, userCode);
 				}
 				
 				reReviews.add(rrview);
@@ -87,7 +88,8 @@ public class ReReviewDAO {
 					rrview = new ReReviewDTO(rrviewCode, content, date, pw, attachCodeTemp);
 				}
 				else {
-					rrview = new ReReviewDTO(rrviewCode, id, content, date, attachCodeTemp);
+					int userCode = rs.getInt(7);
+					rrview = new ReReviewDTO(rrviewCode, id, content, date, attachCodeTemp, userCode);
 				}
 				
 				return rrview;
@@ -151,7 +153,8 @@ public class ReReviewDAO {
 						rrview = new ReReviewDTO(code, content, date, pw, attachCodeTemp);
 					}
 					else {
-						rrview = new ReReviewDTO(code, id, content, date, attachCodeTemp);
+						int userCode = rs.getInt(7);
+						rrview = new ReReviewDTO(code, id, content, date, attachCodeTemp, userCode);
 					}
 					
 					reReviews.add(rrview);
@@ -190,11 +193,12 @@ public class ReReviewDAO {
 				pstmt.executeUpdate();
 			}
 			else {
-				pstmt = conn.prepareStatement("insert reReview(id, content, attachCode) values(?,?,?)");
+				pstmt = conn.prepareStatement("insert reReview(id, content, attachCode, userCode) values(?,?,?,?)");
 				
 				pstmt.setString(1, rrview.getId());
 				pstmt.setString(2, rrview.getContent());
 				pstmt.setInt(3, rrview.getAttachCode());
+				pstmt.setInt(4, rrview.getUserCode());
 				
 				pstmt.executeUpdate();
 			}

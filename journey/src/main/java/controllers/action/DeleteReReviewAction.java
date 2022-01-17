@@ -35,20 +35,33 @@ public class DeleteReReviewAction implements Action{
 				}
 				else {	// 틀렸으면
 					session.setAttribute("rrview", rrview);
-					request.getRequestDispatcher("deleteConfirm.jsp?error=pw").forward(request, response);
+					request.getRequestDispatcher(String.format("deleteConfirm.jsp?countryName=%s&error=pw", countryName)).forward(request, response);
 					return;
 				}
 			}
 			else {	// 아 비밀번호 입력하고 오십쇼
 				session.setAttribute("rrview", rrview);
-				request.getRequestDispatcher("deleteConfirm.jsp").forward(request, response);
+				request.getRequestDispatcher(String.format("deleteConfirm.jsp?countryName=%s", countryName)).forward(request, response);
 				return;
 			}
 		}
 		else {	// 회원이면 삭제 프리패스
-			rrDao.removeReReview(rrview);
-			request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
-			return;
+			if(request.getParameter("additional") != null) {
+				if(request.getParameter("confirm").equals("확인")) {
+					rrDao.removeReReview(rrview);
+					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
+					return;
+				}
+				else {
+					session.setAttribute("rrview", rrview);
+					request.getRequestDispatcher(String.format("deleteConfirm.jsp?countryName=%s&error=confirm", countryName)).forward(request, response);
+				}
+			}
+			else {
+				session.setAttribute("rrview", rrview);
+				request.getRequestDispatcher(String.format("deleteConfirm.jsp?countryName=%s", countryName)).forward(request, response);
+				return;
+			}
 		}
 		
 		

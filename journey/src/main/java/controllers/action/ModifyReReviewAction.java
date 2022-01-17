@@ -54,7 +54,8 @@ public class ModifyReReviewAction implements Action{
 				}
 			}
 			else {
-				rrDao.modifyReReview(new ReReviewDTO(rrCode, id, content));
+				int userCode = Integer.parseInt(request.getParameter("userCode"));
+				rrDao.modifyReReview(new ReReviewDTO(rrCode, id, content, userCode));
 				request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
 				return;
 			}

@@ -41,10 +41,24 @@ public class DeleteReviewAction implements Action {
 				return;
 			}
 		}
-		else {	// 회원이면 삭제 프리패스
-			rDao.removeReview(review);
-			request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", review.getCountryName())).forward(request, response);
-			return;
+		else {	// 회원이면 삭제 확인을 받으러
+			if(request.getParameter("additional") != null) {
+				if(request.getParameter("confirm").equals("확인")) {
+					rDao.removeReview(review);
+					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", review.getCountryName())).forward(request, response);
+					return;
+				}
+				else {
+					session.setAttribute("review", review);
+					request.getRequestDispatcher("deleteConfirm.jsp?error=confirm").forward(request, response);
+					return;
+				}
+			}
+			else {
+				session.setAttribute("review", review);
+				request.getRequestDispatcher("deleteConfirm.jsp").forward(request, response);
+				return;
+			}
 		}
 		
 	}

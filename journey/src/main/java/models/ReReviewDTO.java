@@ -9,13 +9,15 @@ public class ReReviewDTO {
 	private Timestamp date;
 	private String pw;
 	private int attachCode;
+	private int userCode;
 	
-	public ReReviewDTO(int code, String id, String content, Timestamp date, int attachCode) {
+	public ReReviewDTO(int code, String id, String content, Timestamp date, int attachCode, int userCode) {
 		this.code = code;
 		this.id = id;
 		this.content = content;
 		this.date = date;
 		this.attachCode = attachCode;
+		this.userCode = userCode;
 	}
 	
 	public ReReviewDTO(int code, String content, Timestamp date, String pw, int attachCode) {
@@ -27,10 +29,11 @@ public class ReReviewDTO {
 		this.attachCode = attachCode;
 	}
 	
-	public ReReviewDTO(String id, String content, int attachCode) {
+	public ReReviewDTO(String id, String content, int attachCode, int userCode) {
 		this.id = id;
 		this.content = content;
 		this.attachCode = attachCode;
+		this.userCode = userCode;
 	}
 	
 	public ReReviewDTO(String content, int attachCode, String pw) {
@@ -40,10 +43,11 @@ public class ReReviewDTO {
 		this.attachCode = attachCode;
 	}
 	
-	public ReReviewDTO(int code, String id, String content) {
+	public ReReviewDTO(int code, String id, String content, int userCode) {
 		this.code = code;
 		this.id = id;
 		this.content = content;
+		this.userCode = userCode;
 	}
 	
 	public ReReviewDTO(int code, String id, String content, String pw) {
@@ -91,6 +95,10 @@ public class ReReviewDTO {
 
 	public int getAttachCode() {
 		return attachCode;
+	}
+	
+	public int getUserCode() {
+		return this.userCode;
 	}
 	
 	

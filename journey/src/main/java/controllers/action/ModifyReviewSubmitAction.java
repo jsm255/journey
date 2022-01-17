@@ -46,7 +46,8 @@ public class ModifyReviewSubmitAction implements Action{
 			}
 		}
 		else {
-			ReviewDTO review = new ReviewDTO(code, countryName, id, content, score);
+			int userCode = Integer.parseInt(request.getParameter("userCode"));
+			ReviewDTO review = new ReviewDTO(code, countryName, id, content, score, userCode);
 			rDao.modifyReview(review);
 		}
 		

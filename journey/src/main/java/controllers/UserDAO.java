@@ -197,14 +197,29 @@ public class UserDAO {
 			pstmt.setString(1, user.getId());
 			
 		    pstmt.executeUpdate();
-			
-			ReviewDAO rDao = ReviewDAO.getInstance();
-			rDao.removeAllReviews(user.getId());
 		    
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 	
+	public int getUserCodeById(String id) {
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("select * from users where id=?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return -1;
+	}
 }

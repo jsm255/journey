@@ -52,7 +52,8 @@ public class ReviewDAO {
 					review = new ReviewDTO(code, getCountryName, content, score, date, pw, attachCnt);
 				}
 				else {		// 회원 용
-					review = new ReviewDTO(code, getCountryName, id, content, score, date, attachCnt);
+					int userCode = rs.getInt(9);
+					review = new ReviewDTO(code, getCountryName, id, content, score, date, attachCnt, userCode);
 				}
 				
 				reviews.add(review);
@@ -78,16 +79,16 @@ public class ReviewDAO {
 				pstmt.executeUpdate();
 			}
 			else {
-				pstmt = conn.prepareStatement("insert review(countryName, id, content, score) values(?, ?, ?, ?)");
+				pstmt = conn.prepareStatement("insert review(countryName, id, content, score, userCode) values(?, ?, ?, ?, ?)");
 				pstmt.setString(1, review.getCountryName());
 				pstmt.setString(2, review.getId());
 				pstmt.setString(3, review.getContent());
 				pstmt.setInt(4, review.getScore());
+				pstmt.setInt(5, review.getUserCode());
 				
 				pstmt.executeUpdate();
 			}
 			
-			CountryDAO cDao = CountryDAO.getInstance();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,7 +122,8 @@ public class ReviewDAO {
 					review = new ReviewDTO(reviewCode, getCountryName, content, score, date, pw, attachCnt);
 				}
 				else {		// 회원 용
-					review = new ReviewDTO(reviewCode, getCountryName, id, content, score, date, attachCnt);
+					int userCode = rs.getInt(9);
+					review = new ReviewDTO(reviewCode, getCountryName, id, content, score, date, attachCnt, userCode);
 				}
 				
 				return review;
@@ -219,9 +221,12 @@ public class ReviewDAO {
 		reviews = new ArrayList<ReviewDTO>();
 		try {
 			conn = DBManager.getConnection();
-			String sql = "select * from review where id = ?";
+			
+			UserDAO uDao = UserDAO.getInstance();
+			
+			String sql = "select * from review where userCode = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, reviewId);
+			pstmt.setInt(1, uDao.getUserCodeById(reviewId));
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -230,87 +235,15 @@ public class ReviewDAO {
 				String id = rs.getString(3);
 				String content = rs.getString(4);
 				Timestamp date = rs.getTimestamp(6);
+				int userCode = rs.getInt(9);
 				
-				ReviewDTO review = new ReviewDTO(code,countryName,id,content, date);
+				ReviewDTO review = new ReviewDTO(code,countryName,id,content, date, userCode);
 				reviews.add(review);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return reviews;
-	}
-	
-	public boolean removeAllReviews(String id) {
-		try {
-			conn = DBManager.getConnection();
-			
-			pstmt = conn.prepareStatement("select* from review where id=?");
-			pstmt.setString(1, id);
-			
-			rs = pstmt.executeQuery();
-			
-			ArrayList<Integer> codes = new ArrayList<>();
-			
-			while(rs.next()) {
-				int code = rs.getInt(1);
-				
-				codes.add(code);
-			}
-			
-			for(int i = 0; i<codes.size(); i++) {
-				pstmt = conn.prepareStatement("delete from review where code=?");
-				pstmt.setInt(1, codes.get(i));
-				pstmt.executeUpdate();
-			}
-			
-			pstmt = conn.prepareStatement("select* from reReview where id=?");
-			pstmt.setString(1, id);
-			
-			rs = pstmt.executeQuery();
-			
-			codes = new ArrayList<>();
-			ArrayList<Integer> attachCodes = new ArrayList<>();
-			
-			while(rs.next()) {
-				int code = rs.getInt(1);
-				int attachCode = rs.getInt(6);
-				
-				codes.add(code);
-				attachCodes.add(attachCode);
-			}
-			
-			for(int i = 0; i<codes.size(); i++) {
-				pstmt = conn.prepareStatement("delete from reReview where code=?");
-				pstmt.setInt(1, codes.get(i));
-				pstmt.executeUpdate();
-			}
-			
-			ArrayList<Integer> attachCnt = new ArrayList<>();
-			
-			for(int i = 0; i<attachCodes.size(); i++) {
-				pstmt = conn.prepareStatement("select * from review where code=?");
-				pstmt.setInt(1, attachCodes.get(i));
-				
-				rs = pstmt.executeQuery();
-				if(rs.next()) {
-					attachCnt.add(rs.getInt(8));
-				}
-			}
-			
-			for(int i = 0; i<attachCodes.size(); i++) {
-				pstmt = conn.prepareStatement("update review set attachCnt=? where code=?");
-				pstmt.setInt(1, attachCnt.get(i)-1);
-				pstmt.setInt(2, attachCodes.get(i));
-				
-				pstmt.executeUpdate();
-			}
-			
-			return true;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
 	}
 	
 }

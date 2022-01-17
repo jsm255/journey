@@ -1,3 +1,4 @@
+<%@page import="controllers.UserDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="models.ReReviewDTO"%>
 <%@page import="controllers.ReReviewDAO"%>
@@ -140,11 +141,14 @@ div#writeReview table{
 String countryName = "미국";
 if(request.getParameter("countryName") != null)
 	countryName = request.getParameter("countryName");
+System.out.println(countryName);
 
 String id = "Guest";
 if(session.getAttribute("log") != null) {
 	id = String.valueOf(session.getAttribute("log"));
 }
+
+UserDAO uDao = UserDAO.getInstance();
 
 CountryDAO cDao = CountryDAO.getInstance();
 CountryDTO country = cDao.getCountry(countryName);
@@ -232,6 +236,13 @@ String flag = country.getFlag();
         		</table>
         		<input type="hidden" name="countryName" value=<%=countryName %>>
         		<input type="hidden" name="id" value=<%=id %>>
+        		<%
+        		if(!id.equals("Guest")) {
+        			%>
+        			<input type="hidden" name="userCode" value=<%=uDao.getUserCodeById(id) %>>
+        			<%
+        		}
+        		%>
         		<input type="hidden" name="command" value="writeReview">
         	</form>
         </div>

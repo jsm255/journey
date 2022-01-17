@@ -23,7 +23,10 @@ public void execute (HttpServletRequest request, HttpServletResponse response) t
 			pw = request.getParameter("pw");
 			review = new ReviewDTO(countryName, content, score, pw);
 		}
-		else review = new ReviewDTO(countryName, id, content, score);
+		else {
+			int userCode = Integer.parseInt(request.getParameter("userCode"));
+			review = new ReviewDTO(countryName, id, content, score, userCode);
+		}
 		
 		
 		ReviewDAO rDao = ReviewDAO.getInstance();

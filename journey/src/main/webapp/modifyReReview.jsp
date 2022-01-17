@@ -1,3 +1,4 @@
+<%@page import="controllers.UserDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="models.ReReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -64,6 +65,9 @@ else if(session.getAttribute("countryName") != null)
 String id = "Guest";
 if(session.getAttribute("log") != null) 
 	id = String.valueOf(session.getAttribute("log"));
+
+UserDAO uDao = UserDAO.getInstance();
+
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 String date = sdf.format(rrview.getDate());
 %>
@@ -105,6 +109,13 @@ String date = sdf.format(rrview.getDate());
         		<input type="hidden" name="countryName" value=<%=countryName %>>
         		<input type="hidden" name="id" value=<%=id %>>
         		<input type="hidden" name="code" value=<%=rrview.getCode() %>>
+        		<%
+        		if(!id.equals("Guest")) {
+        			%>
+        			<input type="hidden" name="userCode" value=<%=uDao.getUserCodeById(id) %>>
+        			<%
+        		}
+        		%>
         		<input type="hidden" name="additional" value="confirmed">
         		<input type="hidden" name="command" value="modifyReReview">
         	</form>
