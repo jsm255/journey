@@ -197,7 +197,10 @@ public class UserDAO {
 			pstmt.setString(1, user.getId());
 			
 		    pstmt.executeUpdate();
-			System.out.println("delete");
+			
+			ReviewDAO rDao = ReviewDAO.getInstance();
+			rDao.removeAllReviews(user.getId());
+		    
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

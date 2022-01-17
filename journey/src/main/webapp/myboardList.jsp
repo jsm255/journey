@@ -46,6 +46,7 @@
 					<p>＊내가 작성한 리뷰</p>
 
 					<table border="1px solid">
+					<c:if test="<%=review.size() > 0 %>">
 						<tr>
 							<td>No</td>
 							<td>Country</td>
@@ -53,6 +54,8 @@
 							<td>Content</td>
 							<td>Date</td>
 						</tr>
+					</c:if>
+						
 						<%
                   for(int i=0; i<review.size(); i++){
                 	  String date = sdf.format(review.get(i).getDate());

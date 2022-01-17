@@ -240,4 +240,54 @@ public class ReviewDAO {
 		return reviews;
 	}
 	
+	public boolean removeAllReviews(String id) {
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("select* from review where id=?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			ArrayList<Integer> codes = new ArrayList<>();
+			
+			while(rs.next()) {
+				int code = rs.getInt(1);
+				
+				codes.add(code);
+			}
+			
+			for(int i = 0; i<codes.size(); i++) {
+				pstmt = conn.prepareStatement("delete from review where code=?");
+				pstmt.setInt(1, codes.get(i));
+				pstmt.executeUpdate();
+			}
+			
+			pstmt = conn.prepareStatement("select* from reReview where id=?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			codes = new ArrayList<>();
+			
+			while(rs.next()) {
+				int code = rs.getInt(1);
+				
+				codes.add(code);
+			}
+			
+			for(int i = 0; i<codes.size(); i++) {
+				pstmt = conn.prepareStatement("delete from reReview where code=?");
+				pstmt.setInt(1, codes.get(i));
+				pstmt.executeUpdate();
+			}
+			
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }
