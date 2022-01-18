@@ -154,6 +154,7 @@ CountryDAO cDao = CountryDAO.getInstance();
 CountryDTO country = cDao.getCountry(countryName);
 country.setScore(cDao.setCountryScore(countryName));
 String flag = country.getFlag();
+
 %>
 <title>정보</title>
 </head>
@@ -299,8 +300,8 @@ String flag = country.getFlag();
             						<tr><td colspan="3"><table id="<%=temp.getCode() %>_table" style="display:none;">
             						<%
             						ArrayList<ReReviewDTO> rrviews = rrDao.getReReviews(temp.getCode());
-            						date = sdf.format(rrviews.get(i).getDate());
             						for(ReReviewDTO rrtemp : rrviews) {
+            							date = sdf.format(rrtemp.getDate());
 	            					%>
 	            					<tr><td><span>&#9;</span>유저 이름 : <%=rrtemp.getId() %></td></tr>
             						<tr><td><span>&#9;</span>유저 답글 : <%=rrtemp.getContent()%></td></tr>

@@ -2,6 +2,7 @@ package controllers;
 
 import controllers.action.Action;
 import controllers.action.ViewCountryAction;
+import controllers.action.WriteBlogAction;
 import controllers.action.DeleteReReviewAction;
 import controllers.action.DeleteReviewAction;
 import controllers.action.DeleteUserAction;
@@ -66,6 +67,9 @@ public class ActionFactory {
 			return new ViewCountryAction();
 		else if(command.equals("myBoardList"))
 			return new MyBoardListAction();
+		
+		else if(command.equals("writeBlog"))
+			return new WriteBlogAction();
 		
 		return null;
 	}

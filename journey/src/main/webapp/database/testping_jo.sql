@@ -21,7 +21,8 @@ create table review(
 	score integer default 0,
 	`date` datetime not null default current_timestamp,
 	pw varchar(30),		-- 게스트 상태에서 글을 쓸 경우 사용예정
-    attachCnt integer default 0
+    attachCnt integer default 0,
+    userCode integer
 );
 
 create table reReview(
@@ -30,7 +31,8 @@ create table reReview(
 	content varchar(5000),
 	`date` datetime not null default current_timestamp,
 	pw varchar(30),		-- 게스트 상태에서 글을 쓸 경우 사용예정
-    attachCode integer not null
+    attachCode integer not null,
+    userCode integer
 );
 
 
@@ -125,7 +127,7 @@ select * from reReview where attachCode=1;
 delete from review where code=18;
 update review set pw="1234" where code=3;
 delete from reReview where attachCode=3;
-update review set attachCnt=6 where code=1;
+update review set attachCnt=3 where code=3;
 update reReview set attachCode=28 where code=5;
 select * from reReview where attachCode=28;
 
@@ -136,3 +138,4 @@ select * from review where id = "asdf";
 select * from country;
 select * from review;
 select * from reReview;
+select * from users;
