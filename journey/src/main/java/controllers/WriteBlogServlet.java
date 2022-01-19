@@ -2,6 +2,9 @@ package controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +16,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import controllers.action.Action;
+import models.BlogDTO;
 
 /**
  * Servlet implementation class FileServlet
@@ -38,7 +42,7 @@ public class WriteBlogServlet extends HttpServlet {
 		
 //		HttpSession session = request.getSession();
 		
-		String path = request.getRealPath("blogImages");
+		String path = "C:\\Users\\A\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
 		int maxSize = 5 * 1024 * 1024;
 		try {
 			MultipartRequest multi = null;
@@ -49,15 +53,28 @@ public class WriteBlogServlet extends HttpServlet {
 			String type = multi.getContentType("image");
 			File file = multi.getFile("image");
 			
+			Enumeration e = multi.getFileNames();
+			
+			ArrayList<String> images = new ArrayList<>();
+			
+			while(e.hasMoreElements()) {
+				String str = (String)e.nextElement();
+				System.out.println(str);
+				if(multi.getFilesystemName(str) == null) continue;
+				else images.add(multi.getFilesystemName(str));
+			}
+			
 			String title = multi.getParameter("title");
 			String content = multi.getParameter("content");
+			int score = Integer.parseInt(multi.getParameter("score"));
+			String countryName = multi.getParameter("countryName");
+			String id = multi.getParameter("id");
+			int userCode = Integer.parseInt(multi.getParameter("userCode"));
 			
+			BlogDTO blog = new BlogDTO(countryName, id, title, content, score, images, userCode);
 			
-			System.out.println(fileName);
-			System.out.println(originalName);
-			System.out.println(type);
-			System.out.println(file.length());
-			System.out.println(path);
+			BlogDAO bDao = BlogDAO.getInstance();
+			bDao.writeBlog(blog);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

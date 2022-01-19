@@ -1,3 +1,10 @@
+<%@page import="models.BlogDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="controllers.BlogDAO"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="models.CountryDTO"%>
+<%@page import="controllers.CountryDAO"%>
+<%@page import="controllers.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -14,11 +21,6 @@
 
 <body>
 <%
-String countryName = "미국";
-if(request.getParameter("countryName") != null)
-	countryName = request.getParameter("countryName");
-System.out.println(countryName);
-
 String id = "Guest";
 if(session.getAttribute("log") != null) {
 	id = String.valueOf(session.getAttribute("log"));
@@ -26,65 +28,111 @@ if(session.getAttribute("log") != null) {
 
 UserDAO uDao = UserDAO.getInstance();
 
-CountryDAO cDao = CountryDAO.getInstance();
-CountryDTO country = cDao.getCountry(countryName);
-country.setScore(cDao.setCountryScore(countryName));
-String flag = country.getFlag();
 %>
 
 	<c:import url="header.jsp" />
-	<div>
-	<input type  ="hidden" name = "command" value = "">
 	
-		<input type="text" name="contryName" id="contryName"/>
-		
-		<input type = "range" name = "score" id = "score" />
-		
-		<input type = "text" name = "headText" id = "headText" >
-		
-		<input type = "text" name = "bodyText" id = "bodyText">
-		
-	</div>
+	<div id="viewBlogs">
+		        <div id="blogs">	<!-- 10개까지 표시 + 작성 창 => 11줄 / 답글 -->
+        	<table>
+        	<%
+        		BlogDAO bDao = BlogDAO.getInstance();
+        		ArrayList<BlogDTO> blogs = bDao.getBlogs();
+        			int currentPage = 1;
+        			if(request.getParameter("currentPage") != null) {
+        				currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        			}
+        			int blogStart = (currentPage-1)*5;
+        			int blogEnd = blogStart+4 > blogs.size()-1 ? blogs.size()-1 : blogStart+4;
+        			int pageStart = (((currentPage-1)/10) * 10) + 1;
+        			int pageEnd= (pageStart+9)*5 > blogs.size() ? ((blogs.size()-1)/5)+1 : pageStart+9;
+        			int lastPage = ((blogs.size() - 1) / 5) + 1;
+        			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        		
+        			for(int i = blogStart; i<=blogEnd; i++) {
+            			BlogDTO temp = blogs.get(i);
+            			String date = sdf.format(blogs.get(i).getDate());
+            			%>
+            			<tr><td>
+            				<table>
+            					<tr><td>제목 : <%=temp.getTitle() %></td></tr>
+            					<tr><td>리뷰 국가 : <%=temp.getCountryName() %></td>
+            					<td>유저 이름 : <%=temp.getId() %></td>
+            					<td>평가 점수 : <%=temp.getScore() %> 점</td></tr>
+            					<tr><td>
+            					<%
+            					ArrayList<String> images = temp.getImages();
+            					if(images.size() != 0) {
+            						for(int j = 0; j<images.size(); j++) {
+            							%>
+            							<img src=<%=images.get(j) %>>
+            							<%
+            						}
+            					}
+            					%>
+            					</td></tr>
+            					<tr><td colspan="3"><%=temp.getContent()%></td></tr>
+            					<tr><td colspan="2">리뷰 날짜 : <%=date %></td>
+            					<td>
+            					<button onclick="location.href='service?command=writeReReview&code=<%=temp.getCode()%>'">답글</button>
+            					<%
+            					if(temp.getId().equals("Guest") && temp.getId().equals(id)) {
+            						%>
+                					<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
+                					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
+                					<%
+            					}
+            					else if(temp.getId().equals(id)) {
+            						%>
+            						<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
+                					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
+            						<%
+            					}
+            					
+            					%>
+            					</td></tr>
 
-<div id="writeReview">
-        	<form method="post" action="service">
-        		<table>
-        			<tr>
-        				<th> 리뷰 쓰기 </th>
-        			</tr>
-        			<tr>
-        				<td>
-        					<input id="range" type="range" min=1 max=10 value=5 name="score"><span id="child">5점</span>
-        				</td>
-        			</tr>
-        			<tr>
-        				<td> <textarea name="content" placeholder="내용"></textarea> </td>
-        			</tr>
-        			<tr>
-        				<td>
-        					<%
-        						if(id.equals("Guest")) {
-        							%>
-        								<input name="pw" type="password" placeholder="비밀번호" required>
-        							<%
-        						}
-        					%>
-        					<input type="submit" value="댓글 적기">
-        				</td>
-        			</tr>
-        		</table>
-        		<input type="hidden" name="countryName" value=<%=countryName %>>
-        		<input type="hidden" name="id" value=<%=id %>>
-        		<%
-        		if(!id.equals("Guest")) {
+            				</table>
+            				</td></tr>
+            				<%
+            			}
         			%>
-        			<input type="hidden" name="userCode" value=<%=uDao.getUserCodeById(id) %>>
+        			<tr><td>
         			<%
-        		}
-        		%>
-        		<input type="hidden" name="command" value="writeReview">
-        	</form>
+        			if(pageStart != 1) {
+        				int targetPage = currentPage-10;
+        				if(targetPage < 1) targetPage = 1;
+        				%>
+        				<button onclick="location.href='blogPage.jsp?currentPage=<%= targetPage %>'">이전 10페이지</button>
+        				<%
+        			}
+        			for(int i = pageStart; i<=pageEnd; i++) {
+        				if(currentPage == i) {
+        					%>
+        					<span>[<%=i %>] </span>
+        					<%
+        				}
+        				else {
+        					%>
+    						<a href="blogPage.jsp?currentPage=<%= i %>">[<%=i %>] </a>
+    						<%
+        				}
+        			}
+        			
+        			if((pageStart+10) * 5 <= blogs.size()) {
+        				int targetPage = currentPage+10;
+        				if(targetPage >= lastPage) targetPage = lastPage;
+        				%>
+        				      <button onclick="location.href='blogPage.jsp?currentPage=<%= targetPage %>'">이후 10페이지</button>
+        				<%
+        			}
+        			
+        			%>
+        			</td></tr>
+        	
+        	</table>
         </div>
+	</div>
 
 </body>
 </html>

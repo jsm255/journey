@@ -12,6 +12,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/all.css" type="text/css">
 
+<style>
+	textarea{
+		width: 400px;
+		height: 500px;
+		resize: none;
+	}
+</style>
+
 <title>블로그 글 적기</title>
 </head>
 <body>
@@ -61,7 +69,17 @@ UserDAO uDao = UserDAO.getInstance();
         			</tr>
         			<tr>
         				<td>
-        					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image">
+        					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image1">
+        				</td>
+        			</tr>
+        			<tr>
+        				<td>
+        					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image2">
+        				</td>
+        			</tr>
+        			<tr>
+        				<td>
+        					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image3">
         				</td>
         			</tr>
         			<tr>
@@ -75,6 +93,8 @@ UserDAO uDao = UserDAO.getInstance();
         		<input type="hidden" name="userCode" value=<%=uDao.getUserCodeById(id) %>>
         </div>
 </form>
+
+<script type="text/javascript" src="viewCountry.js"></script>
 
 </body>
 </html>
