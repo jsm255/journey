@@ -14,5 +14,5 @@ tel varchar(30) not null -- 사용자 전화번호
 
 show databases;
 
-
+select * from blog;
 select * from users;
