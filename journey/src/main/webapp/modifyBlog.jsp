@@ -35,54 +35,65 @@
 	6. images
 	7. userCode
  -->
-<form method="post" action="modifyBlog" enctype="multipart/form-data">
-	<div id="writeBlog">
+<form method="post"action="FileUploadServlet" enctype="multipart/form-data">
+	<div id="modifyBlog">
+	<input type = "hidden" name = "command" value = "DoModifyBlog">
         		<table>
         			<tr>
         				<th> 블로그 글 수정하기 </th>
         			</tr>
         			<tr>
         				<td>
-        					<input type="text" name="title" placeholder="제목" required>
+        					<input type="text" name="title" id="title" value="${sessionScope.bSession.title}" required>
         				</td>
         			</tr>
         			<tr>
         				<td>
-        					<input type="text" name="countryName" placeholder="국가 이름을 입력하세요" required>
+        					<input type="text" name="countryName" id="countryName" value = "${sessionScope.bSession.countryName}" required>
         				</td>
         			</tr>
         			<tr>
         				<td>
-        					<input id="range" type="range" min=1 max=10 value=5 name="score"><span id="child">5점</span>
+        					<input id="range" type="range" id="range" min=1 max=10 value=5 name="score"><span id="child">5점</span>
         				</td>
         			</tr>
         			<tr>
-        				<td> <textarea name="content" placeholder="내용"></textarea> </td>
+        				<td> <textarea id="content" name="content">"${sessionScope.bSession.content }" </textarea> </td>
+        				
         			</tr>
+        			<%int cnt = 0; %>
         			<tr>
+        				<c:forEach var="images" items="${sessionScope.bSession.images}">
+        				<td> <img width="200" height="200" src="${images}"></td>
         				<td>
-        					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image1">
+        					<input id="image" type="file" accept="image/png, image/jpeg, image/jpg" name="image<%=cnt%>">
         				</td>
+        				<%cnt++; %>
+        				</c:forEach>
         			</tr>
-        			<tr>
+        			<%-- <tr>
+        				
+        				<td> <img width="200" height="200" src="${sessionScope.bSession.images.get(1) }"></td>
         				<td>
         					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image2">
         				</td>
         			</tr>
         			<tr>
+        				
+        				<td> <img width="200" height="200" src="${sessionScope.bSession.images.get(2) }"></td>
         				<td>
         					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image3">
         				</td>
-        			</tr>
+        			</tr> --%>
         			<tr>
         				<td>
-        					<input type="submit" value="수정하기">
+        					<button onclick="uploadFile()">수정하기</button>
         				</td>
         			</tr>
 
         		</table>
-        		<input type="hidden" name="id" value=<%=id %>>
-        		<input type="hidden" name="userCode" value=<%=uDao.getUserCodeById(id) %>>
+        		<%-- <input type="hidden" name="id" value=<%=id %>>
+        		<input type="hidden" name="userCode" value=<%=uDao.getUserCodeById(id) %>> --%>
         </div>
 </form>
 
