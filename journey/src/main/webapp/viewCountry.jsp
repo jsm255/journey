@@ -152,7 +152,6 @@ UserDAO uDao = UserDAO.getInstance();
 
 CountryDAO cDao = CountryDAO.getInstance();
 CountryDTO country = cDao.getCountry(countryName);
-country.setScore(cDao.setCountryScore(countryName)); // ====>>>>> 이거 수정하는게 좋겠음, 요청이 너무 많다고 리턴을 못해줌
 String flag = country.getFlag();
 
 %>

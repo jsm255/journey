@@ -158,5 +158,56 @@ public class BlogDAO {
 		
 		return false;
 	}
+	
+	public boolean deleteBlog(BlogDTO blog) {
+		
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("delete from blog where code=?");
+			pstmt.setInt(1, blog.getCode());
+			
+			pstmt.executeUpdate();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public boolean updateBlog(BlogDTO blog) {
+		
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("update blog set countryName=?, title=?, content=?, images=?, score=? where code=?");
+			pstmt.setString(1, blog.getCountryName());
+			pstmt.setString(2, blog.getTitle());
+			pstmt.setString(3, blog.getContent());
+			String str = "";
+			if(blog.getImages().size() > 0) {
+				ArrayList<String> temp = blog.getImages();
+				str += temp.size();
+				str += "?";				// 구분자
+				for(int i = 0; i<temp.size(); i++) {
+					str += temp.get(i);
+					if(i != temp.size()-1) str += "?";			// 구분자
+				}
+			}
+			else str += "none";
+			pstmt.setString(4, str);
+			pstmt.setInt(5, blog.getScore());
+			pstmt.setInt(6, blog.getCode());
+			
+			pstmt.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 
 }

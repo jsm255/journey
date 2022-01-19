@@ -36,6 +36,7 @@ UserDAO uDao = UserDAO.getInstance();
 		        <div id="blogs">	<!-- 10개까지 표시 + 작성 창 => 11줄 / 답글 -->
         	<table>
         	<%
+        	
         		BlogDAO bDao = BlogDAO.getInstance();
         		ArrayList<BlogDTO> blogs = bDao.getBlogs();
         			int currentPage = 1;
@@ -48,7 +49,7 @@ UserDAO uDao = UserDAO.getInstance();
         			int pageEnd= (pageStart+9)*5 > blogs.size() ? ((blogs.size()-1)/5)+1 : pageStart+9;
         			int lastPage = ((blogs.size() - 1) / 5) + 1;
         			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        		
+        			
         			for(int i = blogStart; i<=blogEnd; i++) {
             			BlogDTO temp = blogs.get(i);
             			String date = sdf.format(blogs.get(i).getDate());
@@ -84,8 +85,8 @@ UserDAO uDao = UserDAO.getInstance();
             					}
             					else if(temp.getId().equals(id)) {
             						%>
-            						<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
-                					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
+            						<button onclick="location.href='service?command=modifyblog&code=<%=temp.getCode()%>'">블로그수정</button>
+                					<button onclick="location.href='service?command=deleteblog&code=<%=temp.getCode()%>'">삭제</button>
             						<%
             					}
             					

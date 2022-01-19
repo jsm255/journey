@@ -51,6 +51,7 @@ public class CountryDAO {
 	}
 	
 	public CountryDTO getCountry(String countryName) {
+		setCountryScore(countryName);
 		countries = getCountries();
 		
 		for(CountryDTO temp : countries) {
@@ -61,12 +62,15 @@ public class CountryDAO {
 	}
 	
 	
-	public String setCountryScore(String countryName) {
+	private boolean setCountryScore(String countryName) {
 		
 		Double average = 0.0;
 		String score = "0.0";
 		
 		try {
+			
+			conn = DBManager.getConnection();
+			
 			ReviewDAO rDao = ReviewDAO.getInstance();
 			ArrayList<ReviewDTO> reviews = rDao.getReviews(countryName);
 			
@@ -78,17 +82,19 @@ public class CountryDAO {
 				score = String.format("%2.2f", average);
 			}
 			
-			pstmt = conn.prepareStatement("update countries set score=? where countryName=?");
+			pstmt = conn.prepareStatement("update country set score=? where countryName=?");
 			pstmt.setString(1, score);
 			pstmt.setString(2, countryName);
 			
-			return score;
+			pstmt.executeUpdate();
+			
+			return true;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return score;
+		return false;
 	}
 	
 }

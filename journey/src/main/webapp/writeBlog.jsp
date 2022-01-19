@@ -84,7 +84,7 @@ UserDAO uDao = UserDAO.getInstance();
         			</tr>
         			<tr>
         				<td>
-        					<input type="submit" value="댓글 적기">
+        					<input type="submit" value="글 적기">
         				</td>
         			</tr>
 
