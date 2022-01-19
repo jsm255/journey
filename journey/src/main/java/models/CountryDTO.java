@@ -22,6 +22,11 @@ public class CountryDTO {
 		this.score = score;
 		this.content = content; 
 	}
+	
+	public CountryDTO(String countryName, String content) {
+		this.countryName = countryName;
+		this.content = content;
+	}
 
 	public int getCode() {
 		return code;

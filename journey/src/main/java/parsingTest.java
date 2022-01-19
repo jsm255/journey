@@ -97,7 +97,7 @@ public class parsingTest {
 //		System.out.println(list);
 		
 		for(Map<String, Object> map : list) {
-			if(map.get("countryName").equals("모로코")) {
+			if(map.get("countryName").equals("잠비아")) {
 				System.out.println(map);
 			}
 		
