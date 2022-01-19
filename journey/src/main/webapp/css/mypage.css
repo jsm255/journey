@@ -45,7 +45,6 @@ article{
     width: 75%;
     float: right;
     height: 60vh;
-    
 }
 .info p{
     font-size: 25pt;
@@ -60,8 +59,8 @@ article{
     text-align: center;
     margin: 7% 0 0 25%;
     width: 60%;
-    font-family: sans-serif;
-
+	font-size : 30px;
+	font-family:  'Jua', sans-serif;
 }
 .info table input{
     width: 15vw;
@@ -83,7 +82,7 @@ table td{
 
 input[type="submit"]{
 	margin-top: 30px;
-	margin-left: 250px;
+	margin-left: 65%;
 	height: 70px;
 	width: 100px;
 	margin-bottom:80px;
@@ -93,6 +92,12 @@ input[type="submit"]{
 	font-size : 30px;
 	font-family:  'Jua', sans-serif;
 }
+
+input[type="submit"]:hover{
+	cursor: pointer;
+	background: violet;
+}
+
 /* { */
 /*     font-size: 15pt; */
 /*     text-align: center; */

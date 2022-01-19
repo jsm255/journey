@@ -45,28 +45,31 @@
 				<article class="review">
 					<p>＊내가 작성한 리뷰</p>
 
-					<table border="1px solid">
+					<table>
 					<c:if test="<%=review.size() > 0 %>">
 						<tr>
-							<td>No</td>
-							<td>Country</td>
-							<td>Id</td>
-							<td>Content</td>
-							<td>Date</td>
+							<td class="c1">No</td>
+							<td class="c1">Country</td>
+							<td class="c1">Id</td>
+							<td class="c1">Content</td>
+							<td class="c1">Date</td>
 						</tr>
 					</c:if>
 						
 						<%
+						String color = "c1";
                   for(int i=0; i<review.size(); i++){
                 	  String date = sdf.format(review.get(i).getDate());
+                	  if(i % 2 == 0) color = "c0";
+                	  else color = "c1";
                   %>
 						<tr>
-							<td><%=review.get(i).getCode()%></td>
-							<td><%=review.get(i).getCountryName() %></a></td>
-							<td><%=review.get(i).getId() %></td>
-							<td><a
+							<td class=<%=color %>><%=review.get(i).getCode()%></td>
+							<td class=<%=color %>><%=review.get(i).getCountryName() %></a></td>
+							<td class=<%=color %>><%=review.get(i).getId() %></td>
+							<td class=<%=color %>><a
 								href="service?command=modifyReview&code=<%=review.get(i).getCode()%>"><%=review.get(i).getContent() %></td>
-							<td><%=date%></td>
+							<td class=<%=color %>><%=date%></td>
 						</tr>
 						<%} %>
 					</table>

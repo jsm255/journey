@@ -59,8 +59,12 @@ article{
 .review table{
     border-collapse: collapse;
     text-align: center;
-    margin: 4% 0 0 23%;
-    width: 60%;
-    font-family: sans-serif;
+    margin: 2% 0 0 5%;
+    width: 90%;
+    	font-size : 20px;
+	font-family:  'Jua', sans-serif;
+}
 
+td.c1{
+	background-color: #999;
 }
