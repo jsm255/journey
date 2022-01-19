@@ -139,3 +139,4 @@ select * from country;
 select * from review;
 select * from reReview;
 select * from users;
+select * from blog;

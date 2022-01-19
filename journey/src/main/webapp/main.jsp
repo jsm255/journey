@@ -17,7 +17,6 @@
         <h1 class="mainTitle">어디로 떠나실건가요?</h1>
         <form method="get" action="service">
         <select size="1" class="country" name="country">
-        
             <option  value="미국">미국</option>
             <option  value="영국">영국</option>
             <option  value="일본">일본</option>
