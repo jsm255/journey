@@ -7,6 +7,7 @@ import controllers.action.WriteBlogAction;
 import controllers.action.DeleteReReviewAction;
 import controllers.action.DeleteReviewAction;
 import controllers.action.DeleteUserAction;
+import controllers.action.DoModifyBlogAction;
 import controllers.action.JoinAction;
 import controllers.action.LoginAction;
 import controllers.action.LogoutAction;
@@ -74,6 +75,8 @@ public class ActionFactory {
 			return new WriteBlogAction();
 		else if (command.equals("modifyblog")) 
 			return new ModifyBlogAction();
+		else if (command.equals("DoModifyBlog"))
+			return new DoModifyBlogAction();
 		else if (command.equals("deleteBlog"))
 			return new DeleteBlogAction();
 		return null;
