@@ -82,11 +82,23 @@ table td{
 }
 
 input[type="submit"]{
-    font-size: 15pt;
-    text-align: center;
-    width: 7vw;
-    margin: 5% 0 0 45%;
-    background-color: transparent;
-    border-radius: 5px;
-    cursor: pointer;
-}}
+	margin-top: 30px;
+	margin-left: 250px;
+	height: 70px;
+	width: 100px;
+	margin-bottom:80px;
+	border: none;
+	border-radius: 11px;
+	background: rgba(248, 160, 45, 0.856);
+	font-size : 30px;
+	font-family:  'Jua', sans-serif;
+}
+/* { */
+/*     font-size: 15pt; */
+/*     text-align: center; */
+/*     width: 7vw; */
+/*     margin: 5% 0 0 45%; */
+/*     background-color: transparent; */
+/*     border-radius: 5px; */
+/*     cursor: pointer; */
+/* } */
