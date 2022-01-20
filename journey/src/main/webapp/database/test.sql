@@ -13,6 +13,6 @@ tel varchar(30) not null -- 사용자 전화번호
 );
 
 show databases;
-
+update blog set countryName="중국", title="0123", content="asdfqqerasf", score=1 where code=10;
 select * from blog;
 select * from users;

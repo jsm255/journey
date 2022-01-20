@@ -37,28 +37,28 @@
  -->
 <form method="post"action="FileUploadServlet" enctype="multipart/form-data">
 	<div id="modifyBlog">
-	<input type = "hidden" name = "command" value = "DoModifyBlog">
+	<input type = "hidden" name = "blogCode" value = "${sessionScope.bSession.code }">
         		<table>
         			<tr>
         				<th> 블로그 글 수정하기 </th>
         			</tr>
         			<tr>
         				<td>
-        					<input type="text" name="title" id="title" value="${sessionScope.bSession.title}" required>
+        					<input type="text" name="title" id="title" value="${sessionScope.bSession.title}" required/>
         				</td>
         			</tr>
         			<tr>
         				<td>
-        					<input type="text" name="countryName" id="countryName" value = "${sessionScope.bSession.countryName}" required>
+        					<input type="text" name="countryName" id="countryName" value = "${sessionScope.bSession.countryName}" required/>
         				</td>
         			</tr>
         			<tr>
         				<td>
-        					<input id="range" type="range" id="range" min=1 max=10 value=5 name="score"><span id="child">5점</span>
+        					<input id="range" type="range" id="range" min=1 max=10 value=5 name="score"/><span id="child">5점</span>
         				</td>
         			</tr>
         			<tr>
-        				<td> <textarea id="content" name="content">"${sessionScope.bSession.content }" </textarea> </td>
+        				<td> <textarea id="content" name="content">${sessionScope.bSession.content }</textarea> </td>
         				
         			</tr>
         			<%int cnt = 0; %>
@@ -87,8 +87,9 @@
         			</tr> --%>
         			<tr>
         				<td>
-        					<button onclick="uploadFile()">수정하기</button>
-        				</td>
+        					<!-- <button onclick="uploadFile()">수정하기</button>-->
+        					<input type = "submit" value = "수정하기"/>
+ </td>
         			</tr>
 
         		</table>

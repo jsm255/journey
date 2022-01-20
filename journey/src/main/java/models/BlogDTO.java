@@ -39,12 +39,13 @@ public class BlogDTO {
 	}
 	
 	// 수정할 때
-	public BlogDTO(String countryName, String title, String content, int score, ArrayList<String> images) {
+	public BlogDTO(String countryName, String title, String content, int score, ArrayList<String> images, int code) {
 		this.countryName = countryName;
 		this.title = title;
 		this.content = content;
 		this.score = score;
 		this.images = images;
+		this.code = code;
 	}
 
 	public int getCode() {
@@ -102,5 +103,14 @@ public class BlogDTO {
 	public int getUserCode() {
 		return userCode;
 	}
+
+	@Override
+	public String toString() {
+		return "BlogDTO [code=" + code + ", countryName=" + countryName + ", id=" + id + ", title=" + title
+				+ ", content=" + content + ", score=" + score + ", images=" + images + ", date=" + date + ", userCode="
+				+ userCode + "]";
+	}
+	
+	
 	
 }

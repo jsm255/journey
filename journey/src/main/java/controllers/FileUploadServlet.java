@@ -1,6 +1,8 @@
 package controllers;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -17,6 +19,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.oreilly.servlet.multipart.Part;
 
 import controllers.action.DoModifyBlogAction;
+import models.BlogDTO;
+import models.UserDTO;
 
 /**
  * Servlet implementation class FileUploadServlet
@@ -46,30 +50,64 @@ public class FileUploadServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		
-		String json = request.getParameter("response");
-		
-		JSONObject jsonData = JSONObject.
-		
+//		doGet(request, response);
 		request.setCharacterEncoding("utf-8");
-//		DoModifyBlogAction domodifyblog = new DoModifyBlogAction();
-HttpSession session = request.getSession();
+		response.setContentType("text/html; charset=UTF-8");
 		
-		String title = request.getParameter("title");
-		String countryName = request.getParameter("countryName");
-		String range = request.getParameter("range");
-		String content = request.getParameter("content");
-		String images = request.getParameter("image1");
+//		HttpSession session = request.getSession();
 		
-		
-    	System.out.println("title : "+ title);
-    	System.out.println("countryName : "+ countryName);
-    	System.out.println("range : "+ range);
-    	System.out.println("content : "+ content);
-    	
-    	Part part = (Part) request.getPart("image1");
-    	System.out.println("partgetName"+part.getName());
-	}
+		// 원래껄로 바꿔쓰고 다시 바꾸기
+		//  "C:\\Users\\A\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
+		// ㅁㄴㅇㄹ
+		// "C:\\Users\\chox6\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
+		String path = "C:\\Users\\chox6\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
+		// 포트폴리오 용이라 로컬에 저장해도 괜찮으나
+		// 실제 서비스때에는 별도의 이미지서버에 저장을 해야한다는 것을 인지하고 있을 것.
+		int maxSize = 5 * 1024 * 1024;
+		try {
+			MultipartRequest multi = null;
+			multi = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
+			
+			String fileName = multi.getFilesystemName("image");
+			String originalName = multi.getOriginalFileName("image");
+			String type = multi.getContentType("image");
+			File file = multi.getFile("image");
+			
+			Enumeration e = multi.getFileNames();
+			
+			ArrayList<String> images = new ArrayList<>();
+			
+			while(e.hasMoreElements()) {
+				String str = (String)e.nextElement();
+				System.out.println(str);
+				if(multi.getFilesystemName(str) == null) continue;
+				else images.add(multi.getFilesystemName(str));
+			}
 
+		HttpSession session = request.getSession();
+		BlogDAO blogDao = BlogDAO.getInstance();
+		UserDAO userDao = UserDAO.getInstance();
+		
+		String title = multi.getParameter("title");
+		String content = multi.getParameter("content");
+		int score = Integer.parseInt(multi.getParameter("score"));
+		String countryName = multi.getParameter("countryName");
+		String id = ((BlogDTO)session.getAttribute("bSession")).getId();
+//		int userCode = userDao.getUserCodeById(id);
+		int blogCode = Integer.parseInt(multi.getParameter("blogCode"));
+		
+		BlogDTO blog = new BlogDTO(countryName, title, content, score, images, blogCode);
+		blogDao.updateBlog(blog);
+//		System.out.println("title : "+ title);
+//    	System.out.println("countryName : "+ countryName);
+//    	System.out.println("id : "+ id);
+//    	System.out.println("content : "+ content);
+//    	System.out.println("blogCode : "+ blogCode);
+//    	
+    	
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+	}
 }

@@ -180,7 +180,7 @@ public class BlogDAO {
 	}
 	
 	public boolean updateBlog(BlogDTO blog) {
-		
+		System.out.println(blog.toString());
 		try {
 			conn = DBManager.getConnection();
 			
