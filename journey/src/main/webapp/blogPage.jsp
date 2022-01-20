@@ -31,8 +31,15 @@ UserDAO uDao = UserDAO.getInstance();
 %>
 
 	<c:import url="header.jsp" />
-	
-	<div id="viewBlogs">
+	<main>
+	        <aside class="country">
+            <p id="country">국가 목록</p>
+            <ul>
+                <li><a href="writeBlog.jsp">블로그 글쓰기</a></li>
+            </ul>
+        </aside>
+        
+        <div id="viewBlogs">
 		        <div id="blogs">	<!-- 1
 		        0개까지 표시 + 작성 창 => 11줄 / 답글 -->
         	<table>
@@ -135,6 +142,9 @@ UserDAO uDao = UserDAO.getInstance();
         	</table>
         </div>
 	</div>
+        
+	</main>
+	
 
 </body>
 </html>

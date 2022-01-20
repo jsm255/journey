@@ -152,6 +152,8 @@ public class BlogDAO {
 			
 			pstmt.executeUpdate();
 			
+			return true;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

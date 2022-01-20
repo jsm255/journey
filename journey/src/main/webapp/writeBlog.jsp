@@ -24,7 +24,28 @@
 </head>
 <body>
 <%
-session.setAttribute("log", "asdf");
+
+if(session.getAttribute("log") == null) {
+		response.sendRedirect("login.jsp?error=needLogin");
+}
+
+String title = "";
+String content = "";
+int score = 5;
+String countryName = "";
+
+if(request.getAttribute("error") != null) {
+	if(request.getAttribute("error").equals("fail")) {
+		title = String.valueOf(session.getAttribute("title"));
+		content = String.valueOf(session.getAttribute("content"));
+		score = Integer.parseInt(String.valueOf(session.getAttribute("score")));
+		countryName = String.valueOf(session.getAttribute("countryName"));
+		%>
+		<script>alert("글 작성에 오류가 발생했습니다. 파일은 다시 등록해주세요.")</script>
+		<%
+	}
+}
+
 String id = String.valueOf(session.getAttribute("log"));
 
 UserDAO uDao = UserDAO.getInstance();
@@ -51,21 +72,21 @@ UserDAO uDao = UserDAO.getInstance();
         			</tr>
         			<tr>
         				<td>
-        					<input type="text" name="title" placeholder="제목" required>
+        					<input type="text" name="title" placeholder="제목" required value=<%=title %>>
         				</td>
         			</tr>
         			<tr>
         				<td>
-        					<input type="text" name="countryName" placeholder="국가 이름을 입력하세요" required>
+        					<input type="text" name="countryName" placeholder="국가 이름을 입력하세요" required value=<%=countryName %>>
         				</td>
         			</tr>
         			<tr>
         				<td>
-        					<input id="range" type="range" min=1 max=10 value=5 name="score"><span id="child">5점</span>
+        					<input id="range" type="range" min=1 max=10 value=<%=score %> name="score"><span id="child">5점</span>
         				</td>
         			</tr>
         			<tr>
-        				<td> <textarea name="content" placeholder="내용"></textarea> </td>
+        				<td> <textarea name="content" placeholder="내용"><%=content %></textarea> </td>
         			</tr>
         			<tr>
         				<td>

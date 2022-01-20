@@ -38,7 +38,7 @@
     <nav>
         <ul>
             <li><a href="viewCountry.jsp">국가 정보</a></li>
-<!--             <li><a href="">게시판</a></li> -->
+            <li><a href="blogPage.jsp">블로그 게시판</a></li>
 <!--             <li><a href="">공지사항</a></li> -->
         </ul>
     </nav>

@@ -76,14 +76,33 @@ public class WriteBlogServlet extends HttpServlet {
 			BlogDTO blog = new BlogDTO(countryName, id, title, content, score, images, userCode);
 			
 			BlogDAO bDao = BlogDAO.getInstance();
-			bDao.writeBlog(blog);
+			if(bDao.writeBlog(blog)) {
+				HttpSession session = request.getSession();
+				if(session.getAttribute("title") != null) {
+					session.removeAttribute("title");
+					session.removeAttribute("content");
+					session.removeAttribute("score");
+					session.removeAttribute("countryName");
+				}
+				request.getRequestDispatcher("blogPage.jsp").forward(request, response);
+				return;
+			}
+			else {
+				HttpSession session = request.getSession();
+				
+				session.setAttribute("title", title);
+				session.setAttribute("content", content);
+				session.setAttribute("score", score);
+				session.setAttribute("countryName", countryName);
+
+				request.getRequestDispatcher("writeBlog.jsp?error=fail").forward(request, response);
+				return;
+				
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("Complete!");
 	}
 
 	/**
