@@ -161,15 +161,16 @@ public class BlogDAO {
 		return false;
 	}
 	
-	public boolean deleteBlog(BlogDTO blog) {
+	public boolean deleteBlog(int blogCode) {
 		
 		try {
 			conn = DBManager.getConnection();
 			
 			pstmt = conn.prepareStatement("delete from blog where code=?");
-			pstmt.setInt(1, blog.getCode());
+			pstmt.setInt(1, blogCode);
 			
 			pstmt.executeUpdate();
+			
 			
 			return true;
 		} catch (Exception e) {

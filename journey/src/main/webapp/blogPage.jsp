@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+<script src = "js/blog.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/all.css" type="text/css">
 
@@ -94,7 +94,11 @@ UserDAO uDao = UserDAO.getInstance();
             					else if(temp.getId().equals(id)) {
             						%>
             						<button onclick="location.href='service?command=modifyblog&code=<%=temp.getCode()%>'">블로그수정</button>
-                					<button onclick="location.href='service?command=deleteblog&code=<%=temp.getCode()%>'">삭제</button>
+                					<%-- <button onclick="location.href='service?command=deleteblog&code=<%=temp.getCode()%>'">삭제</button> --%>
+                					
+                					<input type = "hidden" name = "blogCode" value = "<%= temp.getCode()%>">
+                					<button onclick="deleteBlog(<%= temp.getCode()%>)">삭제</button>
+                					
             						<%
             					}
             					

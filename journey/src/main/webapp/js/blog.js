@@ -2,7 +2,7 @@
  * 
  */
 
-async function uploadFile(){
+/*async function uploadFile(){
 	event.preventDefault();
 	
 	let fileReqDto = {
@@ -20,4 +20,18 @@ async function uploadFile(){
 			"Content-Type": "application/json; charset=utf-8"
 		}
 	});
+}*/
+
+
+async function deleteBlog(code){
+	event.preventDefault();
+	var blogCode = code;
+	 if (confirm("삭제?") == true){    //확인
+		location.href="service?command=deleteBlog&code="+code;
+		console.log("code :" + code);
+ }else{   //취소
+
+     return false;
+
+ }
 }
