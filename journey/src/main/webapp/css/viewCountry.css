@@ -11,13 +11,15 @@ body{
 main{
     grid-area: main;
     height: 100vh;
-    margin-left: 10%;
+    margin-left: 2%;
+    margin-top: 3%;
 }
 
 aside{
-    width: 10%;
+    width: 15%;
     float: left;
     height: 100vh;
+    margin-right: 3%;
    
 }
 .country{
@@ -95,4 +97,16 @@ div#countryInfo table{
 
 div#writeReview table{
 	width: 50%;
+}
+
+div#showShortBlogs img{
+	width: 100px;
+	height: 100px;
+}
+
+div#showShortBlogs a:link{
+	color : blue;
+}
+div#showShortBlogs a:visited {
+	color : orange;
 }

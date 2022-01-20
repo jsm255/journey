@@ -144,4 +144,27 @@ public class CountryDAO {
 		return false;
 	}
 	
+	public ArrayList<String> getCountryNames(){
+		ArrayList<String> countryNames = new ArrayList<>();
+		
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("select countryName from country");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String countryName = rs.getString(1);
+				
+				countryNames.add(countryName);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return countryNames;
+	}
+	
 }

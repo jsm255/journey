@@ -1,3 +1,5 @@
+<%@page import="models.BlogDTO"%>
+<%@page import="controllers.BlogDAO"%>
 <%@page import="controllers.UserDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="models.ReReviewDTO"%>
@@ -18,110 +20,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/all.css" type="text/css">
 <link rel="stylesheet" href="css/viewCountry.css" type="text/css">
-
-<style>
-	@charset "UTF-8";
-
-@charset "UTF-8";
-
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-
-body{
-	height: 80vh;
-}
-
-main{
-    grid-area: main;
-    height: 100vh;
-    margin-left: 2%;
-    margin-top: 3%;
-}
-
-aside{
-    width: 15%;
-    float: left;
-    height: 100vh;
-    margin-right: 3%;
-   
-}
-.country{
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
-.country ul{
-    list-style: none;
-
-}
-
-.country ul li{
-    margin: 10% 0 10% 0;
-    font-size: 18pt;
-    color: black;
-}
-
-.contents{
-	width: 70%;
-}
-
-table{
-	width: 70%;
-}
-
-input[type="button"]{
-    font-size: 15pt;
-    text-align: center;
-    width: 6vw;
-    margin-left: 53%;
-    background-color: transparent;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-img{
-  	width: 250px;
-   	height: 175px;
-}
-
-div#writeReview textarea{
-   	width: 500px;
-   	height: 200px;
-   	resize: none;
-}
-        
-span{white-space:pre;}
-       
-div#writeReview input {
-   	width: 200px;
-   	height: 35px;
-}
-
-footer{
-	margin-top : 58vh;
-	display:block;
-	width:100%;
-	position:fixed;
-	bottom:0;
-	
-}
-
-div#review a:link {
-	color : blue;
-}
-div#review a:visited {
-	color : orange;
-}
-
-div#countryInfo table{
-	width: 50%;
-}
-
-div#writeReview table{
-	width: 50%;
-}
-</style>
-
 <%
 // Guest 이름으로 된 댓글은 로그인을 했든 안했든 수정/삭제가 보임	=> 당연히 비밀번호를 씀
 // 어떤 댓글을 눌렀는지에 대한 검증이 필요함 => 버튼에 id를 달아놓으면 되겠다
@@ -141,7 +39,6 @@ div#writeReview table{
 String countryName = "미국";
 if(request.getParameter("countryName") != null)
 	countryName = request.getParameter("countryName");
-System.out.println(countryName);
 
 String id = "Guest";
 if(session.getAttribute("log") != null) {
@@ -154,6 +51,7 @@ CountryDAO cDao = CountryDAO.getInstance();
 CountryDTO country = cDao.getCountry(countryName);
 String flag = country.getFlag();
 
+ArrayList<String> countryNames = cDao.getCountryNames();
 %>
 <title>정보</title>
 </head>
@@ -163,16 +61,13 @@ String flag = country.getFlag();
         <aside class="country">
             <p id="country">국가 목록</p>
             <ul>
-                <li><a href="viewCountry.jsp?countryName=미국">미국</a></li>
-                <li><a href="viewCountry.jsp?countryName=영국">영국</a></li>
-                <li><a href="viewCountry.jsp?countryName=일본">일본</a></li>
-                <li><a href="viewCountry.jsp?countryName=태국">태국</a></li>
-                <li><a href="viewCountry.jsp?countryName=중국">중국</a></li>
-                <li><a href="viewCountry.jsp?countryName=필리핀">필리핀</a></li>
-                <li><a href="viewCountry.jsp?countryName=독일">독일</a></li>
-                <li><a href="viewCountry.jsp?countryName=이탈리아">이탈리아</a></li>
-                <li><a href="viewCountry.jsp?countryName=그리스">그리스</a></li>
-                <li><a href="viewCountry.jsp?countryName=인도">인도</a></li>
+            <%
+            for(int i = 0; i<countryNames.size(); i++) {
+            	%>
+            	<li><a href="viewCountry.jsp?countryName=<%=countryNames.get(i)%>"><%=countryNames.get(i)%></a></li>
+            	<%
+            }
+            %>
             </ul>
         </aside>
         
@@ -206,6 +101,48 @@ String flag = country.getFlag();
             </tr>
         	</table>
         </div>
+        
+        <div id="showShortBlogs">
+        <%
+        BlogDAO bDao = BlogDAO.getInstance();
+        ArrayList<BlogDTO> blogs = bDao.getShortBlogs(countryName);
+        
+        if(blogs.size() == 0) {
+        	%>
+        	<p> 아직 이 국가에 대한 블로그 글이 없습니다!<br>하나 작성해보시는 건 어떠신가요?</p>
+        	<%
+        }
+        else {
+        	%>
+        	<table>
+        		<tr><th> 가장 최근에 이 국가에 적힌 3건까지의 블로그 글을 보여드립니다. </th></tr>
+        	<%
+        		for(int i = 0; i<blogs.size(); i++) {
+        			BlogDTO blog = blogs.get(i);
+        			String shortContent = blog.getContent().length() > 20 ? blog.getContent().substring(0, 20) : blog.getContent();
+        			%>
+		    			<tr>
+		    				<td colspan=2><a href="blogPage.jsp"><%=blog.getTitle() %></a></td>
+		    			</tr>
+		    			<tr>
+		    				<td><a href="blogPage.jsp"><img src=<%=blog.getImages().get(0) %>></a></td>
+		    				<td><%=shortContent %></td>
+		    			</tr>
+		    			<tr>
+		    				<td>작성자 : <%=blog.getId() %></td>
+		    				<td>작성 날짜 : <%=blog.getDate() %></td>
+		    			</tr>
+        			<%
+        		}
+        	%>
+
+        	</table>
+        	<%
+        }
+        %>
+
+        </div>
+        
         <!-- 리뷰 쓰기 시스템을 넣을 것임 -->
         <div id="writeReview">
         	<form method="post" action="service">

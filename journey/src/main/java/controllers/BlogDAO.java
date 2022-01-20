@@ -212,5 +212,59 @@ public class BlogDAO {
 		
 		return false;
 	}
+	
+	public ArrayList<BlogDTO> getShortBlogs(String countryName) {
+		ArrayList<BlogDTO> blogs = new ArrayList<>();
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("select* from blog where countryName=? order by `date` desc");
+			pstmt.setString(1, countryName);
+			
+			rs = pstmt.executeQuery();
+			
+			int cnt = 0;
+			while(rs.next()) {
+				if(cnt >= 3) break;
+				cnt ++;
+				
+				BlogDTO blog;
+				
+				int code = rs.getInt(1);
+				String getCountryName = rs.getString(2);
+				String id = rs.getString(3);
+				String title = rs.getString(4);
+				String content = rs.getString(5);
+				int score = rs.getInt(6);
+				String imageTemp = rs.getString(7);
+				Timestamp date = rs.getTimestamp(8);
+				int userCode = rs.getInt(9);
+				
+				if(imageTemp.equals("none")) {
+					ArrayList<String> images = new ArrayList<>();
+					blog = new BlogDTO(code, getCountryName, id, title, content, score, images, date, userCode);
+				}
+				else {
+					ArrayList<String> images = new ArrayList<>();
+					
+					StringTokenizer st = new StringTokenizer(imageTemp, "?");
+					int size = Integer.parseInt(st.nextToken());
+					if(size >= 1) size = 1;	// 섬네일 용으로 하나만 가져올 거임
+					for(int i = 0; i<size; i++) {
+						String path = "blogImages/";
+						String temp = st.nextToken();
+						images.add(path + temp);
+					}
+					blog = new BlogDTO(code, countryName, id, title, content, score, images, date, userCode);
+				}
+				
+				blogs.add(blog);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return blogs;
+	}
 
 }

@@ -92,8 +92,6 @@ public class parsingTest {
 						map.put(country, putter);
 					}
 				}
-				
-				System.out.println("수행");
 			//	page++;
 				// System.out.println("pageNum:"+page);
 //				if (page > 10) {
