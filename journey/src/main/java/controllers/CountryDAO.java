@@ -97,4 +97,51 @@ public class CountryDAO {
 		return false;
 	}
 	
+	public CountryDTO searchCountry(String countryName) {
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("select* from country where countryName=?");	// 국가 이름으로 찾아봄
+			pstmt.setString(1, countryName);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {	// 결과가 있으면
+				int code = rs.getInt(1);
+				String flag = rs.getString(2);
+				String getCountryName = rs.getString(3);
+				String score = rs.getString(4);
+				String content = rs.getString(5);
+				
+				CountryDTO country = new CountryDTO(code, flag, getCountryName, score, content);
+				
+				return country;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public boolean generateCountry(CountryDTO country) {
+		
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("insert country(countryName, content) values(?, ?)");
+			pstmt.setString(1, country.getCountryName());
+			pstmt.setString(2, country.getContent());
+			
+			pstmt.executeUpdate();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
 }

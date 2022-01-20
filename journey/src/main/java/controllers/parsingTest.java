@@ -1,3 +1,4 @@
+package controllers;
 import java.io.BufferedInputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,6 +15,13 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class parsingTest {
+	
+	private static Map<String, Map<String, Object>> map = new HashMap<>();	// static으로 map을 생성
+																// 처음 실행시 이 맵에 국가 정보를 전부 넣고
+																// 검색시 이 맵에서 찾을 예정
+	
+	public static boolean first = true;
+	
 	private static String getTagValue(String tag, Element eElement) {
 		NodeList nList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
 		Node nValue = (Node) nList.item(0);
@@ -23,7 +31,7 @@ public class parsingTest {
 		return nValue.getNodeValue();
 	}
 
-	public static void main(String[] args) {
+	public static void main() {
 		// TODO Auto-generated method stub
 		List<Map<String, Object>> list = new ArrayList<>();
 		List<String> countries = new ArrayList<String>();
@@ -77,13 +85,15 @@ public class parsingTest {
 						String name = list1.get(i+j);
 						String info = list2.get(i+j);
 						
-						Map<String, Object> map = new HashMap<String, Object>();
-						map.put("countryName", country);
-						map.put("info", info);
+						Map<String, Object> putter = new HashMap<String, Object>();
+						putter.put("countryName", country);
+						putter.put("info", info);
 						
-						list.add(map);
+						map.put(country, putter);
 					}
 				}
+				
+				System.out.println("수행");
 			//	page++;
 				// System.out.println("pageNum:"+page);
 //				if (page > 10) {
@@ -96,11 +106,18 @@ public class parsingTest {
 		}
 //		System.out.println(list);
 		
-		for(Map<String, Object> map : list) {
-			if(map.get("countryName").equals("잠비아")) {
-				System.out.println(map);
-			}
+//		for(Map<String, Object> map : list) {
+//			if(map.get("countryName").equals("잠비아")) {
+//				System.out.println(map);
+//			}
+//		
+//		}
+	}
+	
+	// 미리 저장해둔 것들을 여기서 리턴해줌
+	public static Map<String, Object> getCountryInfo(String countryName){
+		Map<String, Object> getter = map.get(countryName);
 		
-		}
+		return getter;
 	}
 }
