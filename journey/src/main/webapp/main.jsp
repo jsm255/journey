@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <link rel="stylesheet" href="css/all.css" type="text/css">
 <title>MAIN</title>
@@ -36,7 +37,7 @@
 <!--             <option  value="그리스">그리스</option> -->
 <!--             <option  value="인도">인도</option> -->
 <!--         </select> -->
-		<input type="text" name="country" required>
+		<input type="text" name="country" id="country" onchange="checkLetter()" required>
         <button type="submit" class="button">
             <span class="button_icon">
                 <ion-icon name="search-outline"></ion-icon>
@@ -48,6 +49,7 @@
     <c:import url="footer.jsp"/>
 </div>
 </div>
+	<script type="text/javascript" src="validation.js"></script>
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>

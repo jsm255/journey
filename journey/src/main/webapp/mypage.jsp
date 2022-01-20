@@ -54,7 +54,7 @@
 							<tr>
 								<th>전화번호</th>
 								<td><input type="text" name="tel"
-									pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-0000-0000" value="<%=user.getTel()%>"></td>
+									id="tel" onchange="checkTel()" placeholder="010-0000-0000" value="<%=user.getTel()%>"></td>
 							</tr>
 							<tr>
 								<th>비밀번호 변경</th>
@@ -71,7 +71,7 @@
 			</div>
 		</main>
 		<c:import url="footer.jsp" />
-		<script type="text/javascript" src="mypage.js"></script>
+		<script type="text/javascript" src="validation.js"></script>
 	</div>
 </body>
 </html>

@@ -31,7 +31,7 @@ public class ViewCountryAction implements Action{
 		else {
 			Map<String, Object> map = parsingTest.getCountryInfo(countryName);
 			
-			country = new CountryDTO(String.valueOf(map.get("countryName")), String.valueOf(map.get("info")));
+			country = new CountryDTO(String.valueOf(map.get("countryName")), String.valueOf(map.get("info")), String.valueOf(map.get("img")));
 			
 			cDao.generateCountry(country);
 			

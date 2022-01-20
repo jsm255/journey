@@ -56,7 +56,7 @@
 			</div>
 		</main>
 		<c:import url="footer.jsp" />
-		<script type="text/javascript" src="mypage.js"></script>
+		<script type="text/javascript" src="validation.js"></script>
 	</div>
 </body>
 </html>

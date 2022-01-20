@@ -130,17 +130,17 @@ public class CountryDAO {
 		try {
 			conn = DBManager.getConnection();
 			
-			pstmt = conn.prepareStatement("insert country(countryName, content) values(?, ?)");
+			pstmt = conn.prepareStatement("insert country(countryName, content, flag) values(?, ?, ?)");
 			pstmt.setString(1, country.getCountryName());
 			pstmt.setString(2, country.getContent());
-			
+			pstmt.setString(3, country.getFlag());
 			pstmt.executeUpdate();
 			
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("complete");
 		return false;
 	}
 	

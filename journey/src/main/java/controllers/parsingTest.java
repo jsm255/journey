@@ -54,8 +54,10 @@ public class parsingTest {
 				Element root = doc.getDocumentElement();
 				NodeList countryName = root.getElementsByTagName("countryName");
 				NodeList basicInfo = root.getElementsByTagName("basic");
+				NodeList imgUrl = root.getElementsByTagName("imgUrl");
 				List<String> list1 = new ArrayList<String>();
 				List<String> list2 = new ArrayList<String>();
+				List<String> list3 = new ArrayList<String>();
 				for (int i = 0; i < countryName.getLength(); i++) {
 					Node nNode = countryName.item(i);
 					Node temp = nNode.getFirstChild();
@@ -66,7 +68,9 @@ public class parsingTest {
 					temp = nNode.getFirstChild();
 					list2.add(temp.getNodeValue());
 					
-					
+					nNode = imgUrl.item(i);
+					temp = nNode.getFirstChild();
+					list3.add(temp.getNodeValue());
 //					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 //						Element eElement = (Element) nNode;
 //						System.out.println("국가명: " + getTagValue("countryName", eElement));
@@ -82,12 +86,13 @@ public class parsingTest {
 				for(int i=0; i<countries.size(); i++) {
 					String country = countries.get(i);
 					for(int j=0; j<1;j++) {
-						String name = list1.get(i+j);
+
 						String info = list2.get(i+j);
-						
+						String img = list3.get(i+j);
 						Map<String, Object> putter = new HashMap<String, Object>();
 						putter.put("countryName", country);
 						putter.put("info", info);
+						putter.put("img", img);
 						
 						map.put(country, putter);
 					}

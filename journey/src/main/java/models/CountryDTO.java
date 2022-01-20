@@ -23,9 +23,10 @@ public class CountryDTO {
 		this.content = content; 
 	}
 	
-	public CountryDTO(String countryName, String content) {
+	public CountryDTO(String countryName, String content, String flag) {
 		this.countryName = countryName;
 		this.content = content;
+		this.flag = flag;
 	}
 
 	public int getCode() {

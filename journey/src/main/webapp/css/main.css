@@ -17,14 +17,13 @@ main{
 .mainTitle{
     line-height: 150px;
 }
-.country{
+input[type="text"] #country{
     width: 25vw;
     height: 5vh;
     text-align: center;
     font-size: 25pt;
     border-radius: 5px;
 }
-
 button[type="submit"]{
     display: inline-flex;
     background-color: white;
