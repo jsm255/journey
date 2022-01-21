@@ -1,4 +1,4 @@
-<%@page import="controllers.parsingTest"%>
+<%@page import="controllers.XMLParser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -14,9 +14,9 @@
 <body>
 
 <%
-	if(parsingTest.first) {
-		parsingTest.first = false;
-		parsingTest.main();
+if(XMLParser.first) {
+		XMLParser.first = false;
+		XMLParser.main();
 	}
 %>
 	<div class=wrap>

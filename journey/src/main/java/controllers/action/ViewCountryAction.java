@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controllers.CountryDAO;
-import controllers.parsingTest;
+import controllers.XMLParser;
 import models.CountryDTO;
 
 public class ViewCountryAction implements Action{
@@ -29,7 +29,7 @@ public class ViewCountryAction implements Action{
 			
 		// 없다면
 		else {
-			Map<String, Object> map = parsingTest.getCountryInfo(countryName);
+			Map<String, Object> map = XMLParser.getCountryInfo(countryName);
 			
 			country = new CountryDTO(String.valueOf(map.get("countryName")), String.valueOf(map.get("info")), String.valueOf(map.get("img")));
 			

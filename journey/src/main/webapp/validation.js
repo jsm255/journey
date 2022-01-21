@@ -7,7 +7,7 @@ function deleteCheck(form){
 	if(result){
 		if(pwCheck === pw){
 			form.submit();
-			alert("탈퇴되었습니다");
+			alert("탈퇴 되었습니다");
 			return true;
 		}
 		else{
@@ -34,7 +34,7 @@ $(`#changeBtn`).click(function(){
 function checkTel(){
 	var tel = document.querySelector("#tel").value;
 	
-	var telReg = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+	var telReg = /^01([0|1]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 	
 	if(tel.match(telReg) != null){
 		return false;

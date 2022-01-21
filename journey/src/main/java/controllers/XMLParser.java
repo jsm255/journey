@@ -14,13 +14,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class parsingTest {
+public class XMLParser {
 	
 	private static Map<String, Map<String, Object>> map = new HashMap<>();	// static으로 map을 생성
 																// 처음 실행시 이 맵에 국가 정보를 전부 넣고
 																// 검색시 이 맵에서 찾을 예정
 	
-	public static boolean first = true;
+	public static boolean first = true;  
 	
 	private static String getTagValue(String tag, Element eElement) {
 		NodeList nList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
