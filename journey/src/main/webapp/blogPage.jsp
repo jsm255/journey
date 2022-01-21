@@ -15,6 +15,7 @@
 <script src = "js/blog.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/all.css" type="text/css">
+<link rel="stylesheet" href="css/blogPage.css" type="text/css">
 
 <title>블로그 글 보기</title>
 </head>

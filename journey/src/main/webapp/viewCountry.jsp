@@ -122,10 +122,10 @@ ArrayList<String> countryNames = cDao.getCountryNames();
         			String shortContent = blog.getContent().length() > 20 ? blog.getContent().substring(0, 20) : blog.getContent();
         			%>
 		    			<tr>
-		    				<td colspan=2><a href="blogPage.jsp"><%=blog.getTitle() %></a></td>
+		    				<td colspan=2><a href="viewBlogDetail.jsp?code=<%=blog.getCode()%>"><%=blog.getTitle() %></a></td>
 		    			</tr>
 		    			<tr>
-		    				<td><a href="blogPage.jsp"><img src=<%=blog.getImages().get(0) %>></a></td>
+		    				<td><a href="viewBlogDetail.jsp?code=<%=blog.getCode()%>"><img src=<%=blog.getImages().get(0) %>></a></td>
 		    				<td><%=shortContent %></td>
 		    			</tr>
 		    			<tr>
