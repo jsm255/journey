@@ -41,8 +41,9 @@ public class WriteBlogServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 //		HttpSession session = request.getSession();
-		
-		String path = "C:\\Users\\A\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
+		// C:\Users\chox6\git\journey\journey\src\main\webapp\blogImages
+		//"C:/Users/A/git/journey/journey/src/main/webapp/blogImages";
+		String path = "C:/Users/chox6/git/journey/journey/src/main/webapp/blogImages";
 		// 포트폴리오 용이라 로컬에 저장해도 괜찮으나
 		// 실제 서비스때에는 별도의 이미지서버에 저장을 해야한다는 것을 인지하고 있을 것.
 		int maxSize = 5 * 1024 * 1024;

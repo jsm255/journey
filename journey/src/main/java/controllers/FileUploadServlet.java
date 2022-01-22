@@ -72,7 +72,7 @@ public class FileUploadServlet extends HttpServlet {
 			String originalName = multi.getOriginalFileName("image");
 			String type = multi.getContentType("image");
 			File file = multi.getFile("image");
-			
+			String url = "blogPage.jsp";
 			Enumeration e = multi.getFileNames();
 			
 			ArrayList<String> images = new ArrayList<>();
@@ -90,21 +90,16 @@ public class FileUploadServlet extends HttpServlet {
 		
 		String title = multi.getParameter("title");
 		String content = multi.getParameter("content");
+//		String content = request.getParameter("content");
 		int score = Integer.parseInt(multi.getParameter("score"));
 		String countryName = multi.getParameter("countryName");
 		String id = ((BlogDTO)session.getAttribute("bSession")).getId();
-//		int userCode = userDao.getUserCodeById(id);
 		int blogCode = Integer.parseInt(multi.getParameter("blogCode"));
 		
 		BlogDTO blog = new BlogDTO(countryName, title, content, score, images, blogCode);
-		blogDao.updateBlog(blog);
-//		System.out.println("title : "+ title);
-//    	System.out.println("countryName : "+ countryName);
-//    	System.out.println("id : "+ id);
-//    	System.out.println("content : "+ content);
-//    	System.out.println("blogCode : "+ blogCode);
-//    	
-    	
+		blogDao.updateBlog(blog);   
+		
+		request.getRequestDispatcher(url).forward(request, response);
 	} catch (Exception e) {
 		e.printStackTrace();
 	}

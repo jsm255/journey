@@ -26,7 +26,7 @@
 async function deleteBlog(code){
 	event.preventDefault();
 	var blogCode = code;
-	 if (confirm("삭제?") == true){    //확인
+	 if (confirm("정말 삭제하시겠습니까?") == true){    //확인
 		location.href="service?command=deleteBlog&code="+code;
 		console.log("code :" + code);
  }else{   //취소

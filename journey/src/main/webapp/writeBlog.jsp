@@ -2,59 +2,64 @@
 <%@page import="controllers.CountryDAO"%>
 <%@page import="controllers.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/all.css" type="text/css">
-
-<style>
-	textarea{
-		width: 400px;
-		height: 500px;
-		resize: none;
-	}
-</style>
+<link rel="stylesheet" href="css/blogWrite.css" type="text/css">
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <title>블로그 글 적기</title>
 </head>
 <body>
-<%
-
-if(session.getAttribute("log") == null) {
+	<%
+	if (session.getAttribute("log") == null) {
 		response.sendRedirect("login.jsp?error=needLogin");
-}
-
-String title = "";
-String content = "";
-int score = 5;
-String countryName = "";
-
-if(request.getAttribute("error") != null) {
-	if(request.getAttribute("error").equals("fail")) {
-		title = String.valueOf(session.getAttribute("title"));
-		content = String.valueOf(session.getAttribute("content"));
-		score = Integer.parseInt(String.valueOf(session.getAttribute("score")));
-		countryName = String.valueOf(session.getAttribute("countryName"));
-		%>
-		<script>alert("글 작성에 오류가 발생했습니다. 파일은 다시 등록해주세요.")</script>
-		<%
 	}
-}
 
-String id = String.valueOf(session.getAttribute("log"));
+	String title = "";
+	String content = "";
+	int score = 5;
+	String countryName = "";
 
-UserDAO uDao = UserDAO.getInstance();
+	if (request.getAttribute("error") != null) {
+		if (request.getAttribute("error").equals("fail")) {
+			title = String.valueOf(session.getAttribute("title"));
+			content = String.valueOf(session.getAttribute("content"));
+			score = Integer.parseInt(String.valueOf(session.getAttribute("score")));
+			countryName = String.valueOf(session.getAttribute("countryName"));
+	%>
+	<script>
+		alert("글 작성에 오류가 발생했습니다. 파일은 다시 등록해주세요.")
+	</script>
+	<%
+	}
+	}
 
+	String id = String.valueOf(session.getAttribute("log"));
 
-%>
-<c:import url="header.jsp" />
+	UserDAO uDao = UserDAO.getInstance();
+	%>
+	<c:import url="header.jsp" />
 
-<!-- 블로그 글 적기가 넘겨 줄 파라미터
+	<!-- 블로그 글 적기가 넘겨 줄 파라미터
 	1. countryName
 	2. id
 	3. title
@@ -64,58 +69,65 @@ UserDAO uDao = UserDAO.getInstance();
 	7. userCode
  -->
 
-<form method="post" action="writeBlog" enctype="multipart/form-data">
-	<div id="writeBlog">
-        		<table>
-        			<tr>
-        				<th> 블로그 글 쓰기 </th>
-        			</tr>
-        			<tr>
-        				<td>
-        					<input type="text" name="title" placeholder="제목" required value=<%=title %>>
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>
-        					<input type="text" name="countryName" placeholder="국가 이름을 입력하세요" required value=<%=countryName %>>
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>
-        					<input id="range" type="range" min=1 max=10 value=<%=score %> name="score"><span id="child">5점</span>
-        				</td>
-        			</tr>
-        			<tr>
-        				<td> <textarea name="content" placeholder="내용"><%=content %></textarea> </td>
-        			</tr>
-        			<tr>
-        				<td>
-        					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image1">
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>
-        					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image2">
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>
-        					<input type="file" accept="image/png, image/jpeg, image/jpg" name="image3">
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>
-        					<input type="submit" value="글 적기">
-        				</td>
-        			</tr>
+	<form method="post" action="writeBlog" enctype="multipart/form-data">
+		<div class="writeBlogForm" id="writeBlog">
+			<table>
+				<tr class = "blogText">
+					<th class = "blogText">블로그 글 쓰기</th>
+				</tr>
+				<tr>
+					<td class = "subTitle"><input class = "subTitle" type="text" name="title" placeholder="제목" required
+						value=<%=title%>></td>
+				</tr>
+				<tr>
+					<td class = "subTitle"><input class = "subTitle" type="text" name="countryName"
+						placeholder="국가 이름을 입력하세요" required value=<%=countryName%>>
+					</td>
+				</tr>
+				<tr>
+					<td class="rate"><input class = "rate" id="range" type="range" min=1 max=10
+						value=<%=score%> name="score"><span class = "rate" id="child">5점</span></td>
+				</tr>
+				<tr>
+					<td name="content">
+						<div name="content" id="summernote">
+							<p name="content"><%=content%></p>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><input class = "fileUpload" type="file"
+						accept="image/png, image/jpeg, image/jpg" name="image1"></td>
+				</tr>
+				<tr>
+					<td><input class = "fileUpload" type="file"
+						accept="image/png, image/jpeg, image/jpg" name="image2"></td>
+				</tr>
+				<tr>
+					<td><input class = "fileUpload" type="file"
+						accept="image/png, image/jpeg, image/jpg" name="image3"></td>
+				</tr>
+				<tr>
+					<td class = "write-btn-area"><input class="write-btn" type="submit" value="글 쓰기"></td>
+				</tr>
 
-        		</table>
-        		<input type="hidden" name="id" value=<%=id %>>
-        		<input type="hidden" name="userCode" value=<%=uDao.getUserCodeById(id) %>>
-        </div>
-</form>
+			</table>
+			<input type="hidden" name="id" value=<%=id%>> <input
+				type="hidden" name="userCode" value=<%=uDao.getUserCodeById(id)%>>
+		</div>
+	</form>
 
-<script type="text/javascript" src="viewCountry.js"></script>
+	<script type="text/javascript" src="viewCountry.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#summernote').summernote();
 
+		});
+		$('#summernote').summernote({
+			placeholder : '내용',
+			tabsize : 2,
+			height : 600
+		});
+	</script>
 </body>
 </html>

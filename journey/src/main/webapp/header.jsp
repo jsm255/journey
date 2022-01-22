@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/all.css" type="text/css">
 <title>HEADER</title>
 </head>
 <body>

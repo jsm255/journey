@@ -17,32 +17,18 @@ import models.BlogDTO;
 public class ModifyBlogAction  implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-		
-		 //String path = request.getRealPath(".\\webapp\\images\\blogImg");
-		//int size = 1024 * 1024 * 20; //20MB
-		
+	
 		String url = "modifyBlog.jsp";
-		//MultipartRequest multiRequest = new MultipartRequest(request, path, size, "EUC-KR", new DefaultFileRenamePolicy());
-//		
-		//Enumeration files = multiRequest.getFileNames();
-		//String str = (String)files.nextElement();
-		//String fileName = multiRequest.getOriginalFileName(str);
-		//System.out.println(fileName);
+
 		String str = request.getParameter("code");
 		int code = Integer.parseInt(str);
-		System.out.println("-----------");
-		System.out.println("CODE:"+code);
-		System.out.println("-----------");
 		BlogDAO blogDao = BlogDAO.getInstance();
 		
 		BlogDTO blogDto = blogDao.getBlog(code);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("bSession", blogDto);
-		
-		
-		
+
 		request.getRequestDispatcher(url).forward(request, response);
 	
 	}

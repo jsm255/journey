@@ -37,9 +37,7 @@ public class DoModifyBlogAction implements Action{
     	String str = (String)files.nextElement();
     	String filename = multiRequest.getFilesystemName(str);
     	String original_filename = multiRequest.getOriginalFileName(str);
-    	
-    	System.out.println("FileName" + filename);
-    	System.out.println("orignal_filename" + original_filename);
+
 			    }
 			    
 		   }catch (IOException ie) {
@@ -47,10 +45,5 @@ public class DoModifyBlogAction implements Action{
 		   }catch (Exception e) {
 		    e.printStackTrace();
 		   }
-		
-//		ArrayList<String> imageList = (ArrayList<String>) session.getAttribute("bSession.images");
-//		for (int i = 0; i < imageList.size(); i++) {
-//			System.out.println(imageList.get(i));
-//		}
 	}
 }
