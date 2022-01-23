@@ -90,9 +90,9 @@
 				</tr>
 				<tr>
 					<td name="content">
-						<div name="content" id="summernote">
-							<p name="content"><%=content%></p>
-						</div>
+						<textarea name="content" id="summernote">
+							<%=content%>
+						</textarea>
 					</td>
 				</tr>
 				<tr>
