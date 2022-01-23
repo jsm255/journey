@@ -106,7 +106,6 @@ ArrayList<String> countryNames = cDao.getCountryNames();
         <%
         BlogDAO bDao = BlogDAO.getInstance();
         ArrayList<BlogDTO> blogs = bDao.getShortBlogs(countryName);
-        System.out.println("검증1");
         if(blogs.size() == 0) {
         	%>
         	<p> 아직 이 국가에 대한 블로그 글이 없습니다!<br>하나 작성해보시는 건 어떠신가요?</p>
@@ -117,10 +116,8 @@ ArrayList<String> countryNames = cDao.getCountryNames();
         	<table>
         		<tr><th> 가장 최근에 이 국가에 적힌 3건까지의 블로그 글을 보여드립니다. </th></tr>
         	<%
-        	System.out.println("검증2");
         		for(int i = 0; i<blogs.size(); i++) {
         			BlogDTO blog = blogs.get(i);
-        			System.out.println("검증3");
         			String shortContent = blog.getContent().length() > 20 ? blog.getContent().substring(0, 20) : blog.getContent();
         			%>
 		    			<tr>
@@ -147,7 +144,6 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 		    			</tr>
         			<%
         		}
-        		System.out.println("검증4");
         	%>
 
         	</table>
