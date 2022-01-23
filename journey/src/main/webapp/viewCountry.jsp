@@ -106,7 +106,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
         <%
         BlogDAO bDao = BlogDAO.getInstance();
         ArrayList<BlogDTO> blogs = bDao.getShortBlogs(countryName);
-        
+        System.out.println("검증1");
         if(blogs.size() == 0) {
         	%>
         	<p> 아직 이 국가에 대한 블로그 글이 없습니다!<br>하나 작성해보시는 건 어떠신가요?</p>
@@ -117,15 +117,28 @@ ArrayList<String> countryNames = cDao.getCountryNames();
         	<table>
         		<tr><th> 가장 최근에 이 국가에 적힌 3건까지의 블로그 글을 보여드립니다. </th></tr>
         	<%
+        	System.out.println("검증2");
         		for(int i = 0; i<blogs.size(); i++) {
         			BlogDTO blog = blogs.get(i);
+        			System.out.println("검증3");
         			String shortContent = blog.getContent().length() > 20 ? blog.getContent().substring(0, 20) : blog.getContent();
         			%>
 		    			<tr>
 		    				<td colspan=2><a href="viewBlogDetail.jsp?code=<%=blog.getCode()%>"><%=blog.getTitle() %></a></td>
 		    			</tr>
 		    			<tr>
-		    				<td><a href="viewBlogDetail.jsp?code=<%=blog.getCode()%>"><img src=<%=blog.getImages().get(0) %>></a></td>
+		    			<%
+		    				if(blog.getImages().size() == 0) {
+		    					%>
+		    					<td></td>
+		    					<%
+		    				}
+		    				else {
+		    					%>
+		    					<td><a href="viewBlogDetail.jsp?code=<%=blog.getCode()%>"><img src=<%=blog.getImages().get(0) %>></a></td>
+		    					<%
+		    				}
+		    			%>
 		    				<td><%=shortContent %></td>
 		    			</tr>
 		    			<tr>
@@ -134,6 +147,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 		    			</tr>
         			<%
         		}
+        		System.out.println("검증4");
         	%>
 
         	</table>
@@ -220,7 +234,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
                 					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
                 					<%
             					}
-            					else if(temp.getId().equals(id)) {
+            					else if(temp.getUserCode() == uDao.getUserCodeById(id)) {
             						%>
             						<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
                 					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
@@ -250,7 +264,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
                 						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">삭제</button>
                 						<%
             						}
-            						else if(rrtemp.getId().equals(id)) {
+            						else if(rrtemp.getUserCode() == uDao.getUserCodeById(id)) {
             							%>
             							<button onclick="location.href='service?command=modifyReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">수정</button>
                 						<button onclick="location.href='service?command=deleteReReview&code=<%=rrtemp.getCode()%>&countryName=<%=countryName%>'">삭제</button>

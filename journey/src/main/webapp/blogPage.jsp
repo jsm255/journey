@@ -33,16 +33,15 @@ UserDAO uDao = UserDAO.getInstance();
 
 	<c:import url="header.jsp" />
 	<main>
-	        <aside class="country">
-            <p id="country">국가 목록</p>
+	        <aside class="blog">
             <ul>
-                <li><a href="writeBlog.jsp">블로그 글쓰기</a></li>
+                <li></li>
             </ul>
         </aside>
         
         <div id="viewBlogs">
-		        <div id="blogs">	<!-- 1
-		        0개까지 표시 + 작성 창 => 11줄 / 답글 -->
+		        <div id="blogs">
+		        <button onclick="location.href='writeBlog.jsp'">블로그 글쓰기</button>
         	<table>
         	<%
         	
@@ -64,35 +63,30 @@ UserDAO uDao = UserDAO.getInstance();
             			String date = sdf.format(blogs.get(i).getDate());
             			%>
             			<tr><td>
-            				<table>
-            					<tr><td>제목 : <%=temp.getTitle() %></td></tr>
+            				<table class="separateBlog">
+            					<tr><td colspan=3><a id="title" href="viewBlogDetail.jsp?code=<%=temp.getCode()%>">제목 : <%=temp.getTitle() %></a></td></tr>
             					<tr><td>리뷰 국가 : <%=temp.getCountryName() %></td>
             					<td>유저 이름 : <%=temp.getId() %></td>
             					<td>평가 점수 : <%=temp.getScore() %> 점</td></tr>
-            					<tr><td>
+            					<tr>
             					<%
             					ArrayList<String> images = temp.getImages();
             					if(images.size() != 0) {
             						for(int j = 0; j<images.size(); j++) {
             							%>
+            							<td>
             							<img src=<%=images.get(j) %>>
+            							</td>
             							<%
             						}
             					}
             					%>
-            					</td></tr>
-            					<tr><td colspan="3"><%=temp.getContent()%></td></tr>
+            					</tr>
+            					<tr><td id="content" colspan="3"><%=temp.getContent()%></td></tr>
             					<tr><td colspan="2">리뷰 날짜 : <%=date %></td>
             					<td>
-            					<button onclick="location.href='service?command=writeReReview&code=<%=temp.getCode()%>'">답글</button>
             					<%
-            					if(temp.getId().equals("Guest") && temp.getId().equals(id)) {
-            						%>
-                					<button onclick="location.href='service?command=modifyReview&code=<%=temp.getCode()%>'">수정</button>
-                					<button onclick="location.href='service?command=deleteReview&code=<%=temp.getCode()%>'">삭제</button>
-                					<%
-            					}
-            					else if(temp.getId().equals(id)) {
+            					if(temp.getUserCode() == uDao.getUserCodeById(id)) {
             						%>
             						<button onclick="location.href='service?command=modifyblog&code=<%=temp.getCode()%>'">블로그수정</button>
                 					<%-- <button onclick="location.href='service?command=deleteblog&code=<%=temp.getCode()%>'">삭제</button> --%>
@@ -111,7 +105,7 @@ UserDAO uDao = UserDAO.getInstance();
             				<%
             			}
         			%>
-        			<tr><td>
+        			<tr><td id="page">
         			<%
         			if(pageStart != 1) {
         				int targetPage = currentPage-10;

@@ -24,16 +24,12 @@ BlogDTO blog = bDao.getBlog(code);
 	   <main>
 	   <table>
 			<tr>
-				<td>제목 : <%=blog.getTitle() %></td>
+				<th colspan=3>제목 : <%=blog.getTitle() %></th>
 			</tr>
 			<tr>
 				<td>국가 : <%=blog.getCountryName() %></td>
-			</tr>
-			<tr>
 				<td>작성자 : <%=blog.getId() %></td>
-			</tr>
-			<tr>
-				<td>점수 : <%=blog.getScore() %></td>
+				<td>점수 : <%=blog.getScore() %> 점</td>
 			</tr>
 			
 			<%
@@ -41,25 +37,25 @@ BlogDTO blog = bDao.getBlog(code);
 			if(images.size() != 0) {
 				%>
 				<tr>
-					<td>
+					
 					<%
 						for(int i = 0; i<images.size(); i++) {
-							%>
+							%><td>
 								<img src=<%=images.get(i) %>>
-							<%
+							</td><%
 						}
 					%>
-					</td>
+					
 				</tr>
 				<%
 			}
 			
 			%>
 			<tr>
-				<td><%=blog.getContent() %></td>
+				<td id="content" colspan=3><%=blog.getContent() %></td>
 			</tr>
 			<tr>
-				<td>작성 날짜 : <%=blog.getDate() %></td>
+				<td colspan=3>작성 날짜 : <%=blog.getDate() %></td>
 			</tr>
 			
 		</table>
