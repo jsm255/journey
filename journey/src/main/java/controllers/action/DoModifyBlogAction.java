@@ -29,7 +29,7 @@ public class DoModifyBlogAction implements Action{
 		String content = request.getParameter("content");
 		String images = request.getParameter("image1");
 		System.out.println("Image : " + images);
-		String path = "C:/Users/chox6/git/journey/journey/src/main/webapp/uploadedFiles";
+		String path = "C:\\Users\\A\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
 	    int size = 1024 * 1024 * 20; //20MB
 		MultipartRequest multiRequest = new MultipartRequest(request,path,size,"UTF-8", new DefaultFileRenamePolicy());
 		

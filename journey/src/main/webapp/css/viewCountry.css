@@ -44,7 +44,7 @@ aside{
 }
 
 table{
-	width: 70%;
+	width: 80%;
 }
 
 input[type="button"]{
@@ -92,11 +92,11 @@ div#review a:visited {
 }
 
 div#countryInfo table{
-	width: 50%;
+	width: 70%;
 }
 
 div#writeReview table{
-	width: 50%;
+	width: 70%;
 }
 
 div#showShortBlogs img{

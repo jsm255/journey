@@ -3,6 +3,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 img{
-	width: 300px;
-	height: 200px;
+	width: 400px;
+	height: 350px;
+}
+
+table{
+	width: 90%;
+    font-size: 15pt;
+	margin-left: 5%;
+	margin-top: 3%;
+	padding-bottom : 3%;
+	
+	border: 1px solid black;
+	border-radius: 10px;
+}
+th{
+	font-size: 20pt;
 }
