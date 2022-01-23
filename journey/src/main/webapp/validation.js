@@ -20,10 +20,11 @@ function deleteCheck(form){
 	
 }
 
-$(`#changeBtn`).click(function(){
+$(`#changeBtn`).click(function(form){
 	
 	var result = window.confirm("수정하시겠습니까?");
-	
+	const tel = form.tel.value;
+	if(checkTel())
 	if(result)
 		return true;
 	else

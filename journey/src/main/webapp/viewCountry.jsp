@@ -113,7 +113,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
         }
         else {
         	%>
-        	<table>
+        	<table id="blogReview">
         		<tr><th> 가장 최근에 이 국가에 적힌 3건까지의 블로그 글을 보여드립니다. </th></tr>
         	<%
         		for(int i = 0; i<blogs.size(); i++) {
@@ -158,7 +158,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
         	<form method="post" action="service">
         		<table>
         			<tr>
-        				<th> 리뷰 쓰기 </th>
+        				<th> <h2>리뷰 쓰기</h2> </th>
         			</tr>
         			<tr>
         				<td>
@@ -215,7 +215,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
             			String date = sdf.format(reviews.get(i).getDate());
             			%>
             			<tr><td>
-            				<table>
+            				<table id="reviewA">
             					<tr><td>리뷰 국가 : <%=temp.getCountryName() %></td>
             					<td>유저 이름 : <%=temp.getId() %></td>
             					<td>평가 점수 : <%=temp.getScore() %> 점</td></tr>
@@ -243,16 +243,18 @@ ArrayList<String> countryNames = cDao.getCountryNames();
             					if(temp.getAttachCnt() >= 1) {
             						%>
             						<tr><td><button id="<%=temp.getCode() %>" onclick='toggleTable(event)'>답글 <%=temp.getAttachCnt() %>개 보기</button></td></tr>
-            						<tr><td colspan="3"><table id="<%=temp.getCode() %>_table" style="display:none;">
+            						<tr><td colspan="3"><table id="<%=temp.getCode() %>_table" class="_table" style="display:none;">
             						<%
             						ArrayList<ReReviewDTO> rrviews = rrDao.getReReviews(temp.getCode());
             						for(ReReviewDTO rrtemp : rrviews) {
             							date = sdf.format(rrtemp.getDate());
 	            					%>
+	            					
 	            					<tr><td><span>&#9;</span>유저 이름 : <%=rrtemp.getId() %></td></tr>
             						<tr><td><span>&#9;</span>유저 답글 : <%=rrtemp.getContent()%></td></tr>
             						<tr><td><span>&#9;</span>답글 날짜 : <%=date %></td></tr>
             						<tr><td><span>&#9;</span>
+            
             						<%
             						if(rrtemp.getId().equals("Guest") && rrtemp.getId().equals(id)) {
             							%>

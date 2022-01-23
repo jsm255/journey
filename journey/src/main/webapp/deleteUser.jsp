@@ -55,7 +55,9 @@
 				</article>
 			</div>
 		</main>
-		<c:import url="footer.jsp" />
+			<div class="footer-div" >
+        <c:import url="footer.jsp"/>
+        </div>
 		<script type="text/javascript" src="validation.js"></script>
 	</div>
 </body>

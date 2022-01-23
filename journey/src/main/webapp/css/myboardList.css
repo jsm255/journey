@@ -68,3 +68,9 @@ article{
 td.c1{
 	background-color: #999;
 }
+.footer-div{
+	display:block;
+	width:100%;
+	position:fixed;
+	bottom:0;
+}

@@ -55,9 +55,11 @@ public class XMLParser {
 				NodeList countryName = root.getElementsByTagName("countryName");
 				NodeList basicInfo = root.getElementsByTagName("basic");
 				NodeList imgUrl = root.getElementsByTagName("imgUrl");
+				
 				List<String> list1 = new ArrayList<String>();
 				List<String> list2 = new ArrayList<String>();
 				List<String> list3 = new ArrayList<String>();
+				
 				for (int i = 0; i < countryName.getLength(); i++) {
 					Node nNode = countryName.item(i);
 					Node temp = nNode.getFirstChild();

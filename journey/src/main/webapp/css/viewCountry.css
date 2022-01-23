@@ -93,10 +93,41 @@ div#review a:visited {
 
 div#countryInfo table{
 	width: 70%;
+	padding: 2% 0 3% 2%;
+	border: 1px solid black;
 }
 
+div#showShortBlogs table{
+	width: 70%;
+	margin-top: 3%;
+	padding-bottom : 3%;
+	border-bottom: 1px solid black;
+	
+}
+
+
+
+/* div#review table{
+	margin-left:10%;
+}
+ */
+ 
+div#review table#reviewA{
+	padding:1% 0 3% 0;
+	border-bottom: 1px solid black;
+}
+
+div#review table._table{
+	width: 40%;
+	border-top: 1px dashed black;	
+	border-bottom: 1px dashed black;	
+}
 div#writeReview table{
 	width: 70%;
+}
+
+div#writeReview th{
+	text-align:left;
 }
 
 div#showShortBlogs img{
@@ -110,3 +141,4 @@ div#showShortBlogs a:link{
 div#showShortBlogs a:visited {
 	color : orange;
 }
+

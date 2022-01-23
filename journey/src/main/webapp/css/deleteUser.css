@@ -80,3 +80,10 @@ input[type="button"]{
     border-radius: 5px;
     cursor: pointer;
 }
+.footer-div{
+	display:block;
+	width:100%;
+	position:fixed;
+	bottom:0;
+}
+
