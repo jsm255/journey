@@ -24,6 +24,7 @@ aside{
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
+    height: auto;
 }
 
 .myList{
@@ -45,18 +46,15 @@ article{
 .delete{
     border: 1px solid black;
     border-radius: 10px;
+    height: auto;
 }
 .delete p{
     font-size: 25pt;
 }
-.delete span{
-    text-align: center;
-    font-size: 18pt;
-}
 
 #info{
     text-align: center;
-    margin:7% 12% 0 0;
+    margin:2% 12% 0 0;
     white-space: pre;
     font-size: 20pt;
 }
@@ -72,13 +70,20 @@ input[type="password"]{
     font-size: 18pt;
 }
 input[type="button"]{
-    font-size: 15pt;
+    font-size: 1rem;
     text-align: center;
     width: 7vw;
-    margin: 5% 0 0 45%;
-    background-color: transparent;
+    height: 4vh;
+    margin: 0 0 7% 45%;
+    background: rgba(248, 160, 45, 0.856);
     border-radius: 5px;
+    border: none;
     cursor: pointer;
+}
+
+input[type="button"]:hover{
+	cursor: pointer;
+	background: violet;
 }
 .footer-div{
 	display:block;

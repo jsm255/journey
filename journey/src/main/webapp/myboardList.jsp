@@ -36,7 +36,7 @@
 				<ul class="myList">
 					<li><a href="mypage.jsp">회원정보 수정</a></li>
 					<li><a href="myboardList.jsp">내가 작성한 리뷰</a></li>
-					<li><a href="deleteUser.jsp">회원탈퇴</a></li>
+					<li><a href="deleteUser.jsp">회원 탈퇴</a></li>
 
 				</ul>
 

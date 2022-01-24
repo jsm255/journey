@@ -25,11 +25,11 @@ input[type="text"]#country{
 }
 button[type="submit"]{
     display: inline-flex;
-    background-color: white;
+    background-color: transparent;
     cursor: pointer;
     border: none;
     border-radius: 3px;
-    font-weight: bold;
+
 }
 
 .button_icon{

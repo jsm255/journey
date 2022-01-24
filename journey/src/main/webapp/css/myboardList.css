@@ -24,6 +24,7 @@ aside{
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
+    height: auto;
 }
 
 .myList{
@@ -46,6 +47,7 @@ article{
 .review{
     border: 1px solid black;
     border-radius: 10px;
+    height: auto;
 }
 .review a:link {
 	color : blue;

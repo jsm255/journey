@@ -28,6 +28,7 @@ aside{
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
+    height: auto;
 }
 
 .myList{
@@ -52,6 +53,7 @@ article{
 .info{
     border: 1px solid black;
     border-radius: 10px;
+    height: auto;
 }
 
 .info table{
@@ -85,12 +87,12 @@ input[type="submit"]{
 	margin-left: 65%;
 	height: 70px;
 	width: 100px;
-	margin-bottom:80px;
+	margin-bottom: 10%;
 	border: none;
 	border-radius: 11px;
 	background: rgba(248, 160, 45, 0.856);
 	font-size : 30px;
-	font-family:  'Jua', sans-serif;
+	font-family:  'IBM Plex Sans KR', sans-serif;
 }
 
 input[type="submit"]:hover{

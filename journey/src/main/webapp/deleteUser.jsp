@@ -32,22 +32,24 @@
 				<ul class="myList">
 					<li><a href="mypage.jsp">회원정보 수정</a></li>
 					<li><a href="myboardList.jsp">내가 작성한 리뷰</a></li>
-					<li><a href="deleteUser.jsp">회원탈퇴</a></li>
+					<li><a href="deleteUser.jsp">회원 탈퇴</a></li>
 
 				</ul>
 
 			</aside>
 			<div>
 				<article class="delete">
-					<p>＊회원탈퇴</p>
+					<p>＊회원 탈퇴</p>
 					<form action="service" method="post">
 
 					   <div id="info">
-                        아이디:&#9;<input type='text' name='id'id="id" value="<%=user.getId()%>" readonly><br><br>
-                        비밀번호:&#9;<input type='password' name='pw' id="pw" required>
+                        <label>아이디</label>
+                        <input type='text' name='id'id="id" value="<%=user.getId()%>" readonly><br><br>
+                        <label>비밀번호</label>
+                        <input type='password' name='pw' id="pw" required>
                         <input type="hidden" id="pwCheck" value="<%=user.getPw()%>" >
                        </div>
-                        <div><input type="button" onclick="deleteCheck(form)" id="submitBtn" value="회원탈퇴"></div> 
+                        <div><input type="button" onclick="deleteCheck(form)" id="submitBtn" value="회원 탈퇴"></div> 
                         
 						<input type="hidden" name="command" value="deleteUser">
 					</form>
