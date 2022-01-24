@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 
 .writeBlogForm{
 	display:flex;
@@ -37,7 +37,7 @@
 	border-radius: 11px;
 	background: rgba(248, 160, 45, 0.856);
 	font-size : 30px;
-	font-family:  'Jua', sans-serif;
+	font-family:  'IBM Plex Sans KR', sans-serif;
 }
 
 .fileUpload{
@@ -78,7 +78,7 @@ body{
     "main"
     "footer"
     ;
-    font-family:  'Jua', sans-serif;
+    font-family:  'IBM Plex Sans KR', sans-serif;
 }
 /* header */
 header{
