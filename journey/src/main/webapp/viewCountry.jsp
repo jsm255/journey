@@ -114,11 +114,11 @@ ArrayList<String> countryNames = cDao.getCountryNames();
         else {
         	%>
         	<table id="blogReview">
-        		<tr><th> 가장 최근에 이 국가에 적힌 3건까지의 블로그 글을 보여드립니다. </th></tr>
+        		<tr><th colspan=2> 가장 최근에 이 국가에 적힌 3건까지의 블로그 글을 보여드립니다. </th></tr>
         	<%
         		for(int i = 0; i<blogs.size(); i++) {
         			BlogDTO blog = blogs.get(i);
-        			String shortContent = blog.getContent().length() > 20 ? blog.getContent().substring(0, 20) : blog.getContent();
+        			String shortContent = blog.getContent().length() > 40 ? blog.getContent().substring(0, 40) : blog.getContent();
         			%>
 		    			<tr>
 		    				<td colspan=2><a href="viewBlogDetail.jsp?code=<%=blog.getCode()%>"><%=blog.getTitle() %></a></td>

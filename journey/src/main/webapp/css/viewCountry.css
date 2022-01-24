@@ -105,6 +105,10 @@ div#showShortBlogs table{
 	
 }
 
+div#showShortBlogs td{
+	width: 45%;
+}
+
 
 
 /* div#review table{

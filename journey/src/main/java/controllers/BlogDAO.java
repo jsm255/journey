@@ -110,6 +110,7 @@ public class BlogDAO {
 						String path = "blogImages/";
 						String temp = st.nextToken();
 						images.add(path + temp);
+						System.out.println(path + temp);
 					}
 					blog = new BlogDTO(code, countryName, id, title, content, score, images, date, userCode);
 				}

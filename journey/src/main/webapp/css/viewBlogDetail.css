@@ -27,10 +27,14 @@ table button{
 	background: rgba(248, 160, 45, 0.856);
 	height: 30px;
 	width: 70%;
+	margin-bottom: 3%;
 	font-size : 18px;
 	font-family:  'Jua', sans-serif;
 }
 table button:hover{
 	cursor: pointer;
 	background: violet;
+}
+body{
+    height: 100vh;
 }

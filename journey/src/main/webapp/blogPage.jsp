@@ -28,7 +28,6 @@ if(session.getAttribute("log") != null) {
 }
 
 UserDAO uDao = UserDAO.getInstance();
-
 %>
 
 	<c:import url="header.jsp" />
