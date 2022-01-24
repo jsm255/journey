@@ -12,26 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
  <link rel="stylesheet" href="css/all.css" type="text/css">
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-	div#contents{
-		display: flex;
-		flex-direction: column;
-		
-		align-items: center;
-		justify-content: space-around;
-	}
-	
-	div form table{
-		text-align: center;
-	}
-	textarea{
-		width: 300px;
-		height: 100px;
-		resize: none;
-	}
-</style>
+<link rel="stylesheet" href="css/modifyReview.css" type="text/css">
 
 <title>댓글 수정</title>
 </head>

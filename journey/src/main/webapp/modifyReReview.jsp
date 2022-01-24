@@ -10,26 +10,7 @@
 <meta charset="UTF-8">
 
  <link rel="stylesheet" href="css/all.css" type="text/css">
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-	div#contents{
-		display: flex;
-		flex-direction: column;
-		
-		align-items: center;
-		justify-content: space-around;
-	}
-	
-	div form table{
-		text-align: center;
-	}
-	textarea{
-		width: 300px;
-		height: 100px;
-		resize: none;
-	}
-</style>
+ <link rel="stylesheet" href="css/modifyReReview.css" type="text/css">
 
 <title>답글 수정</title>
 </head>
