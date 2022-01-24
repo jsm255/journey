@@ -4,15 +4,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 
-body{
-	height: 100vh;
-}
+
 
 main{
     grid-area: main;
     height: 100vh;
     margin-left: 2%;
-    margin-top: 3%;
+    margin-top: 2%;
+    
 }
 
 aside{
@@ -26,11 +25,12 @@ aside{
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
+    height: auto;
 }
 
 .country ul{
     list-style: none;
-
+	
 }
 
 .country ul li{
@@ -39,8 +39,12 @@ aside{
     color: black;
 }
 
-.contents{
-	width: 70%;
+
+
+#contents{
+	width: 80%;
+	float: right;
+	height: 100vh;
 }
 
 table{
@@ -73,15 +77,6 @@ span{white-space:pre;}
 div#writeReview input {
    	width: 200px;
    	height: 35px;
-}
-
-footer{
-	margin-top : 58vh;
-	display:block;
-	width:100%;
-	position:fixed;
-	bottom:0;
-	
 }
 
 div#review a:link {
@@ -117,6 +112,7 @@ div#showShortBlogs td{
  */
  
 div#review table#reviewA{
+	width: 85%;
 	padding:1% 0 3% 0;
 	border-bottom: 1px solid black;
 }
@@ -146,3 +142,6 @@ div#showShortBlogs a:visited {
 	color : orange;
 }
 
+body{
+    height: 100vh;
+}
