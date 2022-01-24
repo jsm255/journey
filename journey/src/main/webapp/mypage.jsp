@@ -52,13 +52,13 @@
 									readonly></td>
 							</tr>
 							<tr>
-								<th>전화번호</th>
+								<th>＊전화번호</th>
 								<td><input type="text" name="tel"
 									id="tel" onchange="checkTel()" pattern="[0-1]{3}[0-9]{4}[0-9]{4}" maxlength="11"
 									placeholder="010-0000-0000" value="<%=user.getTel()%>"></td>
 							</tr>
 							<tr>
-								<th>비밀번호 변경</th>
+								<th>＊비밀번호 변경</th>
 								<td><input type="password" name="pw"
 									value="<%= user.getPw()%>"></td>
 							</tr>

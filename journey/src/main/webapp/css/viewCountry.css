@@ -2,10 +2,10 @@
 
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 
 body{
-	height: 80vh;
+	height: 100vh;
 }
 
 main{

@@ -36,7 +36,8 @@ if(request.getParameter("error") != null) {
 <!--             <option  value="영국">영국</option> -->
 <!--             <option  value="일본">일본</option> -->
 <!--             <option  value="태국">태국</option> -->
-<!--             <option  value="중국">중국</option> -->
+<!--   
+          <option  value="중국">중국</option> -->
 <!--             <option  value="필리핀">필리핀</option> -->
 <!--             <option  value="독일">독일</option> -->
 <!--             <option  value="이탈리아">이탈리아</option> -->
