@@ -145,6 +145,11 @@
 	background: violet;
 }
 
+input::placeholder {
+  color: red;
+  font-style: italic;
+}
+
 .footer-div{
 	display:block;
 	width:100%;
