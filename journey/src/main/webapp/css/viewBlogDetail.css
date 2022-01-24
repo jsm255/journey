@@ -20,3 +20,17 @@ table{
 th{
 	font-size: 20pt;
 }
+
+table button{
+	border: none;
+	border-radius: 11px;
+	background: rgba(248, 160, 45, 0.856);
+	height: 30px;
+	width: 70%;
+	font-size : 18px;
+	font-family:  'Jua', sans-serif;
+}
+table button:hover{
+	cursor: pointer;
+	background: violet;
+}

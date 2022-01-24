@@ -18,6 +18,12 @@ if(XMLParser.first) {
 		XMLParser.first = false;
 		XMLParser.main();
 	}
+
+if(request.getParameter("error") != null) {
+	%>
+	<script>alert("존재하지 않는 국가 이름입니다.")</script>
+	<%
+}
 %>
 	<div class=wrap>
     <c:import url="header.jsp"/>

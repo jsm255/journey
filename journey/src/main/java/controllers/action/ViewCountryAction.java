@@ -31,11 +31,16 @@ public class ViewCountryAction implements Action{
 		else {
 			Map<String, Object> map = XMLParser.getCountryInfo(countryName);
 			
-			country = new CountryDTO(String.valueOf(map.get("countryName")), String.valueOf(map.get("info")), String.valueOf(map.get("img")));
+			if(map == null) 
+				request.getRequestDispatcher("main.jsp?error=fail").forward(request, response);
+			else {
+				country = new CountryDTO(String.valueOf(map.get("countryName")), String.valueOf(map.get("info")), String.valueOf(map.get("img")));
+				
+				cDao.generateCountry(country);
+				
+				request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
+			}
 			
-			cDao.generateCountry(country);
-			
-			request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s", countryName)).forward(request, response);
 		}
 		
 	}
