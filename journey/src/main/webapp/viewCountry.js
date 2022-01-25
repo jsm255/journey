@@ -33,3 +33,7 @@ $("#range").change(e => {
 };*/
 
 //function modifyReview
+
+ $(".btn-like").click(function() {
+            $(this).toggleClass("done");
+});

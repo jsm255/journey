@@ -9,6 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <link rel="stylesheet" href="css/all.css" type="text/css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous" />
 <title>MAIN</title>
 </head>
 <body>
@@ -47,7 +48,7 @@ if(request.getParameter("error") != null) {
 		<input type="text" name="country" id="country" onchange="checkLetter()" required>
         <button type="submit" class="button">
             <span class="button_icon">
-                <ion-icon name="search-outline"></ion-icon>
+                <i class="fas fa-search" name="search_outline"></i>
             </span>
         </button>
        	<input type="hidden" name="command" value="viewCountry">
@@ -57,6 +58,5 @@ if(request.getParameter("error") != null) {
 </div>
 </div>
 	<script type="text/javascript" src="validation.js"></script>
-<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>

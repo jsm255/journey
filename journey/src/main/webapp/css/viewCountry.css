@@ -66,6 +66,21 @@ img#flag{
    	height: 175px;
 }
 
+.btn-like {
+          color: transparent;
+          text-shadow: 0 0 2px gray, 0 0 0 rgb(255, 10, 10);
+        }
+        .btn-like:hover {
+          text-shadow: 0 0 0 red;
+        }
+        .btn-like.done {
+          color: inherit;
+          text-shadow: 0;
+        }
+        .btn-like.done:hover {
+          color: transparent;
+          text-shadow: 0 0 0 #777;
+        }
 
 div#writeReview textarea{
    	width: 500px;
@@ -144,5 +159,5 @@ div#showShortBlogs a:visited {
 }
 
 body{
-    height: 100vh;
+    height: 115vh;
 }
