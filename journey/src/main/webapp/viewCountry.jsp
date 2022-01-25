@@ -88,8 +88,9 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 							<%
 						}
 					%>
-		
+				<div>
         		 <button class="btn-like">💗</button>
+        		 </div>
 				</td>
             </tr>
             <tr>
