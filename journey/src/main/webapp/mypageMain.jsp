@@ -1,3 +1,7 @@
+<%@page import="models.CountryDTO"%>
+<%@page import="controllers.CountryDAO"%>
+<%@page import="models.LikeDTO"%>
+<%@page import="controllers.LikeDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.UserDTO"%>
 <%@page import="controllers.UserDAO"%>
@@ -11,7 +15,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/mypageMain.css" type="text/css">
 <link rel="stylesheet" href="css/all.css" type="text/css">
-<title>Insert title here</title>
+<title>좋아요 표시한 국가</title>
 </head>
 <body>
 	<%
@@ -23,7 +27,7 @@
 		UserDTO user = UserDAO.getInstance().getId(id);
 		// System.out.println("id:"+id);
 		
-		ArrayList<String> likes = new ArrayList<>();
+		ArrayList<LikeDTO> likes = new ArrayList<>();
 		
 		%>
 	<div>
@@ -45,6 +49,8 @@
 					<p>＊좋아요 표시한 국가</p>
 						<table>
 						<%
+						LikeDAO lDao = LikeDAO.getInstance();
+						likes = lDao.getLikeId(id);
 						if(likes.size() == 0) {
 							%>
 							<tr><td> 아직 좋아요 표시한 국가가 없습니다! </td></tr>
@@ -52,9 +58,19 @@
 							<%
 						}
 						else {
-							
+							for(LikeDTO like : likes) {
+								CountryDAO cDao = CountryDAO.getInstance();
+								CountryDTO country = cDao.getCountry(like.getCountryName());
+								%>
+								<tr><td>
+								<a href="viewCountry.jsp?countryName=<%=country.getCountryName()%>"><img src=<%=country.getFlag() %>></a>
+								<a href="viewCountry.jsp?countryName=<%=country.getCountryName()%>"><%=country.getCountryName() %></a>
+								</td></tr>
+								<%
+							}
 						}
 						%>
+						</table>
 				</article>
 			</div>
 		</main>
