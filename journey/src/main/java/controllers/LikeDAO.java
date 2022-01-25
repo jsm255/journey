@@ -35,8 +35,7 @@ public class LikeDAO {
 				int code = rs.getInt(1);
 				String id = rs.getString(2);
 				String countryName = rs.getString(3);
-				int cnt = rs.getInt(4);
-				LikeDTO heart = new LikeDTO(code,id,countryName,cnt);
+				LikeDTO heart = new LikeDTO(code,id,countryName);
 				like.add(heart);
 			}
 			
@@ -49,7 +48,7 @@ public class LikeDAO {
 	public void addLike(LikeDTO heart) {
 		try {
 			conn = DBManager.getConnection();
-			String sql = "insert into `like`(id, countryName, cnt) value(?, ?, ?)";
+			String sql = "insert into `like`(id, countryName) value(?, ?)";
 			pstmt = conn.prepareStatement(sql);
 		
 			pstmt.setString(1, heart.getId());

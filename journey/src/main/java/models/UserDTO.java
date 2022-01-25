@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+
 //create table users(
 
 //code integer primary key auto_increment,
@@ -76,7 +78,4 @@ public class UserDTO {
 	public String toString() {
 		return "UserDTO [code=" + code + ", id=" + id + ", pw=" + pw + ", userName=" + userName + ", tel=" + tel + "]";
 	}
-
-	
-
 }
