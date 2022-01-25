@@ -79,15 +79,16 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 					<%
 						if(flag.compareTo("") != 0) {
 							%>
-								<img src=<%=flag %>>
+								<img id="flag" src=<%=flag %>>
 							<%
 						}
 						else {
 							%>
-								<img src="images/question.png">
+								<img id="flag" src="images/question.png">
 							<%
 						}
 					%>
+					<img id="heart" src="images/like1.png">
 				</td>
             </tr>
             <tr>
@@ -100,6 +101,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
                 <td><%=country.getContent() %></td>
             </tr>
         	</table>
+        	<img alt="" src="">
         </div>
         
         <div id="showShortBlogs">

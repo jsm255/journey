@@ -61,10 +61,11 @@ input[type="button"]{
     cursor: pointer;
 }
 
-img{
+img#flag{
   	width: 250px;
    	height: 175px;
 }
+
 
 div#writeReview textarea{
    	width: 500px;
