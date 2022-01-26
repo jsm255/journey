@@ -77,6 +77,10 @@
 				int cnt = 0;
 				%>
 				<tr class = "images-tr">
+				<c:forEach var="images" items="${sessionScope.bSession.images}">
+						<td><img name = "blogImg<%=cnt%>" width="200" height="200" src="${images}"></td>
+						<%cnt++;%>
+				</c:forEach>
 				<td><input id="image" type="file"
 							accept="image/png, image/jpeg, image/jpg" name="image0">
 						</td>

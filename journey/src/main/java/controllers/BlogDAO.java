@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -191,7 +192,8 @@ public class BlogDAO {
 			pstmt.setString(2, blog.getTitle());
 			pstmt.setString(3, blog.getContent());
 			String str = "";
-			if(blog.getImages().size() > 0) {
+			
+			if(!(blog.getImages().isEmpty())) {
 				ArrayList<String> temp = blog.getImages();
 				str += temp.size();
 				str += "?";				// 구분자
@@ -200,6 +202,12 @@ public class BlogDAO {
 					if(i != temp.size()-1) str += "?";			// 구분자
 				}
 			}
+			/*
+			 * else if(!(blog.getBlogImgs().isEmpty())) { ArrayList<File> temp =
+			 * blog.getBlogImgs(); str += temp.size(); str += "?"; // 구분자 for(int i = 0;
+			 * i<temp.size(); i++) { str += temp.get(i); if(i != temp.size()-1) str += "?";
+			 * // 구분자 } }
+			 */
 			else str += "none";
 			pstmt.setString(4, str);
 			pstmt.setInt(5, blog.getScore());

@@ -45,7 +45,7 @@
 			content = String.valueOf(session.getAttribute("content"));
 			score = Integer.parseInt(String.valueOf(session.getAttribute("score")));
 			countryName = String.valueOf(session.getAttribute("countryName"));
-	%>
+	%>s
 	<script>
 		alert("글 작성에 오류가 발생했습니다. 파일은 다시 등록해주세요.")
 	</script>
@@ -72,43 +72,43 @@
 	<form method="post" action="writeBlog" enctype="multipart/form-data">
 		<div class="writeBlogForm" id="writeBlog">
 			<table>
-				<tr class = "blogText">
-					<th class = "blogText">블로그 글 쓰기</th>
+				<tr class="blogText">
+					<th class="blogText">블로그 글 쓰기</th>
 				</tr>
 				<tr>
-					<td class = "subTitle"><input class = "subTitle" type="text" name="title" placeholder="제목" required
-						value=<%=title%>></td>
+					<td class="subTitle"><input class="subTitle" type="text"
+						name="title" placeholder="제목" required value=<%=title%>></td>
 				</tr>
 				<tr>
-					<td class = "subTitle"><input class = "subTitle" type="text" name="countryName"
-						placeholder="국가 이름을 입력하세요" required value=<%=countryName%>>
-					</td>
+					<td class="subTitle"><input class="subTitle" type="text"
+						name="countryName" placeholder="국가 이름을 입력하세요" required
+						value=<%=countryName%>></td>
 				</tr>
 				<tr>
-					<td class="rate"><input class = "rate" id="range" type="range" min=1 max=10
-						value=<%=score%> name="score"><span class = "rate" id="child">5점</span></td>
+					<td class="rate"><input class="rate" id="range" type="range"
+						min=1 max=10 value=<%=score%> name="score"><span
+						class="rate" id="child">5점</span></td>
 				</tr>
 				<tr>
-					<td name="content">
-						<textarea name="content" id="summernote">
+					<td name="content"><textarea name="content" id="summernote">
 							<%=content%>
-						</textarea>
-					</td>
+						</textarea></td>
 				</tr>
 				<tr>
-					<td><input class = "fileUpload" type="file"
+					<td><input class="fileUpload" type="file"
 						accept="image/png, image/jpeg, image/jpg" name="image1"></td>
 				</tr>
 				<tr>
-					<td><input class = "fileUpload" type="file"
+					<td><input class="fileUpload" type="file"
 						accept="image/png, image/jpeg, image/jpg" name="image2"></td>
 				</tr>
 				<tr>
-					<td><input class = "fileUpload" type="file"
+					<td><input class="fileUpload" type="file"
 						accept="image/png, image/jpeg, image/jpg" name="image3"></td>
 				</tr>
 				<tr>
-					<td class = "write-btn-area"><input class="write-btn" type="submit" value="글 쓰기"></td>
+					<td class="write-btn-area"><input class="write-btn"
+						type="submit" value="글 쓰기"></td>
 				</tr>
 
 			</table>
@@ -128,7 +128,7 @@
 			tabsize : 2,
 			height : 600,
 			width : 900
-			
+
 		});
 	</script>
 </body>

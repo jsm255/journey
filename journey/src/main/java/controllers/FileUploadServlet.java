@@ -60,10 +60,10 @@ public class FileUploadServlet extends HttpServlet {
 		//  "C:\\Users\\A\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
 		// ㅁㄴㅇㄹ
 		// "C:\\Users\\chox6\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
-		String path = "C:\\Users\\A\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
+		String path = "C:\\Users\\chox6\\git\\journey\\journey\\src\\main\\webapp\\blogImages";
 		// 포트폴리오 용이라 로컬에 저장해도 괜찮으나
 		// 실제 서비스때에는 별도의 이미지서버에 저장을 해야한다는 것을 인지하고 있을 것.
-		int maxSize = 20 * 1024 * 1024;
+		int maxSize = 5 * 1024 * 1024;
 		try {
 			MultipartRequest multi = null;
 			multi = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
@@ -72,7 +72,7 @@ public class FileUploadServlet extends HttpServlet {
 			String originalName = multi.getOriginalFileName("image");
 			String type = multi.getContentType("image");
 			File file = multi.getFile("image");
-			String url = "blogPage.jsp";
+			
 			Enumeration e = multi.getFileNames();
 			
 			ArrayList<String> images = new ArrayList<>();
@@ -90,13 +90,92 @@ public class FileUploadServlet extends HttpServlet {
 		
 		String title = multi.getParameter("title");
 		String content = multi.getParameter("content");
-//		String content = request.getParameter("content");
+		int score = Integer.parseInt(multi.getParameter("score"));
+		String countryName = multi.getParameter("countryName");
+		String id = ((BlogDTO)session.getAttribute("bSession")).getId();
+//		int userCode = userDao.getUserCodeById(id);
+		int blogCode = Integer.parseInt(multi.getParameter("blogCode"));
+		
+		BlogDTO blog = new BlogDTO(countryName, title, content, score, blogCode, images);
+		blogDao.updateBlog(blog);
+//		System.out.println("title : "+ title);
+//    	System.out.println("countryName : "+ countryName);
+//    	System.out.println("id : "+ id);
+//    	System.out.println("content : "+ content);
+//    	System.out.println("blogCode : "+ blogCode);
+		String url = "blogPage.jsp";
+		request.getRequestDispatcher(url).forward(request, response);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+	}
+}
+
+/*		try {
+			
+			
+			MultipartRequest multi = null;
+			multi = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
+			int cnt = 0;
+			String fileName = multi.getFilesystemName("image");
+			String originalName = multi.getOriginalFileName("image");
+			String type = multi.getContentType("image");
+			File file = multi.getFile("image");
+			String url = "blogPage.jsp";
+			Enumeration e = multi.getFileNames();
+			
+			ArrayList<String> blogImgs = new ArrayList<>();
+			ArrayList<String> images = new ArrayList<>();
+			
+			while(e.hasMoreElements()) {
+				String str = (String)e.nextElement();
+				
+				if(multi.getFilesystemName(str) == null) continue;
+				else {
+					images.add(multi.getFilesystemName(str));
+					blogImgs.add(multi.getFilesystemName("blogImg"+cnt));
+					cnt++;
+					}
+			}
+
+//		HttpSession session = request.getSession();
+		BlogDAO blogDao = BlogDAO.getInstance();
+		UserDAO userDao = UserDAO.getInstance();
+		BlogDTO blog = new BlogDTO();
+		
+		String title = multi.getParameter("title");
+		String content = multi.getParameter("content");
 		int score = Integer.parseInt(multi.getParameter("score"));
 		String countryName = multi.getParameter("countryName");
 		String id = ((BlogDTO)session.getAttribute("bSession")).getId();
 		int blogCode = Integer.parseInt(multi.getParameter("blogCode"));
 		
-		BlogDTO blog = new BlogDTO(countryName, title, content, score, images, blogCode);
+			while(e.hasMoreElements()) {
+				String str = (String)e.nextElement();
+				
+				if(multi.getFilesystemName(str) == null) continue;
+				else {
+					images.add(multi.getFilesystemName(str));
+					
+					for (int i = 0; i < 3; i++) {
+						System.out.println("blogImgs : "+blogImgs.get(i));						
+					}
+					cnt++;
+					}
+			}
+			if (blogImgs.isEmpty()) {
+				
+				blog = new BlogDTO(countryName, title, content, score, blogCode, images);
+			}else {
+				blog = new BlogDTO(countryName, title, content, score, blogImgs, blogCode);
+				
+			}
+		
+		
+			
+		
+		
 		blogDao.updateBlog(blog);   
 		
 		request.getRequestDispatcher(url).forward(request, response);
@@ -105,4 +184,4 @@ public class FileUploadServlet extends HttpServlet {
 	}
 	
 	}
-}
+}*/
