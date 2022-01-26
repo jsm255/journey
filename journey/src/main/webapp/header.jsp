@@ -24,7 +24,7 @@
 				<%
            		 }else{
            	%>
-				<li class="join"><a href="mypage.jsp">
+				<li class="join"><a href="mypageMain.jsp">
 						<p>마이페이지</p>
 				</a></li>
 				<li class="join"><a href="service?command=logout">

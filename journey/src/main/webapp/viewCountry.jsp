@@ -1,3 +1,4 @@
+<%@page import="controllers.LikeDAO"%>
 <%@page import="models.BlogDTO"%>
 <%@page import="controllers.BlogDAO"%>
 <%@page import="controllers.UserDAO"%>
@@ -45,6 +46,19 @@ if(session.getAttribute("log") != null) {
 	id = String.valueOf(session.getAttribute("log"));
 }
 
+if(request.getParameter("action") != null) {
+	if(request.getParameter("action").equals("like")) {
+		%>
+		<script>alert("해당 국가에 좋아요를 표시했습니다!")</script>
+		<%
+	}
+	else if(request.getParameter("action").equals("hate")) {
+		%>
+		<script>alert("해당 국가에 좋아요를 취소했습니다!")</script>
+		<%
+	}
+}
+
 UserDAO uDao = UserDAO.getInstance();
 
 CountryDAO cDao = CountryDAO.getInstance();
@@ -90,10 +104,22 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 					%>
 				<form action="service" method="get" id="btn">
 					<%
-					if()	
+					LikeDAO lDao = LikeDAO.getInstance();
+					int code = lDao.findIdCountryName(id, countryName);
+					if(code == -1) {
+						%>
+		        		 <button type = "submit" class="btn-like">💗</button>
+		        		 <input type="hidden" name="command" value="like">
+						<%
+					}
+					else {
+						%>
+		        		 <button type = "submit" class="btn-like done">💗</button>
+		        		 <input type="hidden" name="command" value="hate">
+						<%
+					}
 					%>
-        		 <button type = "submit" class="btn-like">💗</button>
-        		 <input type="hidden" name="command" value="like">
+        		 <input type="hidden" name="countryName" value=<%=countryName %>>
         		</form>
 				</td>
             </tr>
