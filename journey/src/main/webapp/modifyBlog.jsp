@@ -50,7 +50,7 @@
 					<th class="blogText">블로그 글 수정하기</th>
 				</tr>
 				<tr>
-					<td><input class = "subTitle" type="text" name="title"
+					<td><input class="subTitle" type="text" name="title"
 						value="${sessionScope.bSession.title}" required /></td>
 				</tr>
 				<tr>
@@ -65,31 +65,33 @@
 				</tr>
 				<tr>
 					<%-- <td> <textarea id="content" name="content">${sessionScope.bSession.content }</textarea> </td> --%>
-					<td>
-						<textarea name = "content" id="summernote">
+					<td><textarea name="content" id="summernote">
 					<%-- <textarea id="content" name="content">${sessionScope.bSession.content }</textarea> --%>
 						<%-- <p id = "content" name="content">${sessionScope.bSession.content }</p> --%>
 						${sessionScope.bSession.content }
-						</textarea>
-					</td>
+						</textarea></td>
 				</tr>
 				<%
 				int cnt = 0;
 				%>
-				<tr class = "images-tr">
-				<c:forEach var="images" items="${sessionScope.bSession.images}">
-						<td><img name = "blogImg<%=cnt%>" width="200" height="200" src="${images}"></td>
-						<%cnt++;%>
-				</c:forEach>
-				<td><input id="image" type="file"
-							accept="image/png, image/jpeg, image/jpg" name="image0">
-						</td>
-						<td><input id="image" type="file"
-							accept="image/png, image/jpeg, image/jpg" name="image1">
-						</td>
-						<td><input id="image" type="file"
-							accept="image/png, image/jpeg, image/jpg" name="image2">
-						</td>
+
+				<tr class="images-tr">
+					<!-- 업로드 되어 있는 이미지 파일들 출력 -->
+					<c:forEach var="images" items="${sessionScope.bSession.images}">
+						<td class="images-td"><img name="blogImg<%=cnt%>" width="200"
+							height="200" src="${images}"></td>
+						<%
+						cnt++;
+						%>
+					</c:forEach>
+				</tr>
+				<tr class="inputs-tr">
+					<td><input id="image" type="file"
+						accept="image/png, image/jpeg, image/jpg" name="image0"></td>
+					<td><input id="image" type="file"
+						accept="image/png, image/jpeg, image/jpg" name="image1"></td>
+					<td><input id="image" type="file"
+						accept="image/png, image/jpeg, image/jpg" name="image2"></td>
 					<%-- <c:forEach var="images" items="${sessionScope.bSession.images}">
 						<td><img width="200" height="200" src="${images}"></td>
 						<td><input id="image" type="file"
@@ -99,6 +101,7 @@
 						cnt++;
 						%>
 					</c:forEach> --%>
+
 				</tr>
 				<%-- <tr>
         				
@@ -115,9 +118,9 @@
         				</td>
         			</tr> --%>
 				<tr>
-					<td class = "write-btn-area">
-						<!-- <button onclick="uploadFile()">수정하기</button>--> <input class = "write-btn"
-						type="submit" value="수정하기" />
+					<td class="write-btn-area">
+						<!-- <button onclick="uploadFile()">수정하기</button>--> <input
+						class="write-btn" type="submit" value="수정" />
 					</td>
 				</tr>
 
