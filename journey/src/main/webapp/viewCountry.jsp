@@ -57,6 +57,11 @@ if(request.getParameter("action") != null) {
 		<script>alert("해당 국가에 좋아요를 취소했습니다!")</script>
 		<%
 	}
+	else if(request.getParameter("action").equals("duplicate")) {
+		%>
+		<script>alert("중복된 요청입니다!!")</script>
+		<%
+	}
 }
 
 UserDAO uDao = UserDAO.getInstance();
