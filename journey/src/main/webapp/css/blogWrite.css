@@ -50,10 +50,20 @@
 }
 .images-tr{
 	display:flex;
+	
+}
+
+.images-tr td{
+	margin-right: 15px;
+	margin-bottom: 30px;
+}
+
+.inputs-tr{
+	display: flex;
+	
 }
 
 /*--------------------------------- */
-@charset "UTF-8";
 
 *{
     margin: 0;
@@ -155,4 +165,7 @@ footer{
    	bottom:-5px;
    
 }
+
+
+
 
