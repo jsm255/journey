@@ -110,4 +110,25 @@ public class LikeDAO {
 		}
 		return like;
 	}
+	
+	public int findIdCountryName(String id, String countryName) {
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement("select code from `like` where id=? and countryName=?");
+			pstmt.setString(1, id);
+			pstmt.setString(2, countryName);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return -1;
+	}
 }

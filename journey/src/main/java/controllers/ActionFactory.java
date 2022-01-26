@@ -80,7 +80,7 @@ public class ActionFactory {
 			return new DoModifyBlogAction();
 		else if (command.equals("deleteBlog"))
 			return new DeleteBlogAction();
-		else if(command.equals("like"))
+		else if(command.equals("like") || command.equals("hate"))
 			return new LikeAction();
 		return null;
 	}
