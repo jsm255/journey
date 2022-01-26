@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,9 +30,16 @@ public class DoModifyBlogAction implements Action{
 		String content = request.getParameter("content");
 		String images = request.getParameter("image1");
 		System.out.println("Image : " + images);
-		String path = "C:/Users/chox6/git/journey/journey/src/main/webapp/images";
+//		String path = "C:/Users/A/git/journey/journey/src/main/webapp/images";
+		
+		ServletContext context = request.getSession().getServletContext();
+		
+		String realPath = context.getRealPath("/blogImages");
+		
+		System.out.println(realPath);
+		
 	    int size = 1024 * 1024 * 20; //20MB
-		MultipartRequest multiRequest = new MultipartRequest(request,path,size,"UTF-8", new DefaultFileRenamePolicy());
+		MultipartRequest multiRequest = new MultipartRequest(request,realPath,size,"UTF-8", new DefaultFileRenamePolicy());
 		
 		Enumeration files = multiRequest.getFileNames();
     	String str = (String)files.nextElement();
