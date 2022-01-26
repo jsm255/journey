@@ -51,6 +51,6 @@ public class DoModifyBlogAction implements Action{
 		    ie.printStackTrace();
 		   }catch (Exception e) {
 		    e.printStackTrace();
-		   }
+		   } 
 	}
 }
