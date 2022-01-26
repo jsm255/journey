@@ -90,7 +90,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 					%>
 				<form action="service" method="get" id="btn">
 					<%
-					if()	
+				
 					%>
         		 <button type = "submit" class="btn-like">💗</button>
         		 <input type="hidden" name="command" value="like">

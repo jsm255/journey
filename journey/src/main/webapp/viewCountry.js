@@ -40,6 +40,7 @@ form.addEventListener("submit",e=>{
 	
 	
 })
+
  $(".btn-like").click(function() {
             $(this).toggleClass("done");
 });
