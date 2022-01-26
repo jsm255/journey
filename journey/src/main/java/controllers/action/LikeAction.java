@@ -26,17 +26,31 @@ public class LikeAction implements Action{
 			return;
 		}
 		else {
+			String id = String.valueOf(session.getAttribute("log"));
 			if(action.equals("like")) {
 				LikeDTO heart = new LikeDTO(String.valueOf(session.getAttribute("log")), countryName);
-				lDao.addLike(heart);
-				request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s&action=like", countryName)).forward(request, response);
-				return;
+				if(lDao.findIdCountryName(id, countryName) == -1) { // 이미 처리된 내용이 없으면
+					lDao.addLike(heart);
+					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s&action=like", countryName)).forward(request, response);
+					return;
+				}
+				else {
+					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s&action=duplicate", countryName)).forward(request, response);
+					return;
+				}
 			}
 			else {
 				LikeDTO heart = new LikeDTO(String.valueOf(session.getAttribute("log")), countryName);
-				lDao.deleteLike(heart);
-				request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s&action=hate", countryName)).forward(request, response);
-				return;
+				if(lDao.findIdCountryName(id, countryName) == -1) { // 없는데 지우려고 하면
+					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s&action=duplicate", countryName)).forward(request, response);
+					return;
+				}
+				else {
+					lDao.deleteLike(heart);
+					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s&action=hate", countryName)).forward(request, response);
+					return;
+				}
+
 			}
 		}
 	}
