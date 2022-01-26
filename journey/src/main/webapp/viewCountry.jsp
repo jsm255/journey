@@ -109,6 +109,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 					%>
 				<form action="service" method="get" id="btn">
 					<%
+
 					LikeDAO lDao = LikeDAO.getInstance();
 					int code = lDao.findIdCountryName(id, countryName);
 					if(code == -1) {
@@ -123,6 +124,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 		        		 <input type="hidden" name="command" value="hate">
 						<%
 					}
+
 					%>
         		 <input type="hidden" name="countryName" value=<%=countryName %>>
         		</form>
