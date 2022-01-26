@@ -15,6 +15,7 @@ public class LikeAction implements Action{
 		// TODO Auto-generated method stub
 		
 		LikeDAO dao = LikeDAO.getInstance();
+		
 	}
 
 }

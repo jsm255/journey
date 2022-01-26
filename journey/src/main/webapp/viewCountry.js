@@ -34,6 +34,12 @@ $("#range").change(e => {
 
 //function modifyReview
 
+form.addEventListener("submit",e=>{
+	e.preventDefault();
+	const button = document.querySelector("#btn button");
+	
+	
+})
  $(".btn-like").click(function() {
             $(this).toggleClass("done");
 });

@@ -88,9 +88,13 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 							<%
 						}
 					%>
-				<div>
-        		 <button class="btn-like">💗</button>
-        		 </div>
+				<form action="service" method="get" id="btn">
+					<%
+					if()	
+					%>
+        		 <button type = "submit" class="btn-like">💗</button>
+        		 <input type="hidden" name="command" value="like">
+        		</form>
 				</td>
             </tr>
             <tr>

@@ -9,6 +9,7 @@ import controllers.action.DeleteReviewAction;
 import controllers.action.DeleteUserAction;
 import controllers.action.DoModifyBlogAction;
 import controllers.action.JoinAction;
+import controllers.action.LikeAction;
 import controllers.action.LoginAction;
 import controllers.action.LogoutAction;
 import controllers.action.ModifyBlogAction;
@@ -79,6 +80,8 @@ public class ActionFactory {
 			return new DoModifyBlogAction();
 		else if (command.equals("deleteBlog"))
 			return new DeleteBlogAction();
+		else if(command.equals("like"))
+			return new LikeAction();
 		return null;
 	}
 	
