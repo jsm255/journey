@@ -29,7 +29,4 @@ public class LikeDTO {
 	public String getCountryName() {
 		return countryName;
 	}
-
-	
-	
 }

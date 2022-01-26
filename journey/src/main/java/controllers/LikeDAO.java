@@ -35,7 +35,6 @@ public class LikeDAO {
 				int code = rs.getInt(1);
 				String id = rs.getString(2);
 				String countryName = rs.getString(3);
-				
 				LikeDTO heart = new LikeDTO(code,id,countryName);
 				like.add(heart);
 			}
@@ -64,10 +63,24 @@ public class LikeDAO {
 	public void deleteLike(LikeDTO heart) {
 		try {
 			conn = DBManager.getConnection();
-			String sql = "delete from `like` where code = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, heart.getCode());
-			 pstmt.executeUpdate();
+			
+			String id = heart.getId();
+			String countryName = heart.getCountryName();
+			
+			pstmt = conn.prepareStatement("select code from `like` where id=? and countryName=?");
+			pstmt.setString(1, id);
+			pstmt.setString(2, countryName);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int code = rs.getInt(1);
+				
+				String sql = "delete from `like` where code = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, code);
+				pstmt.executeUpdate();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -97,6 +110,4 @@ public class LikeDAO {
 		}
 		return like;
 	}
-	
-	
 }

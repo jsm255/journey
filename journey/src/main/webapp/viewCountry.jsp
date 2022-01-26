@@ -88,7 +88,9 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 							<%
 						}
 					%>
-					<img id="heart" src="images/like1.png">
+				<div>
+        		 <button class="btn-like">💗</button>
+        		 </div>
 				</td>
             </tr>
             <tr>
@@ -101,7 +103,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
                 <td><%=country.getContent() %></td>
             </tr>
         	</table>
-        	<img alt="" src="">
+        	
         </div>
         
         <div id="showShortBlogs">

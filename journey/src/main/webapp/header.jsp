@@ -34,7 +34,9 @@
       		%>
             </ul>
         </div>
-        <h1 id="title"><a href="main.jsp">Travel Community</a></h1>
+        <div>
+        <h1 id="title"><a href="main.jsp" id="main">Travel Community</a></h1>
+    	</div>
     </header>
     <nav>
         <ul>

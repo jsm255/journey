@@ -17,7 +17,7 @@ body{
     
 
     grid-template-columns: 100%;
-    grid-template-rows: 15% 10% 60% 15%;
+    grid-template-rows: 12% 11% 60% 10%;
     grid-template-areas: 
     "header"
     "nav"
@@ -30,12 +30,13 @@ body{
 header{
     grid-area: header;
     background-color:white;
-    height:15vh;
-   
+    height:12vh;
+    
 }
 #title{
     text-align: center;
-    margin-left: 140px;
+    margin-left: 16%;
+    margin-top: 1%;
     font-size: 40pt;
     color:rgba(248, 160, 45, 0.856);
 }
@@ -68,11 +69,11 @@ a {
 nav{
 	display:block;
     grid-area: nav;
-    height:10vh;
+    height:11vh;
     background-color: rgba(248, 160, 45, 0.856);
     text-align: center;
     color: black; 
-    padding-top: 0.1px;
+  
     font-size: 20pt;
 }
 
@@ -83,13 +84,14 @@ nav a:hover {
 nav li {
     display: inline; 
     margin: 8%;
+	vertical-align: middle;
 }
 nav a {
     text-decoration: none; 
     color: black;
     border-style: hidden hidden solid hidden; 
     border-color: transparent;
-    font-weight: bold
+    font-weight: bold;
     }
 
 footer{
@@ -97,7 +99,7 @@ footer{
     background-color: rgba(248, 160, 45, 0.856);
     color: white;
     text-align: center;
-    height: 10vh;
+    height: 10.1vh;
    	bottom:-5px;
    
 }
