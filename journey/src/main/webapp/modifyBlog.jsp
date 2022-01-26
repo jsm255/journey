@@ -76,6 +76,7 @@
 				%>
 
 				<tr class="images-tr">
+
 					<!-- 업로드 되어 있는 이미지 파일들 출력 -->
 					<c:forEach var="images" items="${sessionScope.bSession.images}">
 						<td class="images-td"><img name="blogImg<%=cnt%>" width="200"
@@ -84,7 +85,9 @@
 						cnt++;
 						%>
 					</c:forEach>
+
 				</tr>
+				
 				<tr class="inputs-tr">
 					<td><input id="image" type="file"
 						accept="image/png, image/jpeg, image/jpg" name="image0"></td>
