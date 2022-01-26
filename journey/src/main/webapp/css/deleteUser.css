@@ -33,7 +33,7 @@ aside{
 }
 
 .mypage ul li{
-    margin: 30% 0 30% 0;
+    margin: 20% 0 20% 0;
     font-size: 18pt;
     color: black;
 }
@@ -54,7 +54,7 @@ article{
 
 #info{
     text-align: center;
-    margin:2% 12% 0 0;
+    margin:1% 12% 0 0;
     white-space: pre;
     font-size: 20pt;
 }
@@ -63,11 +63,13 @@ input[type="text"]{
     width:15vw;
     height:3vh;
     font-size: 18pt;
+    border-radius: 5px;
 }
 input[type="password"]{
     width:15vw;
     height:3vh;
     font-size: 18pt;
+    border-radius: 5px;
 }
 input[type="button"]{
     font-size: 1rem;

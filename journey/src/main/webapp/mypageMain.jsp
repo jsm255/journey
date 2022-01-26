@@ -47,7 +47,13 @@
 			<div>
 				<article class="like">
 					<p>＊좋아요 표시한 국가</p>
-						<table>
+						<table >
+						<tr >
+								<th>국가이미지</th>
+								<th>국가명</th>
+								<th>리뷰 평균</th>
+								<th>좋아요 수</th>
+								</tr>
 						<%
 						LikeDAO lDao = LikeDAO.getInstance();
 						likes = lDao.getLikeId(id);
@@ -62,10 +68,13 @@
 								CountryDAO cDao = CountryDAO.getInstance();
 								CountryDTO country = cDao.getCountry(like.getCountryName());
 								%>
-								<tr><td>
-								<a href="viewCountry.jsp?countryName=<%=country.getCountryName()%>"><img src=<%=country.getFlag() %>></a>
-								<a href="viewCountry.jsp?countryName=<%=country.getCountryName()%>"><%=country.getCountryName() %></a>
-								</td></tr>
+								
+								<tr>
+								<td><a href="viewCountry.jsp?countryName=<%=country.getCountryName()%>"><img src=<%=country.getFlag() %>></a></td>
+								<td><a href="viewCountry.jsp?countryName=<%=country.getCountryName()%>"><%=country.getCountryName() %></a> </td> 
+								<td><a href="viewCountry.jsp?countryName=<%=country.getCountryName()%>"><%=country.getScore()%></a> </td> 
+								<td><a href="viewCountry.jsp?countryName=<%=country.getCountryName()%>"><%=country.getLikecnt()%></a> </td> 
+								</tr>
 								<%
 							}
 						}

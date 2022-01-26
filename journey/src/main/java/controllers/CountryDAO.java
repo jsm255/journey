@@ -112,7 +112,7 @@ public class CountryDAO {
 				String getCountryName = rs.getString(3);
 				String score = rs.getString(4);
 				String content = rs.getString(5);
-				
+			
 				CountryDTO country = new CountryDTO(code, flag, getCountryName, score, content);
 				
 				return country;
@@ -165,6 +165,30 @@ public class CountryDAO {
 		}
 		
 		return countryNames;
+	}
+	
+	public void likeCnt(String countryName) {
+		try {
+			conn = DBManager.getConnection();
+			String sql = "update country set likecnt = likecnt + 1 where countryName = '"+countryName+"'";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void delCnt(String countryName) {
+		try {
+			conn = DBManager.getConnection();
+			String sql = "update country set likecnt = likecnt - 1 where countryName = '"+countryName+"'";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

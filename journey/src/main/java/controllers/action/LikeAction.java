@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controllers.CountryDAO;
 import controllers.LikeDAO;
 import models.LikeDTO;
 
@@ -17,6 +18,7 @@ public class LikeAction implements Action{
 		// TODO Auto-generated method stub
 		
 		LikeDAO lDao = LikeDAO.getInstance();
+		CountryDAO cDAO = CountryDAO.getInstance();
 		String action = request.getParameter("command");
 		String countryName = request.getParameter("countryName");
 		
@@ -31,6 +33,7 @@ public class LikeAction implements Action{
 				LikeDTO heart = new LikeDTO(String.valueOf(session.getAttribute("log")), countryName);
 				if(lDao.findIdCountryName(id, countryName) == -1) { // 이미 처리된 내용이 없으면
 					lDao.addLike(heart);
+					cDAO.likeCnt(countryName);
 					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s&action=like", countryName)).forward(request, response);
 					return;
 				}
@@ -47,6 +50,7 @@ public class LikeAction implements Action{
 				}
 				else {
 					lDao.deleteLike(heart);
+					cDAO.delCnt(countryName);
 					request.getRequestDispatcher(String.format("viewCountry.jsp?countryName=%s&action=hate", countryName)).forward(request, response);
 					return;
 				}

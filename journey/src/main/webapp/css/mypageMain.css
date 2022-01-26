@@ -33,7 +33,7 @@ aside{
 }
 
 .mypage ul li{
-    margin: 30% 0 30% 0;
+    margin: 20% 0 20% 0;
     font-size: 18pt;
     color: black;
 }
@@ -44,32 +44,36 @@ article{
     height: 60vh;
     font-size: 15pt;
 }
-.review{
+.like{
     border: 1px solid black;
     border-radius: 10px;
     height: auto;
 }
-.review a:link {
-	color : blue;
+
+.like p{
+	font-size: 25pt;
 }
-.review a:visited {
-	color : orange;
-}
-.review p{
-    font-size:25pt;
-}
-.review table{
-    border-collapse: collapse;
-    text-align: center;
-    margin: 2% 0 0 5%;
-    width: 90%;
-    	font-size : 20px;
-	font-family:  'Jua', sans-serif;
+.like table{
+	text-align:center;
+    margin: 4% 0 1% 17%;
+    width: 50%;
+    font-size : 2rem;
+	text-align:center;
+	
 }
 
-td.c1{
-	background-color: #999;
+.like table td, th{
+	border-collapse: collapse;
+	border: 1px solid black;
+	padding-top:3%;
+	font-size: 18pt;
+	
 }
+.like img{
+	width:80px;
+	height:60px;
+}
+
 .footer-div{
 	display:block;
 	width:100%;

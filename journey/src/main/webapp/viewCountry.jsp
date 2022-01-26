@@ -122,12 +122,15 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 						%>
 		        		 <button type = "submit" class="btn-like done">💗</button>
 		        		 <input type="hidden" name="command" value="hate">
+		        		 
 						<%
 					}
-
+					
 					%>
+				 
         		 <input type="hidden" name="countryName" value=<%=countryName %>>
         		</form>
+        		<span><%=country.getLikecnt() %></span>
 				</td>
             </tr>
             <tr>

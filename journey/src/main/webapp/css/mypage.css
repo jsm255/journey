@@ -37,7 +37,7 @@ aside{
 }
 
 .mypage ul li{
-    margin: 30% 0 30% 0;
+    margin: 20% 0 20% 0;
     font-size: 18pt;
     color: black;
 }
@@ -83,15 +83,15 @@ table td{
 }
 
 input[type="submit"]{
-	margin-top: 30px;
-	margin-left: 65%;
-	height: 70px;
-	width: 100px;
+	margin-top: 2%;
+	margin-left: 43%;
+	height: 4vh;
+	width: 7vw;
 	margin-bottom: 10%;
 	border: none;
 	border-radius: 11px;
 	background: rgba(248, 160, 45, 0.856);
-	font-size : 30px;
+	font-size :1rem;
 	font-family:  'IBM Plex Sans KR', sans-serif;
 }
 

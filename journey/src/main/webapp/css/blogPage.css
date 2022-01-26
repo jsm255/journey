@@ -90,4 +90,5 @@ td#page button:hover{
 
 body{
     height: 91vh;
+    overflow-x: hidden
 }
