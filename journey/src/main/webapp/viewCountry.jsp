@@ -59,7 +59,7 @@ if(request.getParameter("action") != null) {
 	}
 	else if(request.getParameter("action").equals("duplicate")) {
 		%>
-		<script>alert("중복된 요청입니다!")</script>
+		<script>alert("중복된 요청입니다!!")</script>
 		<%
 	}
 }
