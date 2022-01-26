@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,13 +44,19 @@ public class WriteBlogServlet extends HttpServlet {
 //		HttpSession session = request.getSession();
 		// C:\Users\chox6\git\journey\journey\src\main\webapp\blogImages
 		//"C:/Users/A/git/journey/journey/src/main/webapp/blogImages";
-		String path = "C:/Users/chox6/git/journey/journey/src/main/webapp/blogImages";
+		
+		ServletContext context = request.getSession().getServletContext();
+		
+		String realPath = context.getRealPath("/blogImages");
+		
+		System.out.println(realPath);
+//		String path = ".\\blogImages";
 		// 포트폴리오 용이라 로컬에 저장해도 괜찮으나
 		// 실제 서비스때에는 별도의 이미지서버에 저장을 해야한다는 것을 인지하고 있을 것.
 		int maxSize = 20 * 1024 * 1024;
 		try {
 			MultipartRequest multi = null;
-			multi = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
+			multi = new MultipartRequest(request, realPath, maxSize, "utf-8", new DefaultFileRenamePolicy());
 			
 			String fileName = multi.getFilesystemName("image");
 			String originalName = multi.getOriginalFileName("image");
