@@ -6,18 +6,16 @@
 }
 .wrap{
 	position:relative;
-	height:100%;
-	
+	height:100vh;
+
 }
 body{
     display: grid;
 
     width: 100vw;
-    min-height: 100vh;
     
-
     grid-template-columns: 100%;
-    grid-template-rows: 12% 11% 60% 10%;
+    grid-template-rows: 15% 15% 63% 7%;
     grid-template-areas: 
     "header"
     "nav"
@@ -25,6 +23,8 @@ body{
     "footer"
     ;
     font-family:  'IBM Plex Sans KR', sans-serif;
+    overflow-x: hidden;
+   
 }
 /* header */
 header{
@@ -35,7 +35,7 @@ header{
 }
 #title{
     text-align: center;
-    margin-left: 16%;
+    margin-left: 14%;
     margin-top: 1%;
     font-size: 40pt;
     color:rgba(248, 160, 45, 0.856);
@@ -69,21 +69,22 @@ a {
 nav{
 	display:block;
     grid-area: nav;
-    height:11vh;
+   
     background-color: rgba(248, 160, 45, 0.856);
     text-align: center;
     color: black; 
-  
-    font-size: 20pt;
+    padding-top: 1.2%;
+    font-size: 1.8em;
+    height: 9.4vh;
 }
 
 nav a:hover {
     color: gray; 
-    border-color: darkgray;
+
 }
-nav li {
+nav a h3{
     display: inline; 
-    margin: 8%;
+    margin: 7%;
 	vertical-align: middle;
 }
 nav a {
@@ -92,6 +93,7 @@ nav a {
     border-style: hidden hidden solid hidden; 
     border-color: transparent;
     font-weight: bold;
+   
     }
 
 footer{
@@ -99,8 +101,8 @@ footer{
     background-color: rgba(248, 160, 45, 0.856);
     color: white;
     text-align: center;
-    height: 10.3vh;
-   	bottom:-5px;
+    height:10vh;
+   	bottom:0
    
 }
 

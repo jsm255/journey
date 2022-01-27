@@ -7,7 +7,7 @@ public class CountryDTO {
 	private String countryName;
 	private String score;
 	private String content;
-	
+	private int likecnt;
 	public CountryDTO(String flag, String countryName, String score, String content) {
 		this.flag = flag;
 		this.countryName = countryName;
@@ -21,12 +21,18 @@ public class CountryDTO {
 		this.countryName = countryName;
 		this.score = score;
 		this.content = content; 
+		
 	}
 	
 	public CountryDTO(String countryName, String content, String flag) {
 		this.countryName = countryName;
 		this.content = content;
 		this.flag = flag;
+	}
+	
+	public CountryDTO(String countryName, int likecnt) {
+		this.countryName = countryName;
+		this.likecnt = likecnt;
 	}
 
 	public int getCode() {
@@ -63,5 +69,9 @@ public class CountryDTO {
 	
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public int getLikecnt() {
+		return likecnt;
 	}
 }

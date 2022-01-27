@@ -24,7 +24,7 @@
 				<%
            		 }else{
            	%>
-				<li class="join"><a href="mypage.jsp">
+				<li class="join"><a href="mypageMain.jsp">
 						<p>마이페이지</p>
 				</a></li>
 				<li class="join"><a href="service?command=logout">
@@ -39,11 +39,11 @@
     	</div>
     </header>
     <nav>
-        <ul>
-            <li><a href="viewCountry.jsp">국가 정보</a></li>
-            <li><a href="blogPage.jsp">블로그 게시판</a></li>
+        
+           <a href="viewCountry.jsp"> <h3>국가 정보</h3></a>
+            <a href="blogPage.jsp"><h3>블로그 게시판</h3></a>
 <!--             <li><a href="">공지사항</a></li> -->
-        </ul>
+        
     </nav>
 </body>
 </html>

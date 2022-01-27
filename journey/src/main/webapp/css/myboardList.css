@@ -33,7 +33,7 @@ aside{
 }
 
 .mypage ul li{
-    margin: 30% 0 30% 0;
+    margin: 20% 0 20% 0;
     font-size: 18pt;
     color: black;
 }
@@ -63,8 +63,8 @@ article{
     text-align: center;
     margin: 2% 0 0 5%;
     width: 90%;
-    	font-size : 20px;
-	font-family:  'Jua', sans-serif;
+    font-size : 20px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 td.c1{
