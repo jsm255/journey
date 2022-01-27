@@ -71,22 +71,6 @@
 						${sessionScope.bSession.content }
 						</textarea></td>
 				</tr>
-				<%
-				int cnt = 0;
-				%>
-
-				<tr class="images-tr">
-
-					<!-- 업로드 되어 있는 이미지 파일들 출력 -->
-					<c:forEach var="images" items="${sessionScope.bSession.images}">
-						<td class="images-td"><img name="blogImg<%=cnt%>" width="200"
-							height="200" src="${images}"></td>
-						<%
-						cnt++;
-						%>
-					</c:forEach>
-
-				</tr>
 				
 				<tr class="inputs-tr">
 					<td><input id="image" type="file"

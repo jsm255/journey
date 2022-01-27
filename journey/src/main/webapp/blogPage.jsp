@@ -95,7 +95,6 @@ UserDAO uDao = UserDAO.getInstance();
                 					
             						<%
             					}
-            					
             					%>
             					</td></tr>
 
