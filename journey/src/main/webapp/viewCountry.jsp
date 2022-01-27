@@ -130,7 +130,7 @@ ArrayList<String> countryNames = cDao.getCountryNames();
 				 
         		 <input type="hidden" name="countryName" value=<%=countryName %>>
         		</form>
-        		<span><%=country.getLikecnt() %></span>
+        		<span><%=country.getLikecnt() %> 명이 좋아합니다!</span>
 				</td>
             </tr>
             <tr>

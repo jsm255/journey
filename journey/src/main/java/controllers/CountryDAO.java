@@ -38,8 +38,9 @@ public class CountryDAO {
 				String countryName = rs.getString(3);
 				String score = rs.getString(4);
 				String content = rs.getString(5);
+				int likecnt = rs.getInt(6);
 				
-				CountryDTO country = new CountryDTO(code, flag, countryName, score, content);
+				CountryDTO country = new CountryDTO(code, flag, countryName, score, content, likecnt);
 				
 				countries.add(country);
 			}
@@ -170,8 +171,17 @@ public class CountryDAO {
 	public void likeCnt(String countryName) {
 		try {
 			conn = DBManager.getConnection();
-			String sql = "update country set likecnt = likecnt + 1 where countryName = '"+countryName+"'";
+			
+			CountryDTO country = getCountry(countryName);
+			
+			int likecnt = country.getLikecnt();
+			
+			String sql = "update country set likecnt=? where code=?";
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, likecnt+1);
+			pstmt.setInt(2, country.getCode());
+			
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -182,8 +192,15 @@ public class CountryDAO {
 	public void delCnt(String countryName) {
 		try {
 			conn = DBManager.getConnection();
-			String sql = "update country set likecnt = likecnt - 1 where countryName = '"+countryName+"'";
+			CountryDTO country = getCountry(countryName);
+			
+			int likecnt = country.getLikecnt();
+			
+			String sql = "update country set likecnt=? where code=?";
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, likecnt-1);
+			pstmt.setInt(2, country.getCode());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {

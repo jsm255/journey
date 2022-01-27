@@ -30,8 +30,12 @@ public class CountryDTO {
 		this.flag = flag;
 	}
 	
-	public CountryDTO(String countryName, int likecnt) {
+	public CountryDTO(int code, String flag, String countryName, String score, String content, int likecnt) {
+		this.code = code;
+		this.flag = flag;
 		this.countryName = countryName;
+		this.score = score;
+		this.content = content; 
 		this.likecnt = likecnt;
 	}
 

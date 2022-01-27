@@ -59,8 +59,7 @@
 						likes = lDao.getLikeId(id);
 						if(likes.size() == 0) {
 							%>
-							<tr><td> 아직 좋아요 표시한 국가가 없습니다! </td></tr>
-							<tr><td> 국가 정보 게시판을 둘러보시고 좋아요 표시를 눌러보세요! </td></tr>
+							<tr><td colspan=4 rowspan=2> 아직 좋아요 표시한 국가가 없습니다! <br>  국가 정보 게시판을 둘러보시고 좋아요를 눌러보세요! </td></tr>
 							<%
 						}
 						else {

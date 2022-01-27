@@ -59,11 +59,10 @@ article{
     width: 50%;
     font-size : 2rem;
 	text-align:center;
-	
+	border-collapse: collapse;
 }
 
 .like table td, th{
-	border-collapse: collapse;
 	border: 1px solid black;
 	padding-top:3%;
 	font-size: 18pt;
