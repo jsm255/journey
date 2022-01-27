@@ -54,6 +54,14 @@ public class UserDAO {
 			 
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		return users;
 	}
@@ -75,6 +83,14 @@ public class UserDAO {
 			System.out.println("입력완료");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		return dto;
 	}
@@ -184,6 +200,14 @@ public class UserDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 	
@@ -200,6 +224,14 @@ public class UserDAO {
 		    
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 	
@@ -218,6 +250,14 @@ public class UserDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		return -1;

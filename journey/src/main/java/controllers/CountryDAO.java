@@ -46,6 +46,14 @@ public class CountryDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		return countries;
@@ -93,6 +101,14 @@ public class CountryDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		return false;
@@ -121,6 +137,14 @@ public class CountryDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		return null;
@@ -140,6 +164,14 @@ public class CountryDAO {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		return false;
@@ -163,6 +195,14 @@ public class CountryDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		return countryNames;
@@ -186,6 +226,14 @@ public class CountryDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 	
@@ -205,6 +253,14 @@ public class CountryDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 	
