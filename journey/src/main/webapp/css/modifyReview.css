@@ -11,7 +11,13 @@
 	
 	div form table{
 		text-align: center;
+	
 	}
+	div form table tr{
+		text-align: center;
+		margin-top:2%;
+	}
+	
 	textarea{
 		width: 300px;
 		height: 100px;
@@ -23,4 +29,8 @@
 		width:100%;
 		position:fixed;
 		bottom:0;
+	}
+	
+	div#before{
+		padding-top:10%;
 	}
