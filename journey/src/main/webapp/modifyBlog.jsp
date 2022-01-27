@@ -72,6 +72,7 @@
 						</textarea></td>
 				</tr>
 				
+				
 				<tr class="inputs-tr">
 					<td><input id="image" type="file"
 						accept="image/png, image/jpeg, image/jpg" name="image0"></td>
